@@ -1,39 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Education_API.Controllers
 {
-  [ApiController]
-    [Route("api/v1/courses")]
-    public class CoursesController : ControllerBase
+    [ApiController]
+    [Route("api/v1/teacher")]
+    public class TeacherController : ControllerBase
     {
-      // En metod för att hämta alla kurser
       [HttpGet()]
-      public ActionResult ListCourses()
+      public ActionResult ListTeachers()
       {
         return Ok("{'message: 'Det funkar'}");
       }  
 
       [HttpGet("{id}")]
-      public ActionResult GetCourseById(int id)
+      public ActionResult GetTeacherById(int id)
       {
         return Ok("{'message: 'Det funkar också'}");
       }
 
       [HttpPost()]
-      public ActionResult AddCourse()
+      public ActionResult AddTeacher()
       {
-          // Här kommer vi att kontakta databasen
           return StatusCode(201);
       }
 
       [HttpPut("{id}")]
-      public ActionResult UpdateCourse()
+      public ActionResult UpdateTeacher()
       {
           return NoContent();
       }
 
       [HttpDelete("{id}")]
-      public ActionResult DeleteCourse(int id)
+      public ActionResult DeleteTeacher(int id)
       {
           return NoContent();
       }
