@@ -23,9 +23,13 @@ namespace Education_API.Controllers
       }  
 
       [HttpGet("{id}")]
-      public async Task<ActionResult> GetCourseById(int id)
+      public async Task<ActionResult<Course>> GetCourseById(int id)
       {
-        var response = await _context.Course.FirstOrDefaultAsync();
+        var response = await _context.Course.FindAsync(id);
+
+        if(response is null) 
+            return NotFound($"There is no course with id: {id}.");
+
         return Ok(response);
       }
 
@@ -38,14 +42,37 @@ namespace Education_API.Controllers
       }
 
       [HttpPut("{id}")]
-      public ActionResult UpdateCourse()
+      public async Task<ActionResult> UpdateCourse(int id, Course model)
       {
+          var response = await _context.Course.FindAsync(id);
+
+          if(response is null) 
+            return NotFound($"There is no course with id: {id}.");
+
+          response.CourseNumber = model.CourseNumber;
+          response.Title = model.Title;
+          response.Duration = model.Duration;
+          response.Category = model.Category;
+          response.Description = model.Description;
+          response.Details = model.Details;
+
+          _context.Course.Update(response);
+          await _context.SaveChangesAsync();
+
           return NoContent();
       }
 
       [HttpDelete("{id}")]
-      public ActionResult DeleteCourse(int id)
+      public async Task<ActionResult> DeleteCourse(int id)
       {
+          var response = await _context.Course.FindAsync(id);
+
+          if(response is null) 
+            return NotFound($"There is no course with id: {id} to delete.");
+
+          _context.Course.Remove(response);
+          await _context.SaveChangesAsync();
+
           return NoContent();
       }
     }
