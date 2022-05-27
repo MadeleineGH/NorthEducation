@@ -1,4 +1,5 @@
 using Education_API.Data;
+using Education_API.Interfaces;
 using Education_API.Models;
 using Education_API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -10,18 +11,21 @@ namespace Education_API.Controllers
   [Route("api/v1/course")]
     public class CourseController : ControllerBase
     {
-    private readonly EducationContext _context;
-      public CourseController(EducationContext context)
+      private readonly EducationContext _context;
+      private readonly ICourseRepository _courseRepo;
+      public CourseController(EducationContext context, ICourseRepository courseRepo)
       {
+        _courseRepo = courseRepo;
         _context = context;
       }
 
       [HttpGet()]
       public async Task<ActionResult<List<CourseViewModel>>> ListCourses()
       {
-        var response = await _context.Course.ToListAsync();
-
+        // var response = await _context.Course.ToListAsync();
+        var response = await _courseRepo.ListAllCoursesAsync();
         var courseList = new List<CourseViewModel>();
+
         foreach(var course in response){
           courseList.Add(
             new CourseViewModel {
@@ -31,21 +35,34 @@ namespace Education_API.Controllers
               Duration = course.Duration,
               Category = course.Category,
               Description = course.Description,
-              Details = course.Details}
+              Details = course.Details
+              }
           );
         };
         return Ok(courseList);
       }  
 
       [HttpGet("{id}")]
-      public async Task<ActionResult<Course>> GetCourseById(int id)
+      public async Task<ActionResult<CourseViewModel>> GetCourseById(int id)
       {
-        var response = await _context.Course.FindAsync(id);
+        var response = await _courseRepo.GetCourseAsync(id);
 
         if(response is null) 
             return NotFound($"There is no course with id: {id}.");
 
         return Ok(response);
+      }
+
+      [HttpGet("bycoursenumber/{courseNumber}")]
+      public async Task<ActionResult<Course>> GetCourseByCourseNumber(int courseNumber)
+      {
+        var response = await _context.Course.SingleOrDefaultAsync(
+          c => c.CourseNumber! == courseNumber);
+
+        if(response is null) 
+            return NotFound($"There is no course with course number: {courseNumber}.");
+
+            return Ok(response);
       }
 
       [HttpPost()]
