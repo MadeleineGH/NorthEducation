@@ -45,19 +45,25 @@ namespace Education_API.Controllers
       [HttpGet("{id}")]
       public async Task<ActionResult<CourseViewModel>> GetCourseById(int id)
       {
-        var response = await _courseRepo.GetCourseAsync(id);
+        try
+        {
+          var response = await _courseRepo.GetCourseAsync(id);
 
-        if(response is null) 
-            return NotFound($"There is no course with id: {id}.");
+          if(response is null) 
+              return NotFound($"There is no course with id: {id}.");
 
-        return Ok(response);
+          return Ok(response);
+        }   
+        catch(Exception ex)
+        {
+          return StatusCode(500, ex.Message);
+        }
       }
 
       [HttpGet("bycoursenumber/{courseNumber}")]
       public async Task<ActionResult<Course>> GetCourseByCourseNumber(int courseNumber)
       {
-        var response = await _context.Course.SingleOrDefaultAsync(
-          c => c.CourseNumber! == courseNumber);
+        var response = await _courseRepo.GetCourseByCourseNumberAsync(courseNumber);
 
         if(response is null) 
             return NotFound($"There is no course with course number: {courseNumber}.");
@@ -105,15 +111,14 @@ namespace Education_API.Controllers
       [HttpDelete("{id}")]
       public async Task<ActionResult> DeleteCourse(int id)
       {
-          var response = await _context.Course.FindAsync(id);
+          _courseRepo.DeleteCourse(id);
 
-          if(response is null) 
-            return NotFound($"There is no course with id: {id} to delete.");
+          if(await _courseRepo.SaveAllAsync())
+          {
+            return NoContent();
+          };
 
-          _context.Course.Remove(response);
-          await _context.SaveChangesAsync();
-
-          return NoContent();
+          return StatusCode(500, "Hoppsan något gick fel");
       }
     }
 }

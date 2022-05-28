@@ -21,7 +21,12 @@ namespace Education_API.Repositories
 
     public void DeleteCourse(int id)
     {
-      throw new NotImplementedException();
+      var response = _context.Course.Find(id);
+
+      if(response is not null)
+      {
+        _context.Course.Remove(response);
+      }
     }
 
     public async Task<CourseViewModel?> GetCourseAsync(int id)
@@ -39,9 +44,19 @@ namespace Education_API.Repositories
       }).SingleOrDefaultAsync();
     }
 
-    public Task<Course> GetCourseAsync(string courseNumber)
+    public async Task<CourseViewModel?> GetCourseByCourseNumberAsync(int courseNumber)
     {
-      throw new NotImplementedException();
+        return await _context.Course.Where(c => c.CourseNumber == courseNumber)
+      .Select(course => new CourseViewModel
+      {
+          CourseId = course.Id,
+          CourseNumber = course.CourseNumber,
+          Title = course.Title,
+          Duration = course.Duration,
+          Category = course.Category,
+          Description = course.Description,
+          Details = course.Details
+      }).SingleOrDefaultAsync();
     }
 
     public async Task<List<Course>> ListAllCoursesAsync()
@@ -49,9 +64,9 @@ namespace Education_API.Repositories
         return await _context.Course.ToListAsync();
     }
 
-    public Task<bool> SaveAllAsync()
+    public async Task<bool> SaveAllAsync()
     {
-      throw new NotImplementedException();
+      return await _context.SaveChangesAsync() > 0;
     }
 
     public void UpdateCourse(int id, Course model)
