@@ -1,3 +1,4 @@
+using AutoMapper;
 using Education_API.Data;
 using Education_API.Interfaces;
 using Education_API.Models;
@@ -13,8 +14,10 @@ namespace Education_API.Controllers
     {
       private readonly EducationContext _context;
       private readonly ICourseRepository _courseRepo;
-      public CourseController(EducationContext context, ICourseRepository courseRepo)
+    private readonly IMapper _mapper;
+      public CourseController(EducationContext context, ICourseRepository courseRepo, IMapper mapper)
       {
+        _mapper = mapper;
         _courseRepo = courseRepo;
         _context = context;
       }
@@ -74,15 +77,18 @@ namespace Education_API.Controllers
       [HttpPost()]
       public async Task<ActionResult<Course>> AddCourse(PostCourseViewModel course)
       {
-          var courseToAdd = new Course{
-            CourseNumber = course.CourseNumber,
-            Title = course.Title,
-            Duration = course.Duration,
-            Category = course.Category,
-            Description = course.Description,
-            Details = course.Details
-          };
+          // var courseToAdd = new Course{
+          //   CourseNumber = course.CourseNumber,
+          //   Title = course.Title,
+          //   Duration = course.Duration,
+          //   Category = course.Category,
+          //   Description = course.Description,
+          //   Details = course.Details
+          // };
+          var courseToAdd = _mapper.Map<Course>(course);
+
           await _context.Course.AddAsync(courseToAdd);
+
           await _context.SaveChangesAsync();
           return StatusCode(201, courseToAdd);
       }

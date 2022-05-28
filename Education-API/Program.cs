@@ -1,4 +1,5 @@
 using Education_API.Data;
+using Education_API.Helpers;
 using Education_API.Interfaces;
 using Education_API.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,9 @@ builder.Services.AddDbContext<EducationContext>(options =>
 
 // Dependency Injection för våra egna Interface och klasser
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+
+// Add AutoMapper
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
