@@ -4,7 +4,6 @@ using Education_API.Interfaces;
 using Education_API.Models;
 using Education_API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Education_API.Controllers
 {
@@ -25,23 +24,7 @@ namespace Education_API.Controllers
       [HttpGet()]
       public async Task<ActionResult<List<CourseViewModel>>> ListCourses()
       {
-        // var response = await _context.Course.ToListAsync();
-        var response = await _courseRepo.ListAllCoursesAsync();
-        var courseList = new List<CourseViewModel>();
-
-        foreach(var course in response){
-          courseList.Add(
-            new CourseViewModel {
-              CourseId = course.Id,
-              CourseNumber = course.CourseNumber,
-              Title = course.Title,
-              Duration = course.Duration,
-              Category = course.Category,
-              Description = course.Description,
-              Details = course.Details
-              }
-          );
-        };
+        var courseList = await _courseRepo.ListAllCoursesAsync();
         return Ok(courseList);
       }  
 
@@ -77,18 +60,8 @@ namespace Education_API.Controllers
       [HttpPost()]
       public async Task<ActionResult<Course>> AddCourse(PostCourseViewModel course)
       {
-          // var courseToAdd = new Course{
-          //   CourseNumber = course.CourseNumber,
-          //   Title = course.Title,
-          //   Duration = course.Duration,
-          //   Category = course.Category,
-          //   Description = course.Description,
-          //   Details = course.Details
-          // };
           var courseToAdd = _mapper.Map<Course>(course);
-
           await _context.Course.AddAsync(courseToAdd);
-
           await _context.SaveChangesAsync();
           return StatusCode(201, courseToAdd);
       }

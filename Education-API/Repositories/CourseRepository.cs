@@ -1,3 +1,5 @@
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Education_API.Data;
 using Education_API.Interfaces;
 using Education_API.Models;
@@ -9,8 +11,10 @@ namespace Education_API.Repositories
   public class CourseRepository : ICourseRepository
   {
     private readonly EducationContext _context;
-    public CourseRepository(EducationContext context)
+    private readonly IMapper _mapper;
+    public CourseRepository(EducationContext context, IMapper mapper)
     {
+      _mapper = mapper;
       _context = context;
     }
 
@@ -32,36 +36,20 @@ namespace Education_API.Repositories
     public async Task<CourseViewModel?> GetCourseAsync(int id)
     {
       return await _context.Course.Where(c => c.Id == id)
-      .Select(course => new CourseViewModel
-      {
-          CourseId = course.Id,
-          CourseNumber = course.CourseNumber,
-          Title = course.Title,
-          Duration = course.Duration,
-          Category = course.Category,
-          Description = course.Description,
-          Details = course.Details
-      }).SingleOrDefaultAsync();
+      .ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider)
+      .SingleOrDefaultAsync();
     }
 
     public async Task<CourseViewModel?> GetCourseByCourseNumberAsync(int courseNumber)
     {
-        return await _context.Course.Where(c => c.CourseNumber == courseNumber)
-      .Select(course => new CourseViewModel
-      {
-          CourseId = course.Id,
-          CourseNumber = course.CourseNumber,
-          Title = course.Title,
-          Duration = course.Duration,
-          Category = course.Category,
-          Description = course.Description,
-          Details = course.Details
-      }).SingleOrDefaultAsync();
+      return await _context.Course.Where(c => c.CourseNumber == courseNumber)
+      .ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider)
+      .SingleOrDefaultAsync();
     }
 
-    public async Task<List<Course>> ListAllCoursesAsync()
+    public async Task<List<CourseViewModel>> ListAllCoursesAsync()
     {
-        return await _context.Course.ToListAsync();
+        return await _context.Course.ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider).ToListAsync();
     }
 
     public async Task<bool> SaveAllAsync()

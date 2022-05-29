@@ -9,7 +9,9 @@ namespace Education_API.Helpers
     public AutoMapperProfiles()
     {
         CreateMap<PostCourseViewModel, Course>();
-        CreateMap<Course, CourseViewModel>();
+        CreateMap<Course, CourseViewModel>()
+        .ForMember(dest => dest.CourseId, options => options.
+        MapFrom(src => src.Id));
     }
   }
 }
