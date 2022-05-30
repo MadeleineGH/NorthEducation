@@ -31,6 +31,19 @@ namespace Education_API.Data
                 .HasOne(sc => sc.Course)
                 .WithMany(s => s.StudentCourses)
                 .HasForeignKey(sc => sc.CourseId);
+
+            modelBuilder.Entity<TeacherCompetence>()
+                .HasKey(tc => new { tc.TeacherId, tc.CompetenceId });
+
+            modelBuilder.Entity<TeacherCompetence>()
+                .HasOne(tc => tc.Teacher)
+                .WithMany(s => s.TeacherCompetences)
+                .HasForeignKey(tc => tc.TeacherId);
+
+            modelBuilder.Entity<TeacherCompetence>()
+                .HasOne(tc => tc.Competence)
+                .WithMany(s => s.TeacherCompetences)
+                .HasForeignKey(tc => tc.CompetenceId);
         }   
 }
 }

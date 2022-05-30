@@ -9,8 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 // Skapa databaskoppling
+// builder.Services.AddDbContext<EducationContext>(options =>
+//     options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"))
+// );
+
 builder.Services.AddDbContext<EducationContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"))
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"))
 );
 
 // Dependency Injection för våra egna Interface och klasser

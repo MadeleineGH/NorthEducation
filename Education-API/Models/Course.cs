@@ -10,6 +10,7 @@ namespace Education_API.Models
         public int CourseNumber { get; set; }
         public string? Title { get; set; }
         public int Duration { get; set; }
+        [Required]
         public int CategoryId { get; set; }
         public string? Description { get; set; }
         public string? Details { get; set; }
