@@ -18,9 +18,11 @@ namespace Education_API.Repositories
       _context = context;
     }
 
-    public Task AddCourseAsync(Course model)
+    public async Task AddCourseAsync(PostCourseViewModel model)
     {
-      throw new NotImplementedException();
+      var courseToAdd = _mapper.Map<Course>(model);
+      await _context.Course.AddAsync(courseToAdd);
+      
     }
 
     public void DeleteCourse(int id)

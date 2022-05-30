@@ -58,12 +58,14 @@ namespace Education_API.Controllers
       }
 
       [HttpPost()]
-      public async Task<ActionResult<Course>> AddCourse(PostCourseViewModel course)
+      public async Task<ActionResult> AddCourse(PostCourseViewModel model)
       {
-          var courseToAdd = _mapper.Map<Course>(course);
-          await _context.Course.AddAsync(courseToAdd);
-          await _context.SaveChangesAsync();
-          return StatusCode(201, courseToAdd);
+          if(await _courseRepo.GetCourseAsync(model.CourseNumber!)is not null){
+            return BadRequest($"There is already a course with course number: {model.CourseNumber}.");
+          }
+
+          await _courseRepo.AddCourseAsync(model);
+          return StatusCode(201);
       }
 
       [HttpPut("{id}")]
