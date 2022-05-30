@@ -60,6 +60,11 @@ namespace Education_API.Controllers
       [HttpPost()]
       public async Task<ActionResult> AddCourse(PostCourseViewModel model)
       {
+        if(!ModelState.IsValid)
+        {
+
+        }
+        
           if(await _courseRepo.GetCourseAsync(model.CourseNumber!)is not null){
             return BadRequest($"There is already a course with course number: {model.CourseNumber}.");
           }
@@ -69,7 +74,7 @@ namespace Education_API.Controllers
           if(await _courseRepo.SaveAllAsync()){
             return StatusCode(201);
           };
-          
+
           return StatusCode(500, "Error occured when trying to save the course.");
       }
 
