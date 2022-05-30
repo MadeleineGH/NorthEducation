@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Education_API.Models;
 
 namespace Education_API.ViewModels
@@ -5,6 +6,7 @@ namespace Education_API.ViewModels
   public class CourseViewModel
     {
         public int CourseId { get; set; }
+        [Required]
         public int CourseNumber { get; set; }
         public string? Title { get; set; }
         public int Duration { get; set; }

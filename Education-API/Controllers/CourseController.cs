@@ -65,7 +65,12 @@ namespace Education_API.Controllers
           }
 
           await _courseRepo.AddCourseAsync(model);
-          return StatusCode(201);
+
+          if(await _courseRepo.SaveAllAsync()){
+            return StatusCode(201);
+          };
+          
+          return StatusCode(500, "Error occured when trying to save the course.");
       }
 
       [HttpPut("{id}")]
