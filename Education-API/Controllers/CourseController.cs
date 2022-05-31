@@ -54,6 +54,12 @@ namespace Education_API.Controllers
             return Ok(response);
       }
 
+      [HttpGet("bytitle/{title}")]
+      public async Task<ActionResult<List<CourseViewModel>>> GetCourseByTitle(string title)
+      {
+        return Ok(await _courseRepo.GetCourseByTitleAsync(title));
+      } 
+
       [HttpPost()]
       public async Task<ActionResult> AddCourse(PostCourseViewModel model)
       {

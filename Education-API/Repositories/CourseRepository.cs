@@ -22,7 +22,6 @@ namespace Education_API.Repositories
     {
       var courseToAdd = _mapper.Map<Course>(model);
       await _context.Course.AddAsync(courseToAdd);
-      
     }
 
     public async Task DeleteCourseAsync(int id)
@@ -40,6 +39,14 @@ namespace Education_API.Repositories
       return await _context.Course.Where(c => c.Id == id)
       .ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider)
       .SingleOrDefaultAsync();
+    }
+
+    public async Task<List<CourseViewModel>> GetCourseByTitleAsync(string title)
+    {
+      return await _context.Course
+        .Where(c => c.Title!.ToLower() == title.ToLower())
+        .ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider)
+        .ToListAsync();
     }
 
     public async Task<CourseViewModel?> GetCourseByCourseNumberAsync(int courseNumber)

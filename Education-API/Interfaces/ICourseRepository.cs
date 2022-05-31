@@ -1,3 +1,4 @@
+using Education_API.Models;
 using Education_API.ViewModels;
 
 namespace Education_API.Interfaces
@@ -6,6 +7,7 @@ namespace Education_API.Interfaces
     {
         // Signaturer för metoderna
         public Task<List<CourseViewModel>> ListAllCoursesAsync();
+        public Task<List<CourseViewModel>> GetCourseByTitleAsync(string title);
         public Task<CourseViewModel?> GetCourseAsync(int id);
         public Task<CourseViewModel?> GetCourseByCourseNumberAsync(int courseNumber);
         public Task AddCourseAsync(PostCourseViewModel model);
