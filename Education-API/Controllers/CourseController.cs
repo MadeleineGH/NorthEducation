@@ -75,7 +75,7 @@ namespace Education_API.Controllers
       {
           try
           {
-            await _courseRepo.UpdateCourse(id, model);
+            await _courseRepo.UpdateCourseAsync(id, model);
 
             if(await _courseRepo.SaveAllAsync())
             {
@@ -90,10 +90,30 @@ namespace Education_API.Controllers
           }
       }
 
+      [HttpPatch("{id}")]
+      public async Task<ActionResult> UpdateCourse(int id, PatchCourseViewModel model)
+      {
+        try
+        {
+          await _courseRepo.UpdateCourseAsync(id, model);
+
+          if(await _courseRepo.SaveAllAsync())
+          {
+            return NoContent();
+          }
+
+          return StatusCode(500, "An error occured when trying to update the course.");
+        }
+        catch (Exception ex)
+        {
+          return StatusCode(500, ex.Message);
+        }
+      }
+
       [HttpDelete("{id}")]
       public async Task<ActionResult> DeleteCourse(int id)
       {
-          await _courseRepo.DeleteCourse(id);
+          await _courseRepo.DeleteCourseAsync(id);
 
           if(await _courseRepo.SaveAllAsync())
           {
