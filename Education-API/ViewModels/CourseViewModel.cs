@@ -11,6 +11,5 @@ namespace Education_API.ViewModels
         public Category? Category { get; set; }
         public string? Description { get; set; }
         public string? Details { get; set; }
-        public ICollection<StudentCourse>? StudentCourses { get; set; }
     }
 }

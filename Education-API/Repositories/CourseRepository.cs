@@ -25,9 +25,9 @@ namespace Education_API.Repositories
       
     }
 
-    public void DeleteCourse(int id)
+    public async Task DeleteCourse(int id)
     {
-      var response = _context.Course.Find(id);
+      var response = await _context.Course.FindAsync(id);
 
       if(response is not null)
       {
@@ -59,9 +59,22 @@ namespace Education_API.Repositories
       return await _context.SaveChangesAsync() > 0;
     }
 
-    public void UpdateCourse(int id, Course model)
+    public async Task UpdateCourse(int id, PostCourseViewModel model)
     {
-      throw new NotImplementedException();
+      var course = await _context.Course.FindAsync(id);
+
+      if(course is null)
+      {
+        throw new Exception($"Couldn't find any course with id {id}.");
+      }
+
+        course.CourseNumber = model.CourseNumber;
+        course.Title = model.Title;
+        course.Duration = model.Duration;
+        course.Description = model.Description;
+        course.Details = model.Details;
+
+        _context.Course.Update(course);
     }
   }
-}
+} 

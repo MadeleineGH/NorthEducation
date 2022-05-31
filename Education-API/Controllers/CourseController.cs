@@ -1,5 +1,4 @@
 using AutoMapper;
-using Education_API.Data;
 using Education_API.Interfaces;
 using Education_API.Models;
 using Education_API.ViewModels;
@@ -11,14 +10,12 @@ namespace Education_API.Controllers
   [Route("api/v1/course")]
     public class CourseController : ControllerBase
     {
-      private readonly EducationContext _context;
       private readonly ICourseRepository _courseRepo;
     private readonly IMapper _mapper;
-      public CourseController(EducationContext context, ICourseRepository courseRepo, IMapper mapper)
+      public CourseController(ICourseRepository courseRepo, IMapper mapper)
       {
         _mapper = mapper;
         _courseRepo = courseRepo;
-        _context = context;
       }
 
       [HttpGet()]
@@ -60,11 +57,6 @@ namespace Education_API.Controllers
       [HttpPost()]
       public async Task<ActionResult> AddCourse(PostCourseViewModel model)
       {
-        if(!ModelState.IsValid)
-        {
-
-        }
-        
           if(await _courseRepo.GetCourseAsync(model.CourseNumber!)is not null){
             return BadRequest($"There is already a course with course number: {model.CourseNumber}.");
           }
@@ -79,30 +71,29 @@ namespace Education_API.Controllers
       }
 
       [HttpPut("{id}")]
-      public async Task<ActionResult> UpdateCourse(int id, Course model)
+      public async Task<ActionResult> UpdateCourse(int id, PostCourseViewModel model)
       {
-          var response = await _context.Course.FindAsync(id);
+          try
+          {
+            await _courseRepo.UpdateCourse(id, model);
 
-          if(response is null) 
-            return NotFound($"There is no course with id: {id}.");
+            if(await _courseRepo.SaveAllAsync())
+            {
+              return NoContent();
+            }
 
-          response.CourseNumber = model.CourseNumber;
-          response.Title = model.Title;
-          response.Duration = model.Duration;
-          response.Category = model.Category;
-          response.Description = model.Description;
-          response.Details = model.Details;
-
-          _context.Course.Update(response);
-          await _context.SaveChangesAsync();
-
-          return NoContent();
+            return StatusCode(500, "An error occured when trying to update the course.");
+          }
+          catch (Exception ex)
+          {
+            return StatusCode(500, ex.Message);
+          }
       }
 
       [HttpDelete("{id}")]
       public async Task<ActionResult> DeleteCourse(int id)
       {
-          _courseRepo.DeleteCourse(id);
+          await _courseRepo.DeleteCourse(id);
 
           if(await _courseRepo.SaveAllAsync())
           {

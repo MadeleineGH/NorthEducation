@@ -10,8 +10,8 @@ namespace Education_API.Interfaces
         public Task<CourseViewModel?> GetCourseAsync(int id);
         public Task<CourseViewModel?> GetCourseByCourseNumberAsync(int courseNumber);
         public Task AddCourseAsync(PostCourseViewModel model);
-        public void DeleteCourse(int id);
-        public void UpdateCourse(int id, Course model);
+        public Task DeleteCourse(int id);
+        public Task UpdateCourse(int id, PostCourseViewModel model);
         public Task<bool> SaveAllAsync();
     }
 }
