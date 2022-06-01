@@ -10,6 +10,7 @@ namespace Education_API.Data
     public DbSet<Category> Category => Set<Category>();
     public DbSet<Address> Address => Set<Address>();
     public DbSet<Course> Course => Set<Course>();
+    public DbSet<Competence> Competence => Set<Competence>();
     public DbSet<StudentCourse> StudentCourse => Set<StudentCourse>();
     public DbSet<TeacherCompetence> TeacherCompetence => Set<TeacherCompetence>();
 

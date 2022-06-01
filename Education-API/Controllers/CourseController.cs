@@ -11,7 +11,7 @@ namespace Education_API.Controllers
     public class CourseController : ControllerBase
     {
       private readonly ICourseRepository _courseRepo;
-    private readonly IMapper _mapper;
+      private readonly IMapper _mapper;
       public CourseController(ICourseRepository courseRepo, IMapper mapper)
       {
         _mapper = mapper;

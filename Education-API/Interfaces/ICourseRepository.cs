@@ -1,4 +1,3 @@
-using Education_API.Models;
 using Education_API.ViewModels;
 
 namespace Education_API.Interfaces
