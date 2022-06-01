@@ -1,5 +1,4 @@
 using Education_API.Interfaces;
-using Education_API.Models;
 using Education_API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,35 +30,17 @@ namespace Education_API.Controllers
       [HttpPost()]
       public async Task<ActionResult> AddCompetence(CompetenceViewModel model)
       {
-        try
-        {
-        if (await _competenceRepo.GetCompetenceAsync(model.Title!.ToLower()) is not null)
-        {
-          var error = new ErrorViewModel{
-            StatusCode = 400,
-            StatusText = $"Competence: {model.Title} already exist."
+          if(await _competenceRepo.GetCompetenceAsync(model.Title!)is not null){
+            return BadRequest($"There is already a competence with title: {model.Title}.");
+          }
+
+          await _competenceRepo.AddCompetenceAsync(model);
+
+          if(await _competenceRepo.SaveAllAsync()){
+            return StatusCode(201);
           };
-          
-          return BadRequest(error);
-        }
 
-        await _competenceRepo.AddCompetenceAsync(model);
-
-        if (await _competenceRepo.SaveAllAsync())
-        {
-          return StatusCode(201);
-        }
-
-        return StatusCode(500, "Det gick inte att spara fordonet");
-        }
-        catch (Exception ex)
-        {
-          var error = new ErrorViewModel{
-            StatusCode = 500,
-            StatusText = ex.Message
-          };
-          return StatusCode(500, error);
-        }
+          return StatusCode(500, "Error occured when trying to save the competence.");
       }
 
       [HttpPut("{id}")]

@@ -2,6 +2,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Education_API.Data;
 using Education_API.Interfaces;
+using Education_API.Models;
 using Education_API.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,9 +20,8 @@ namespace Education_API.Repositories
 
     public async Task AddCompetenceAsync(CompetenceViewModel model)
     {
-        var competenceToAdd = await _context.Competence.FindAsync();
-
-        await _context.Competence.AddAsync(competenceToAdd);
+      var competenceToAdd = _mapper.Map<Competence>(model);
+      await _context.Competence.AddAsync(competenceToAdd);
     }
 
     public async Task DeleteCompetenceAsync(int id)
