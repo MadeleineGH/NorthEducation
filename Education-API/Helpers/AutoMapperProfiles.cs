@@ -13,9 +13,14 @@ namespace Education_API.Helpers
         .ForMember(dest => dest.CourseId, options => options.
         MapFrom(src => src.Id));
 
-        CreateMap<CompetenceViewModel, Competence>();
+        //CreateMap<CompetenceViewModel, Competence>();
         CreateMap<Competence, CompetenceViewModel>()
         .ForMember(dest => dest.CompetenceId, options => options.
+        MapFrom(src => src.Id));
+
+        CreateMap<PostStudentViewModel, Student>();
+        CreateMap<Student, StudentViewModel>()
+        .ForMember(dest => dest.StudentId, options => options.
         MapFrom(src => src.Id));
     }
   }

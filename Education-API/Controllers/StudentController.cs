@@ -1,39 +1,114 @@
+using AutoMapper;
+using Education_API.Interfaces;
+using Education_API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Education_API.Controllers
 {
-  [ApiController]
+    [ApiController]
     [Route("api/v1/student")]
     public class StudentController : ControllerBase
-    {
-      [HttpGet()]
-      public ActionResult ListStudents()
+    {  
+      private readonly IStudentRepository _studentRepo;
+      private readonly IMapper _mapper;
+      public StudentController(IStudentRepository studentRepo, IMapper mapper)
       {
-        return Ok("{'message: 'Det funkar'}");
+        _mapper = mapper;
+        _studentRepo = studentRepo;
+      }
+
+      [HttpGet()]
+      public async Task<ActionResult<List<StudentViewModel>>> ListStudents()
+      {
+        var studentList = await _studentRepo.ListAllStudentsAsync();
+        return Ok(studentList);
       }  
 
       [HttpGet("{id}")]
-      public ActionResult GetStudentById(int id)
+      public async Task<ActionResult<StudentViewModel>> GetStudentById(int id)
       {
-        return Ok("{'message: 'Det funkar också'}");
+        try
+        {
+          var response = await _studentRepo.GetStudentAsync(id);
+
+          if(response is null) 
+              return NotFound($"There is no student with id: {id}.");
+
+          return Ok(response);
+        }   
+        catch(Exception ex)
+        {
+          return StatusCode(500, ex.Message);
+        }
       }
 
       [HttpPost()]
-      public ActionResult AddStudent()
+      public async Task<ActionResult> AddStudent(PostStudentViewModel model)
       {
-          return StatusCode(201);
+          if(await _studentRepo.GetStudentAsync(model.StudentId!)is not null){
+            return BadRequest($"There is already a student with email: {model.Email}.");
+          }
+
+          await _studentRepo.AddStudentAsync(model);
+
+          if(await _studentRepo.SaveAllAsync()){
+            return StatusCode(201);
+          };
+
+          return StatusCode(500, "Error occured when trying to save student.");
       }
 
       [HttpPut("{id}")]
-      public ActionResult UpdateStudent()
+      public async Task<ActionResult> UpdateStudent(int id, PostStudentViewModel model)
       {
-          return NoContent();
+          try
+          {
+            await _studentRepo.UpdateStudentAsync(id, model);
+
+            if(await _studentRepo.SaveAllAsync())
+            {
+              return NoContent();
+            }
+
+            return StatusCode(500, "An error occured when trying to update the student.");
+          }
+          catch (Exception ex)
+          {
+            return StatusCode(500, ex.Message);
+          }
+      }
+
+      [HttpPatch("{id}")]
+      public async Task<ActionResult> UpdateStudent(int id, PatchStudentViewModel model)
+      {
+        try
+        {
+          await _studentRepo.UpdateStudentAsync(id, model);
+
+          if(await _studentRepo.SaveAllAsync())
+          {
+            return NoContent();
+          }
+
+          return StatusCode(500, "An error occured when trying to update the student.");
+        }
+        catch (Exception ex)
+        {
+          return StatusCode(500, ex.Message);
+        }
       }
 
       [HttpDelete("{id}")]
-      public ActionResult DeleteStudent(int id)
+      public async Task<ActionResult> DeleteStudent(int id)
       {
-          return NoContent();
+          await _studentRepo.DeleteStudentAsync(id);
+
+          if(await _studentRepo.SaveAllAsync())
+          {
+            return NoContent();
+          };
+
+          return StatusCode(500, "An error occured");
       }
     }
 }

@@ -73,7 +73,7 @@ namespace Education_API.Controllers
             return NoContent();
           };
 
-          return StatusCode(500, "Hoppsan något gick fel");
+          return StatusCode(500, "An error occured when trying to delete the competence.");
       }
   }
 }
