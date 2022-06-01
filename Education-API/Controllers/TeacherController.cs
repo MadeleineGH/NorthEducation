@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Education_API.Controllers
 {
     [ApiController]
-    [Route("api/v1/teacher")]
+    [Route("api/v1/teachers")]
     public class TeacherController : ControllerBase
     {
       [HttpGet()]

@@ -1,4 +1,4 @@
-using Education_API.Data;
+ using Education_API.Data;
 using Education_API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Education_API.Controllers
 {
   [ApiController]
-    [Route("api/v1/category")]
+    [Route("api/v1/categories")]
     public class CategoryController : ControllerBase
     {
     private readonly EducationContext _context;
@@ -15,7 +15,7 @@ namespace Education_API.Controllers
       _context = context;
     }
 
-    [HttpGet()]
+       [HttpGet()]
       public async Task<ActionResult<List<Course>>> ListCategories()
       {
         var response = await _context.Category.ToListAsync();
@@ -23,7 +23,7 @@ namespace Education_API.Controllers
       }  
 
       [HttpGet("{id}")]
-      public ActionResult GetCategoryById(int id)
+      public async Task<ActionResult> GetCategoryById(int id)
       {
         return Ok("{'message: 'Det funkar också'}");
       }

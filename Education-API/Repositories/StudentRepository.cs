@@ -20,8 +20,11 @@ namespace Education_API.Repositories
 
     public async Task AddStudentAsync(PostStudentViewModel model)
     {
-      var studentToAdd = _mapper.Map<Student>(model);
-      await _context.Student.AddAsync(studentToAdd);
+        if(!_context.Student.Any(s => s.Email == model.Email))
+          {
+            var studentToAdd = _mapper.Map<Student>(model);
+            await _context.Student.AddAsync(studentToAdd);
+          }
     }
 
     public async Task DeleteStudentAsync(int id)

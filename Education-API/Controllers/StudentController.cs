@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Education_API.Controllers
 {
     [ApiController]
-    [Route("api/v1/student")]
+    [Route("api/v1/students")]
     public class StudentController : ControllerBase
     {  
       private readonly IStudentRepository _studentRepo;
@@ -42,11 +42,29 @@ namespace Education_API.Controllers
         }
       }
 
+      [HttpGet("byemail/{email}")]
+      public async Task<ActionResult<StudentViewModel>> GetStudentByEmail(string email)
+      {
+        try
+        {
+          var response = await _studentRepo.GetStudentByEmailAsync(email);
+
+          if(response is null) 
+              return NotFound($"There is no student with the email: {email}.");
+
+          return Ok(response);
+        }   
+        catch(Exception ex)
+        {
+          return StatusCode(500, ex.Message);
+        }
+      }
+
       [HttpPost()]
       public async Task<ActionResult> AddStudent(PostStudentViewModel model)
       {
           if(await _studentRepo.GetStudentAsync(model.StudentId!)is not null){
-            return BadRequest($"There is already a student with email: {model.Email}.");
+            return BadRequest($"There is already a student with StudentId: {model.StudentId}.");
           }
 
           await _studentRepo.AddStudentAsync(model);
@@ -55,7 +73,7 @@ namespace Education_API.Controllers
             return StatusCode(201);
           };
 
-          return StatusCode(500, "Error occured when trying to save student.");
+          return StatusCode(500, "Email already in use.");
       }
 
       [HttpPut("{id}")]

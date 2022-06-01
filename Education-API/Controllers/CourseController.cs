@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Education_API.Controllers
 {
   [ApiController]
-  [Route("api/v1/course")]
+  [Route("api/v1/courses")]
     public class CourseController : ControllerBase
     {
       private readonly ICourseRepository _courseRepo;

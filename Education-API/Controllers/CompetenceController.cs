@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Education_API.Controllers
 {
   [ApiController]
-  [Route("api/v1/competence")]
+  [Route("api/v1/competences")]
   public class CompetenceController : ControllerBase
   {
     private readonly ICompetenceRepository _competenceRepo;
