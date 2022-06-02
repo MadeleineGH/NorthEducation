@@ -22,8 +22,7 @@ namespace Education_API.Controllers
         return Ok(response);
       }  
 
-      [HttpGet("{id}")]
-      public async Task<ActionResult> GetCategoryById(int id)
+      [HttpGet("{id}")] > GetCategoryById(int id)
       {
         return Ok("{'message: 'Det funkar också'}");
       }
