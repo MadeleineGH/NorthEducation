@@ -4,6 +4,7 @@ using Education_API.Data;
 using Education_API.Interfaces;
 using Education_API.Models;
 using Education_API.ViewModels;
+using Education_API.ViewModels.Category;
 using Microsoft.EntityFrameworkCore;
 
 namespace Education_API.Repositories
@@ -18,7 +19,7 @@ namespace Education_API.Repositories
       _context = context;
     }
 
-    public async Task AddCompetenceAsync(CompetenceViewModel model)
+    public async Task AddCompetenceAsync(PostCompetenceViewModel model)
     {
       var competenceToAdd = _mapper.Map<Competence>(model);
       await _context.Competence.AddAsync(competenceToAdd);

@@ -1,5 +1,6 @@
 using Education_API.Interfaces;
 using Education_API.ViewModels;
+using Education_API.ViewModels.Category;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Education_API.Controllers
@@ -28,7 +29,7 @@ namespace Education_API.Controllers
       } 
 
       [HttpPost()]
-      public async Task<ActionResult> AddCompetence(CompetenceViewModel model)
+      public async Task<ActionResult> AddCompetence(PostCompetenceViewModel model)
       {
           if(await _competenceRepo.GetCompetenceAsync(model.Title!)is not null){
             return BadRequest($"There is already a competence with title: {model.Title}.");

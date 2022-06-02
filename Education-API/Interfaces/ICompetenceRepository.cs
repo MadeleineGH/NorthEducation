@@ -1,4 +1,5 @@
 using Education_API.ViewModels;
+using Education_API.ViewModels.Category;
 
 namespace Education_API.Interfaces
 {
@@ -8,7 +9,7 @@ namespace Education_API.Interfaces
         public Task<List<CompetenceViewModel>> GetCompetenceByTitleAsync(string title);
         public Task<CompetenceViewModel?> GetCompetenceAsync(int id);
         public Task<CompetenceViewModel?> GetCompetenceAsync(string title);
-        public Task AddCompetenceAsync(CompetenceViewModel model);
+        public Task AddCompetenceAsync(PostCompetenceViewModel model);
         public Task DeleteCompetenceAsync(int id);
         public Task UpdateCompetenceAsync(int id, CompetenceViewModel model);
         public Task<bool> SaveAllAsync();

@@ -1,7 +1,7 @@
- using Education_API.Data;
-using Education_API.Models;
+using Education_API.Interfaces;
+using Education_API.ViewModels;
+using Education_API.ViewModels.Category;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Education_API.Controllers
 {
@@ -9,62 +9,83 @@ namespace Education_API.Controllers
     [Route("api/v1/categories")]
     public class CategoryController : ControllerBase
     {
-    private readonly EducationContext _context;
-    public CategoryController(EducationContext context)
+    private readonly ICategoryRepository _repo;
+    public CategoryController(ICategoryRepository repo)
     {
-      _context = context;
+      _repo = repo;
     }
 
-       [HttpGet()]
-      public async Task<ActionResult<List<Course>>> ListCategories()
-      {
-        var response = await _context.Category.ToListAsync();
-        return Ok(response);
-      }  
+    [HttpGet("list")]
+    public async Task<ActionResult> ListAllCategories()
+    {
+      var list = await _repo.ListAllCategoriesAsync();
+      return Ok(list);
+    }
 
-      [HttpGet("{id}")] > GetCategoryById(int id)
+    [HttpGet("{id}")]
+    public async Task<ActionResult> GetManufacturerById(int id)
+    {
+      return Ok(await _repo.GetCategoryAsync(id));
+    }
+
+    [HttpPost()]
+    public async Task<ActionResult> AddCategory(PostCategoryViewModel model)
+    {
+      try
       {
-        return Ok("{'message: 'Det funkar också'}");
+        await _repo.AddCategoryAsync(model);
+
+        if (await _repo.SaveAllAsync())
+        {
+          return StatusCode(201);
+        }
+
+        return StatusCode(500, "Det gick fel när vi skulle spara tillverkaren");
       }
-
-      [HttpGet("bytitle/{title}")]
-      public async Task<ActionResult<Category>> GetCategoryByTitle(string title)
+      catch (Exception ex)
       {
-        var response = await _context.Category.SingleOrDefaultAsync(
-          c => c.Title!.ToLower() == title.ToLower());
-
-        if(response is null) 
-            return NotFound($"There is no category named {title}.");
-
-            return Ok(response);
+        return StatusCode(500, ex.Message);
       }
+    }
 
-      [HttpPost()]
-      public async Task<ActionResult<Category>> AddCategory(Category category)
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateCategory(int id, PutCategoryViewModel model)
+    {
+      try
       {
-          await _context.Category.AddAsync(category);
-          await _context.SaveChangesAsync();
-          return StatusCode(201, category);
-      }
+        await _repo.UpdateCategoryAsync(id, model);
 
-      [HttpPut("{id}")]
-      public ActionResult UpdateCategory()
-      {
+        if (await _repo.SaveAllAsync())
+        {
           return NoContent();
-      }
+        }
 
-      [HttpDelete("{id}")]
-      public async Task<ActionResult> DeleteCategory(int id)
+        return StatusCode(500, $"Något gick fel och det gick inte att uppdatera tillverkare {model.Title}");
+      }
+      catch (Exception ex)
       {
-             var response = await _context.Category.FindAsync(id);
-
-          if(response is null) 
-            return NotFound($"There is no course with id: {id} to delete.");
-
-          _context.Category.Remove(response);
-          await _context.SaveChangesAsync();
-
-          return NoContent();
+        return StatusCode(500, ex.Message);
       }
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteCategory(int id)
+    {
+      try
+      {
+        await _repo.DeleteCategoryAsync(id);
+
+        if (await _repo.SaveAllAsync())
+        {
+          return NoContent();
+        }
+
+        return StatusCode(500, $"Det gick inte att ta bort tillverkare med id {id}");
+      }
+      catch (Exception ex)
+      {
+        return StatusCode(500, ex.Message);
+      }
+    }
     }
 }

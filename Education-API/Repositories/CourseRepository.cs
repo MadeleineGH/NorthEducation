@@ -20,7 +20,17 @@ namespace Education_API.Repositories
 
     public async Task AddCourseAsync(PostCourseViewModel model)
     {
+      var category = await _context.Category.Include(s => s.Courses)
+      .Where(s => s.Title!.ToLower() == model.Title!.ToLower()).SingleOrDefaultAsync();
+
+      if(category is null)
+      {
+        await _context.Category.AddAsync(category!);
+        //throw new Exception($"Sorry, we dont have the category: {model.Category} in the system.");
+      }
+
       var courseToAdd = _mapper.Map<Course>(model);
+      courseToAdd.Category = category; 
       await _context.Course.AddAsync(courseToAdd);
     }
 
