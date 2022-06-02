@@ -15,16 +15,16 @@ namespace Education_API.Controllers
       _categoryRepo = categoryRepo;
     }
 
-    [HttpGet("list")]
-    public async Task<ActionResult> ListAllCategories()
+    [HttpGet()]
+    public async Task<ActionResult<List<CategoryViewModel>>> ListAllCategories()
     {
-      var list = await _categoryRepo.ListAllCategoriesAsync();
-      return Ok(list);
+      var categoryList = await _categoryRepo.ListAllCategoriesAsync();
+      return Ok(categoryList);
     }
     [HttpGet("{id}")]
-    public async Task<ActionResult> GetManufacturerById(int id)
+    public async Task<ActionResult<List<CategoryViewModel>>> GetCategoryByTitle(string title)
     {
-      return Ok(await _categoryRepo.GetCategoryAsync(id));
+      return Ok(await _categoryRepo.GetCategoryAsync(title));
     }
     [HttpPost()]
     public async Task<ActionResult> AddCategory(PostCategoryViewModel model)

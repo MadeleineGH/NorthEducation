@@ -21,8 +21,8 @@ namespace Education_API.Repositories
     
     public async Task AddCategoryAsync(PostCategoryViewModel model)
     {
-      var CategoryToAdd = _mapper.Map<Category>(model);
-      await _context.Category.AddAsync(CategoryToAdd);
+      var categoryToAdd = _mapper.Map<Category>(model);
+      await _context.Category.AddAsync(categoryToAdd);
     }
     public async Task DeleteCategoryAsync(int id)
     {
