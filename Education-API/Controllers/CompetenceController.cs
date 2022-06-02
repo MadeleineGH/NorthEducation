@@ -1,6 +1,6 @@
 using Education_API.Interfaces;
 using Education_API.ViewModels;
-using Education_API.ViewModels.Category;
+using Education_API.ViewModels.Competence;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Education_API.Controllers
@@ -21,13 +21,11 @@ namespace Education_API.Controllers
         var courseList = await _competenceRepo.ListAllCompetencesAsync();
         return Ok(courseList);
       }  
-
       [HttpGet("bytitle/{title}")]
       public async Task<ActionResult<List<CompetenceViewModel>>> GetCompetenceByTitle(string title)
       {
         return Ok(await _competenceRepo.GetCompetenceByTitleAsync(title));
       } 
-
       [HttpPost()]
       public async Task<ActionResult> AddCompetence(PostCompetenceViewModel model)
       {
@@ -43,9 +41,8 @@ namespace Education_API.Controllers
 
           return StatusCode(500, "Error occured when trying to save the competence.");
       }
-
       [HttpPut("{id}")]
-      public async Task<ActionResult> UpdateCompetence(int id, CompetenceViewModel model)
+      public async Task<ActionResult> UpdateCompetence(int id, PutCompetenceViewModel model)
       {
           try
           {
@@ -63,7 +60,6 @@ namespace Education_API.Controllers
             return StatusCode(500, ex.Message);
           }
       }
-
       [HttpDelete("{id}")]
       public async Task<ActionResult> DeleteCompetence(int id)
       {

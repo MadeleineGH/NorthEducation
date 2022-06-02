@@ -9,53 +9,46 @@ namespace Education_API.Controllers
     [Route("api/v1/categories")]
     public class CategoryController : ControllerBase
     {
-    private readonly ICategoryRepository _repo;
-    public CategoryController(ICategoryRepository repo)
+    private readonly ICategoryRepository _categoryRepo;
+    public CategoryController(ICategoryRepository categoryRepo)
     {
-      _repo = repo;
+      _categoryRepo = categoryRepo;
     }
 
     [HttpGet("list")]
     public async Task<ActionResult> ListAllCategories()
     {
-      var list = await _repo.ListAllCategoriesAsync();
+      var list = await _categoryRepo.ListAllCategoriesAsync();
       return Ok(list);
     }
-
     [HttpGet("{id}")]
     public async Task<ActionResult> GetManufacturerById(int id)
     {
-      return Ok(await _repo.GetCategoryAsync(id));
+      return Ok(await _categoryRepo.GetCategoryAsync(id));
     }
-
     [HttpPost()]
     public async Task<ActionResult> AddCategory(PostCategoryViewModel model)
     {
-      try
-      {
-        await _repo.AddCategoryAsync(model);
-
-        if (await _repo.SaveAllAsync())
-        {
-          return StatusCode(201);
-        }
-
-        return StatusCode(500, "Det gick fel när vi skulle spara tillverkaren");
+      if(await _categoryRepo.GetCategoryAsync(model.Title!)is not null){
+        return BadRequest($"There is already a category with title: {model.Title}.");
       }
-      catch (Exception ex)
-      {
-        return StatusCode(500, ex.Message);
-      }
+
+      await _categoryRepo.AddCategoryAsync(model);
+
+      if(await _categoryRepo.SaveAllAsync()){
+        return StatusCode(201);
+      };
+
+      return StatusCode(500, "Error occured when trying to save the category.");
     }
-
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateCategory(int id, PutCategoryViewModel model)
     {
       try
       {
-        await _repo.UpdateCategoryAsync(id, model);
+        await _categoryRepo.UpdateCategoryAsync(id, model);
 
-        if (await _repo.SaveAllAsync())
+        if (await _categoryRepo.SaveAllAsync())
         {
           return NoContent();
         }
@@ -67,15 +60,14 @@ namespace Education_API.Controllers
         return StatusCode(500, ex.Message);
       }
     }
-
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteCategory(int id)
     {
       try
       {
-        await _repo.DeleteCategoryAsync(id);
+        await _categoryRepo.DeleteCategoryAsync(id);
 
-        if (await _repo.SaveAllAsync())
+        if (await _categoryRepo.SaveAllAsync())
         {
           return NoContent();
         }

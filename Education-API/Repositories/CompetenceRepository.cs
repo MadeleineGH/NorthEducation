@@ -4,7 +4,7 @@ using Education_API.Data;
 using Education_API.Interfaces;
 using Education_API.Models;
 using Education_API.ViewModels;
-using Education_API.ViewModels.Category;
+using Education_API.ViewModels.Competence;
 using Microsoft.EntityFrameworkCore;
 
 namespace Education_API.Repositories
@@ -24,7 +24,6 @@ namespace Education_API.Repositories
       var competenceToAdd = _mapper.Map<Competence>(model);
       await _context.Competence.AddAsync(competenceToAdd);
     }
-
     public async Task DeleteCompetenceAsync(int id)
     {
       var response = await _context.Competence.FindAsync(id);
@@ -34,7 +33,6 @@ namespace Education_API.Repositories
         _context.Competence.Remove(response);
       }
     }
-
     public async Task<List<CompetenceViewModel>> GetCompetenceByTitleAsync(string title)
     {
       return await _context.Competence
@@ -42,26 +40,22 @@ namespace Education_API.Repositories
         .ProjectTo<CompetenceViewModel>(_mapper.ConfigurationProvider)
         .ToListAsync();
     }
-
     public async Task<List<CompetenceViewModel>> ListAllCompetencesAsync()
     {
       return await _context.Competence.ProjectTo<CompetenceViewModel>
       (_mapper.ConfigurationProvider).ToListAsync();
     }
-
     public async Task<CompetenceViewModel?> GetCompetenceAsync(int id)
     {
       return await _context.Competence.Where(c => c.Id == id)
           .ProjectTo<CompetenceViewModel>(_mapper.ConfigurationProvider)
           .SingleOrDefaultAsync();
     }
-
     public async Task<bool> SaveAllAsync()
     {
       return await _context.SaveChangesAsync() > 0;
     }
-
-    public async Task UpdateCompetenceAsync(int id, CompetenceViewModel model)
+    public async Task UpdateCompetenceAsync(int id, PutCompetenceViewModel model)
     {
       var competence = await _context.Competence.FindAsync(id);
 
@@ -74,7 +68,6 @@ namespace Education_API.Repositories
 
         _context.Competence.Update(competence);
     }
-
     public async Task<CompetenceViewModel?> GetCompetenceAsync(string title)
     {
       return await _context.Competence.Where(c => c.Title!.ToLower() == title.ToLower())

@@ -18,13 +18,12 @@ namespace Education_API.Repositories
       _mapper = mapper;
       _context = context;
     }
-
+    
     public async Task AddCategoryAsync(PostCategoryViewModel model)
     {
       var CategoryToAdd = _mapper.Map<Category>(model);
       await _context.Category.AddAsync(CategoryToAdd);
     }
-
     public async Task DeleteCategoryAsync(int id)
     {
       var response = await _context.Category.FindAsync(id);
@@ -34,7 +33,6 @@ namespace Education_API.Repositories
         _context.Category.Remove(response);
       }
     }
-
     public async Task<List<CategoryViewModel>> GetCategoryByTitleAsync(string title)
     {
       return await _context.Category
@@ -42,25 +40,21 @@ namespace Education_API.Repositories
         .ProjectTo<CategoryViewModel>(_mapper.ConfigurationProvider)
         .ToListAsync();
     }
-
     public async Task<List<CategoryViewModel>> ListAllCategoriesAsync()
     {
       return await _context.Category.ProjectTo<CategoryViewModel>
       (_mapper.ConfigurationProvider).ToListAsync();
     }
-
     public async Task<CategoryViewModel?> GetCategoryAsync(int id)
     {
       return await _context.Category.Where(c => c.Id == id)
           .ProjectTo<CategoryViewModel>(_mapper.ConfigurationProvider)
           .SingleOrDefaultAsync();
     }
-
     public async Task<bool> SaveAllAsync()
     {
       return await _context.SaveChangesAsync() > 0;
     }
-
     public async Task UpdateCategoryAsync(int id, PutCategoryViewModel model)
     {
       var Category = await _context.Category.FindAsync(id);
@@ -74,7 +68,6 @@ namespace Education_API.Repositories
 
         _context.Category.Update(Category);
     }
-
     public async Task<CategoryViewModel?> GetCategoryAsync(string title)
     {
       return await _context.Category.Where(c => c.Title!.ToLower() == title.ToLower())

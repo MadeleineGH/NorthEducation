@@ -20,20 +20,9 @@ namespace Education_API.Repositories
 
     public async Task AddCourseAsync(PostCourseViewModel model)
     {
-      var category = await _context.Category.Include(s => s.Courses)
-      .Where(s => s.Title!.ToLower() == model.Title!.ToLower()).SingleOrDefaultAsync();
-
-      if(category is null)
-      {
-        await _context.Category.AddAsync(category!);
-        //throw new Exception($"Sorry, we dont have the category: {model.Category} in the system.");
-      }
-
-      var courseToAdd = _mapper.Map<Course>(model);
-      courseToAdd.Category = category; 
-      await _context.Course.AddAsync(courseToAdd);
+      var categoryToAdd = _mapper.Map<Category>(model);
+      await _context.Category.AddAsync(categoryToAdd);
     }
-
     public async Task DeleteCourseAsync(int id)
     {
       var response = await _context.Course.FindAsync(id);
@@ -43,14 +32,12 @@ namespace Education_API.Repositories
         _context.Course.Remove(response);
       }
     }
-
     public async Task<CourseViewModel?> GetCourseAsync(int id)
     {
       return await _context.Course.Where(c => c.Id == id)
       .ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider)
       .SingleOrDefaultAsync();
     }
-
     public async Task<List<CourseViewModel>> GetCourseByTitleAsync(string title)
     {
       return await _context.Course
@@ -58,24 +45,20 @@ namespace Education_API.Repositories
         .ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider)
         .ToListAsync();
     }
-
     public async Task<CourseViewModel?> GetCourseByCourseNumberAsync(int courseNumber)
     {
       return await _context.Course.Where(c => c.CourseNumber == courseNumber)
       .ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider)
       .SingleOrDefaultAsync();
     }
-
     public async Task<List<CourseViewModel>> ListAllCoursesAsync()
     {
         return await _context.Course.ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider).ToListAsync();
     }
-
     public async Task<bool> SaveAllAsync()
     {
       return await _context.SaveChangesAsync() > 0;
     }
-
     public async Task UpdateCourseAsync(int id, PostCourseViewModel model)
     {
       var course = await _context.Course.FindAsync(id);
@@ -93,7 +76,6 @@ namespace Education_API.Repositories
 
         _context.Course.Update(course);
     }
-
     public async Task UpdateCourseAsync(int id, PatchCourseViewModel model)
     {
       var course = await _context.Course.FindAsync(id);

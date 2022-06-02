@@ -24,7 +24,6 @@ namespace Education_API.Controllers
         var courseList = await _courseRepo.ListAllCoursesAsync();
         return Ok(courseList);
       }  
-
       [HttpGet("{id}")]
       public async Task<ActionResult<CourseViewModel>> GetCourseById(int id)
       {
@@ -42,7 +41,6 @@ namespace Education_API.Controllers
           return StatusCode(500, ex.Message);
         }
       }
-
       [HttpGet("bycoursenumber/{courseNumber}")]
       public async Task<ActionResult<Course>> GetCourseByCourseNumber(int courseNumber)
       {
@@ -53,13 +51,11 @@ namespace Education_API.Controllers
 
             return Ok(response);
       }
-
       [HttpGet("bytitle/{title}")]
       public async Task<ActionResult<List<CourseViewModel>>> GetCourseByTitle(string title)
       {
         return Ok(await _courseRepo.GetCourseByTitleAsync(title));
       } 
-
       [HttpPost()]
       public async Task<ActionResult> AddCourse(PostCourseViewModel model)
       {
@@ -75,7 +71,6 @@ namespace Education_API.Controllers
 
           return StatusCode(500, "Error occured when trying to save the course.");
       }
-
       [HttpPut("{id}")]
       public async Task<ActionResult> UpdateCourse(int id, PostCourseViewModel model)
       {
@@ -95,7 +90,6 @@ namespace Education_API.Controllers
             return StatusCode(500, ex.Message);
           }
       }
-
       [HttpPatch("{id}")]
       public async Task<ActionResult> UpdateCourse(int id, PatchCourseViewModel model)
       {
@@ -115,7 +109,6 @@ namespace Education_API.Controllers
           return StatusCode(500, ex.Message);
         }
       }
-
       [HttpDelete("{id}")]
       public async Task<ActionResult> DeleteCourse(int id)
       {
