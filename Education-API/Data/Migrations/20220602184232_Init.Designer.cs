@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Education_API.Data.Migrations
 {
     [DbContext(typeof(EducationContext))]
-    [Migration("20220602152415_Init")]
+    [Migration("20220602184232_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -127,6 +127,32 @@ namespace Education_API.Data.Migrations
                     b.HasIndex("AddressId");
 
                     b.ToTable("Student");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "connyforsling@gmail.com",
+                            FirstName = "Conny",
+                            LastName = "Forsling",
+                            PhoneNumber = "0735123583"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "deseregh@gmail.com",
+                            FirstName = "Deseré",
+                            LastName = "Gullberg Husberg",
+                            PhoneNumber = "0704004951"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "rolfhusberg@gmail.com",
+                            FirstName = "Rolf",
+                            LastName = "Husberg",
+                            PhoneNumber = "0709119459"
+                        });
                 });
 
             modelBuilder.Entity("Education_API.Models.StudentCourse", b =>

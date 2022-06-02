@@ -26,7 +26,6 @@ namespace Education_API.Repositories
             await _context.Student.AddAsync(studentToAdd);
           }
     }
-
     public async Task DeleteStudentAsync(int id)
     {
       var response = await _context.Student.FindAsync(id);
@@ -36,14 +35,12 @@ namespace Education_API.Repositories
         _context.Student.Remove(response);
       }
     }
-
     public async Task<StudentViewModel?> GetStudentAsync(int id)
     {
       return await _context.Student.Where(c => c.Id == id)
       .ProjectTo<StudentViewModel>(_mapper.ConfigurationProvider)
       .SingleOrDefaultAsync();
     }
-
     public async Task<List<StudentViewModel>> GetStudentByEmailAsync(string email)
     {
       return await _context.Student
@@ -51,17 +48,14 @@ namespace Education_API.Repositories
         .ProjectTo<StudentViewModel>(_mapper.ConfigurationProvider)
         .ToListAsync();
     }
-
     public async Task<List<StudentViewModel>> ListAllStudentsAsync()
     {
       return await _context.Student.ProjectTo<StudentViewModel>(_mapper.ConfigurationProvider).ToListAsync();
     }
-
     public async Task<bool> SaveAllAsync()
     {
       return await _context.SaveChangesAsync() > 0;
     }
-
     public async Task UpdateStudentAsync(int id, PostStudentViewModel model)
     {
       var student = await _context.Student.FindAsync(id);
@@ -78,7 +72,6 @@ namespace Education_API.Repositories
 
         _context.Student.Update(student);
     }
-
     public async Task UpdateStudentAsync(int id, PatchStudentViewModel model)
     {
       var student = await _context.Student.FindAsync(id);

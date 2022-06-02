@@ -166,6 +166,21 @@ namespace Education_API.Data.Migrations
                         onDelete: ReferentialAction.SetNull);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Student",
+                columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[] { 1, null, "connyforsling@gmail.com", "Conny", "Forsling", "0735123583" });
+
+            migrationBuilder.InsertData(
+                table: "Student",
+                columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[] { 2, null, "deseregh@gmail.com", "Deseré", "Gullberg Husberg", "0704004951" });
+
+            migrationBuilder.InsertData(
+                table: "Student",
+                columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[] { 3, null, "rolfhusberg@gmail.com", "Rolf", "Husberg", "0709119459" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Course_CategoryId",
                 table: "Course",

@@ -1,5 +1,3 @@
-using Education_API.Models;
-
 namespace Education_API.ViewModels
 {
   public class CourseViewModel

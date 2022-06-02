@@ -23,7 +23,6 @@ namespace Education_API.Controllers
         var studentList = await _studentRepo.ListAllStudentsAsync();
         return Ok(studentList);
       }  
-
       [HttpGet("{id}")]
       public async Task<ActionResult<StudentViewModel>> GetStudentById(int id)
       {
@@ -41,7 +40,6 @@ namespace Education_API.Controllers
           return StatusCode(500, ex.Message);
         }
       }
-
       [HttpGet("byemail/{email}")]
       public async Task<ActionResult<StudentViewModel>> GetStudentByEmail(string email)
       {
@@ -59,7 +57,6 @@ namespace Education_API.Controllers
           return StatusCode(500, ex.Message);
         }
       }
-
       [HttpPost()]
       public async Task<ActionResult> AddStudent(PostStudentViewModel model)
       {
@@ -75,7 +72,6 @@ namespace Education_API.Controllers
 
           return StatusCode(500, "Email already in use.");
       }
-
       [HttpPut("{id}")]
       public async Task<ActionResult> UpdateStudent(int id, PostStudentViewModel model)
       {
@@ -95,7 +91,6 @@ namespace Education_API.Controllers
             return StatusCode(500, ex.Message);
           }
       }
-
       [HttpPatch("{id}")]
       public async Task<ActionResult> UpdateStudent(int id, PatchStudentViewModel model)
       {
@@ -115,7 +110,6 @@ namespace Education_API.Controllers
           return StatusCode(500, ex.Message);
         }
       }
-
       [HttpDelete("{id}")]
       public async Task<ActionResult> DeleteStudent(int id)
       {

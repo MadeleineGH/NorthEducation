@@ -4,7 +4,6 @@ namespace Education_API.Interfaces
 {
   public interface ICourseRepository
     {
-        // Signaturer för metoderna
         public Task<List<CourseViewModel>> ListAllCoursesAsync();
         public Task<List<CourseViewModel>> GetCourseByTitleAsync(string title);
         public Task<CourseViewModel?> GetCourseAsync(int id);
