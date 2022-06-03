@@ -20,8 +20,8 @@ namespace Education_API.Repositories
 
     public async Task AddCourseAsync(PostCourseViewModel model)
     {
-      var categoryToAdd = _mapper.Map<Category>(model);
-      await _context.Category.AddAsync(categoryToAdd);
+      var courseToAdd = _mapper.Map<Course>(model);
+      await _context.Course.AddAsync(courseToAdd);
     }
     public async Task DeleteCourseAsync(int id)
     {

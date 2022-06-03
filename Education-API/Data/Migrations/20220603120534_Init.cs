@@ -103,9 +103,9 @@ namespace Education_API.Data.Migrations
                     CourseNumber = table.Column<int>(type: "INTEGER", nullable: false),
                     Title = table.Column<string>(type: "TEXT", nullable: true),
                     Duration = table.Column<int>(type: "INTEGER", nullable: false),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: true),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
-                    Details = table.Column<string>(type: "TEXT", nullable: true)
+                    Details = table.Column<string>(type: "TEXT", nullable: true),
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -212,6 +212,31 @@ namespace Education_API.Data.Migrations
                 values: new object[] { 3, "Python" });
 
             migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 4, "Java" });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 5, "HTML" });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 6, "CSS" });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 7, "TypeScript" });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 8, "React" });
+
+            migrationBuilder.InsertData(
                 table: "Competence",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 1, "ASP.NET Core" });
@@ -240,6 +265,16 @@ namespace Education_API.Data.Migrations
                 table: "Course",
                 columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
                 values: new object[] { 3, 3, 1181, "Basics of Python", "Data Types, Dictionaries, Functions", 180, "Learn Python" });
+
+            migrationBuilder.InsertData(
+                table: "Course",
+                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
+                values: new object[] { 4, 1, 1180, "Learn how to code with C#", "OOP, Database, REST Api", 270, "Programming with C# 2" });
+
+            migrationBuilder.InsertData(
+                table: "Course",
+                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
+                values: new object[] { 5, 2, 1180, "Learn more about JavaScript", "Hybrid Application Development", 410, "JavaScript Programming 2" });
 
             migrationBuilder.InsertData(
                 table: "Student",

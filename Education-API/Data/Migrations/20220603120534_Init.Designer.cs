@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Education_API.Data.Migrations
 {
     [DbContext(typeof(EducationContext))]
-    [Migration("20220603081950_Init")]
+    [Migration("20220603120534_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -120,6 +120,31 @@ namespace Education_API.Data.Migrations
                         {
                             Id = 3,
                             Title = "Python"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Title = "Java"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Title = "HTML"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Title = "CSS"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Title = "TypeScript"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Title = "React"
                         });
                 });
 
@@ -214,6 +239,26 @@ namespace Education_API.Data.Migrations
                             Details = "Data Types, Dictionaries, Functions",
                             Duration = 180,
                             Title = "Learn Python"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 1,
+                            CourseNumber = 1180,
+                            Description = "Learn how to code with C#",
+                            Details = "OOP, Database, REST Api",
+                            Duration = 270,
+                            Title = "Programming with C# 2"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 2,
+                            CourseNumber = 1180,
+                            Description = "Learn more about JavaScript",
+                            Details = "Hybrid Application Development",
+                            Duration = 410,
+                            Title = "JavaScript Programming 2"
                         });
                 });
 

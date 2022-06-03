@@ -79,9 +79,9 @@ namespace Education_API.Data
                     CourseNumber = 1179,
                     Title = "C# For Beginners",
                     Duration = 410,
-                    CategoryId = 1,
                     Description = "Learn C# for total beginners",
-                    Details = "Syntax, Variables, Arrays, Lists"
+                    Details = "Syntax, Variables, Arrays, Lists",
+                    CategoryId = 1
                 },
             new Course
                 {
@@ -89,9 +89,9 @@ namespace Education_API.Data
                     CourseNumber = 1180,
                     Title = "JavaScript Programming",
                     Duration = 320,
-                    CategoryId = 2,
                     Description = "Become a skilled JavaScript programmer",
-                    Details = "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns"
+                    Details = "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns",
+                    CategoryId = 2
                 },
             new Course
                 {
@@ -99,9 +99,29 @@ namespace Education_API.Data
                     CourseNumber = 1181,
                     Title = "Learn Python",
                     Duration = 180,
-                    CategoryId = 3,
                     Description = "Basics of Python",
-                    Details = "Data Types, Dictionaries, Functions"
+                    Details = "Data Types, Dictionaries, Functions",
+                    CategoryId = 3
+                }, 
+            new Course
+                {
+                    Id = 4,
+                    CourseNumber = 1180,
+                    Title = "Programming with C# 2",
+                    Duration = 270,
+                    Description = "Learn how to code with C#",
+                    Details = "OOP, Database, REST Api",
+                    CategoryId = 1
+                }, 
+            new Course
+                {
+                    Id = 5,
+                    CourseNumber = 1180,
+                    Title = "JavaScript Programming 2",
+                    Duration = 410,
+                    Description = "Learn more about JavaScript",
+                    Details = "Hybrid Application Development",
+                    CategoryId = 2
                 }
             );
             _modelBuilder.Entity<Competence>().HasData(
@@ -125,17 +145,42 @@ namespace Education_API.Data
             new Category
                 {
                     Id = 1,
-                    Title = ".NET",
+                    Title = ".NET"
                 },
             new Category
                 {
                     Id = 2,
-                    Title = "JavaScript",
+                    Title = "JavaScript"
                 },
             new Category
                 {
                     Id = 3,
-                    Title = "Python",
+                    Title = "Python"
+                },
+            new Category
+                {
+                    Id = 4,
+                    Title = "Java"
+                },
+            new Category
+                {
+                    Id = 5,
+                    Title = "HTML"
+                },
+            new Category
+                {
+                    Id = 6,
+                    Title = "CSS"
+                },
+            new Category
+                {
+                    Id = 7,
+                    Title = "TypeScript"
+                },
+            new Category
+                {
+                    Id = 8,
+                    Title = "React"
                 }
             );
                 _modelBuilder.Entity<Address>().HasData(
