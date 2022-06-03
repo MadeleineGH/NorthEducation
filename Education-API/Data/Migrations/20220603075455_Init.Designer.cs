@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Education_API.Data.Migrations
 {
     [DbContext(typeof(EducationContext))]
-    [Migration("20220602184232_Init")]
+    [Migration("20220603075455_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,56 @@ namespace Education_API.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Address");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "Farsta",
+                            Country = "Sweden",
+                            PostalCode = "12349",
+                            StreetAddress = "Havsörnsgränd 3"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "Nacka",
+                            Country = "Sweden",
+                            PostalCode = "13148",
+                            StreetAddress = "Diligensvägen 46"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            City = "Nacka",
+                            Country = "Sweden",
+                            PostalCode = "13243",
+                            StreetAddress = "Kölnavägen 5"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            City = "Stockholm",
+                            Country = "Sweden",
+                            PostalCode = "12325",
+                            StreetAddress = "Storgatan 5"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            City = "Enköping",
+                            Country = "Sweden",
+                            PostalCode = "15247",
+                            StreetAddress = "Långvägen 12"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            City = "Norrköping",
+                            Country = "Sweden",
+                            PostalCode = "24856",
+                            StreetAddress = "Västra allén 48"
+                        });
                 });
 
             modelBuilder.Entity("Education_API.Models.Category", b =>
@@ -54,6 +104,23 @@ namespace Education_API.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Title = ".NET"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Title = "JavaScript"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Title = "Python"
+                        });
                 });
 
             modelBuilder.Entity("Education_API.Models.Competence", b =>
@@ -68,6 +135,23 @@ namespace Education_API.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Competence");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Title = "ASP.NET Core"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Title = "REST APIs"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Title = "SQL"
+                        });
                 });
 
             modelBuilder.Entity("Education_API.Models.Course", b =>
@@ -99,6 +183,38 @@ namespace Education_API.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Course");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            CourseNumber = 1179,
+                            Description = "Learn C# for total beginners",
+                            Details = "Syntax, Variables, Arrays, Lists",
+                            Duration = 410,
+                            Title = "C# For Beginners"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 2,
+                            CourseNumber = 1180,
+                            Description = "Become a skilled JavaScript programmer",
+                            Details = "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns",
+                            Duration = 320,
+                            Title = "JavaScript Programming"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 3,
+                            CourseNumber = 1181,
+                            Description = "Basics of Python",
+                            Details = "Data Types, Dictionaries, Functions",
+                            Duration = 180,
+                            Title = "Learn Python"
+                        });
                 });
 
             modelBuilder.Entity("Education_API.Models.Student", b =>
@@ -132,6 +248,7 @@ namespace Education_API.Data.Migrations
                         new
                         {
                             Id = 1,
+                            AddressId = 1,
                             Email = "connyforsling@gmail.com",
                             FirstName = "Conny",
                             LastName = "Forsling",
@@ -140,6 +257,7 @@ namespace Education_API.Data.Migrations
                         new
                         {
                             Id = 2,
+                            AddressId = 2,
                             Email = "deseregh@gmail.com",
                             FirstName = "Deseré",
                             LastName = "Gullberg Husberg",
@@ -148,6 +266,7 @@ namespace Education_API.Data.Migrations
                         new
                         {
                             Id = 3,
+                            AddressId = 3,
                             Email = "rolfhusberg@gmail.com",
                             FirstName = "Rolf",
                             LastName = "Husberg",
@@ -196,6 +315,35 @@ namespace Education_API.Data.Migrations
                     b.HasIndex("AddressId");
 
                     b.ToTable("Teacher");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AddressId = 4,
+                            Email = "annapettersson@gmail.com",
+                            FirstName = "Anna",
+                            LastName = "Pettersson",
+                            PhoneNumber = "0705123583"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AddressId = 5,
+                            Email = "lisakarlsson@gmail.com",
+                            FirstName = "Lisa",
+                            LastName = "Karlsson",
+                            PhoneNumber = "0734054951"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AddressId = 6,
+                            Email = "ollesvensson@gmail.com",
+                            FirstName = "Olle",
+                            LastName = "Svensson",
+                            PhoneNumber = "0737119458"
+                        });
                 });
 
             modelBuilder.Entity("Education_API.Models.TeacherCompetence", b =>

@@ -167,19 +167,109 @@ namespace Education_API.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Student",
-                columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
-                values: new object[] { 1, null, "connyforsling@gmail.com", "Conny", "Forsling", "0735123583" });
+                table: "Address",
+                columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
+                values: new object[] { 1, "Farsta", "Sweden", "12349", "Havsörnsgränd 3" });
+
+            migrationBuilder.InsertData(
+                table: "Address",
+                columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
+                values: new object[] { 2, "Nacka", "Sweden", "13148", "Diligensvägen 46" });
+
+            migrationBuilder.InsertData(
+                table: "Address",
+                columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
+                values: new object[] { 3, "Nacka", "Sweden", "13243", "Kölnavägen 5" });
+
+            migrationBuilder.InsertData(
+                table: "Address",
+                columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
+                values: new object[] { 4, "Stockholm", "Sweden", "12325", "Storgatan 5" });
+
+            migrationBuilder.InsertData(
+                table: "Address",
+                columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
+                values: new object[] { 5, "Enköping", "Sweden", "15247", "Långvägen 12" });
+
+            migrationBuilder.InsertData(
+                table: "Address",
+                columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
+                values: new object[] { 6, "Norrköping", "Sweden", "24856", "Västra allén 48" });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 1, ".NET" });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 2, "JavaScript" });
+
+            migrationBuilder.InsertData(
+                table: "Category",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 3, "Python" });
+
+            migrationBuilder.InsertData(
+                table: "Competence",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 1, "ASP.NET Core" });
+
+            migrationBuilder.InsertData(
+                table: "Competence",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 2, "REST APIs" });
+
+            migrationBuilder.InsertData(
+                table: "Competence",
+                columns: new[] { "Id", "Title" },
+                values: new object[] { 3, "SQL" });
+
+            migrationBuilder.InsertData(
+                table: "Course",
+                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
+                values: new object[] { 1, 1, 1179, "Learn C# for total beginners", "Syntax, Variables, Arrays, Lists", 410, "C# For Beginners" });
+
+            migrationBuilder.InsertData(
+                table: "Course",
+                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
+                values: new object[] { 2, 2, 1180, "Become a skilled JavaScript programmer", "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns", 320, "JavaScript Programming" });
+
+            migrationBuilder.InsertData(
+                table: "Course",
+                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
+                values: new object[] { 3, 3, 1181, "Basics of Python", "Data Types, Dictionaries, Functions", 180, "Learn Python" });
 
             migrationBuilder.InsertData(
                 table: "Student",
                 columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
-                values: new object[] { 2, null, "deseregh@gmail.com", "Deseré", "Gullberg Husberg", "0704004951" });
+                values: new object[] { 1, 1, "connyforsling@gmail.com", "Conny", "Forsling", "0735123583" });
 
             migrationBuilder.InsertData(
                 table: "Student",
                 columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
-                values: new object[] { 3, null, "rolfhusberg@gmail.com", "Rolf", "Husberg", "0709119459" });
+                values: new object[] { 2, 2, "deseregh@gmail.com", "Deseré", "Gullberg Husberg", "0704004951" });
+
+            migrationBuilder.InsertData(
+                table: "Student",
+                columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[] { 3, 3, "rolfhusberg@gmail.com", "Rolf", "Husberg", "0709119459" });
+
+            migrationBuilder.InsertData(
+                table: "Teacher",
+                columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[] { 1, 4, "annapettersson@gmail.com", "Anna", "Pettersson", "0705123583" });
+
+            migrationBuilder.InsertData(
+                table: "Teacher",
+                columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[] { 2, 5, "lisakarlsson@gmail.com", "Lisa", "Karlsson", "0734054951" });
+
+            migrationBuilder.InsertData(
+                table: "Teacher",
+                columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
+                values: new object[] { 3, 6, "ollesvensson@gmail.com", "Olle", "Svensson", "0737119458" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Course_CategoryId",

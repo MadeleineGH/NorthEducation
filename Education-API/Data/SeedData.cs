@@ -21,12 +21,8 @@ namespace Education_API.Data
                     FirstName = "Conny",
                     LastName = "Forsling",
                     Email = "connyforsling@gmail.com",
-                    PhoneNumber = "0735123583"
-                    //,
-                    // Address = new Address {StreetAddress = "Havsörnsgränd 3", 
-                    //                        PostalCode = "12349", 
-                    //                        City = "Farsta", 
-                    //                        Country = "Sweden"}
+                    PhoneNumber = "0735123583",
+                    AddressId = 1
                 },
             new Student
                 {
@@ -34,12 +30,8 @@ namespace Education_API.Data
                     FirstName = "Deseré",
                     LastName = "Gullberg Husberg",
                     Email = "deseregh@gmail.com",
-                    PhoneNumber = "0704004951"
-                    //,
-                    // Address = new Address {StreetAddress = "Diligensvägen 46", 
-                    //                        PostalCode = "13148", 
-                    //                        City = "Nacka", 
-                    //                        Country = "Sweden"}
+                    PhoneNumber = "0704004951",
+                    AddressId = 2 
                 },
             new Student
                 {
@@ -47,12 +39,8 @@ namespace Education_API.Data
                     FirstName = "Rolf",
                     LastName = "Husberg",
                     Email = "rolfhusberg@gmail.com",
-                    PhoneNumber = "0709119459"
-                    //,
-                    // Address = new Address {StreetAddress = "Kölnavägen 5", 
-                    //                        PostalCode = "13243", 
-                    //                        City = "Nacka", 
-                    //                        Country = "Sweden"}  
+                    PhoneNumber = "0709119459",
+                    AddressId = 3 
                 }
             );
             _modelBuilder.Entity<Teacher>().HasData(
@@ -62,12 +50,8 @@ namespace Education_API.Data
                     FirstName = "Anna",
                     LastName = "Pettersson",
                     Email = "annapettersson@gmail.com",
-                    PhoneNumber = "0705123583"
-                    //,
-                    // Address = new Address {StreetAddress = "Havsörnsgränd 3", 
-                    //                        PostalCode = "12349", 
-                    //                        City = "Farsta", 
-                    //                        Country = "Sweden"}
+                    PhoneNumber = "0705123583",
+                    AddressId = 4
                 },
             new Teacher
                 {
@@ -75,12 +59,8 @@ namespace Education_API.Data
                     FirstName = "Lisa",
                     LastName = "Karlsson",
                     Email = "lisakarlsson@gmail.com",
-                    PhoneNumber = "0734054951"
-                    //,
-                    // Address = new Address {StreetAddress = "Diligensvägen 46", 
-                    //                        PostalCode = "13148", 
-                    //                        City = "Nacka", 
-                    //                        Country = "Sweden"}
+                    PhoneNumber = "0734054951",
+                    AddressId = 5
                 },
             new Teacher
                 {
@@ -88,12 +68,8 @@ namespace Education_API.Data
                     FirstName = "Olle",
                     LastName = "Svensson",
                     Email = "ollesvensson@gmail.com",
-                    PhoneNumber = "0737119458"
-                    //,
-                    // Address = new Address {StreetAddress = "Kölnavägen 5", 
-                    //                        PostalCode = "13243", 
-                    //                        City = "Nacka", 
-                    //                        Country = "Sweden"}  
+                    PhoneNumber = "0737119458",
+                    AddressId = 6
                 }
             );
             _modelBuilder.Entity<Course>().HasData(
@@ -160,6 +136,56 @@ namespace Education_API.Data
                 {
                     Id = 3,
                     Title = "Python",
+                }
+            );
+                _modelBuilder.Entity<Address>().HasData(
+            new Address
+                {
+                    Id = 1,
+                    StreetAddress = "Havsörnsgränd 3", 
+                    PostalCode = "12349", 
+                    City = "Farsta", 
+                    Country = "Sweden"
+                },
+            new Address
+                {
+                    Id = 2,
+                    StreetAddress = "Diligensvägen 46", 
+                    PostalCode = "13148", 
+                    City = "Nacka", 
+                    Country = "Sweden"
+                },
+            new Address
+                {
+                    Id = 3,
+                    StreetAddress = "Kölnavägen 5", 
+                    PostalCode = "13243", 
+                    City = "Nacka", 
+                    Country = "Sweden"
+                },
+            new Address
+                {
+                    Id = 4,
+                    StreetAddress = "Storgatan 5", 
+                    PostalCode = "12325", 
+                    City = "Stockholm", 
+                    Country = "Sweden"
+                },
+            new Address
+                {
+                    Id = 5,
+                    StreetAddress = "Långvägen 12", 
+                    PostalCode = "15247", 
+                    City = "Enköping", 
+                    Country = "Sweden"
+                },
+            new Address
+                {
+                    Id = 6,
+                    StreetAddress = "Västra allén 48", 
+                    PostalCode = "24856", 
+                    City = "Norrköping", 
+                    Country = "Sweden"
                 }
             );
     }
