@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Education_API.Data.Migrations
 {
     [DbContext(typeof(EducationContext))]
-    [Migration("20220603075455_Init")]
+    [Migration("20220603081950_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

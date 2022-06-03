@@ -1,7 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using Education_API.Interfaces;
+using Education_API.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Education_API.Controllers
@@ -9,35 +8,119 @@ namespace Education_API.Controllers
     [ApiController]
     [Route("api/v1/teachers")]
     public class TeacherController : ControllerBase
-    {
+    {  
+      private readonly ITeacherRepository _teacherRepo;
+      private readonly IMapper _mapper;
+      public TeacherController(ITeacherRepository teacherRepo, IMapper mapper)
+      {
+        _mapper = mapper;
+        _teacherRepo = teacherRepo;
+      }
+
       [HttpGet()]
-      public ActionResult ListTeachers()
+      public async Task<ActionResult<List<TeacherViewModel>>> ListTeachers()
       {
-        return Ok("{'message: 'Det funkar'}");
+        var TeacherList = await _teacherRepo.ListAllTeachersAsync();
+        return Ok(TeacherList);
       }  
-
       [HttpGet("{id}")]
-      public ActionResult GetTeacherById(int id)
+      public async Task<ActionResult<TeacherViewModel>> GetTeacherById(int id)
       {
-        return Ok("{'message: 'Det funkar också'}");
-      }
+        try
+        {
+          var response = await _teacherRepo.GetTeacherAsync(id);
 
+          if(response is null) 
+              return NotFound($"There is no Teacher with id: {id}.");
+
+          return Ok(response);
+        }   
+        catch(Exception ex)
+        {
+          return StatusCode(500, ex.Message);
+        }
+      }
+      [HttpGet("byemail/{email}")]
+      public async Task<ActionResult<TeacherViewModel>> GetTeacherByEmail(string email)
+      {
+        try
+        {
+          var response = await _teacherRepo.GetTeacherByEmailAsync(email);
+
+          if(response is null) 
+              return NotFound($"There is no Teacher with the email: {email}.");
+
+          return Ok(response);
+        }   
+        catch(Exception ex)
+        {
+          return StatusCode(500, ex.Message);
+        }
+      }
       [HttpPost()]
-      public ActionResult AddTeacher()
+      public async Task<ActionResult> AddTeacher(PostTeacherViewModel model)
       {
-          return StatusCode(201);
-      }
+          if(await _teacherRepo.GetTeacherAsync(model.TeacherId!)is not null){
+            return BadRequest($"There is already a Teacher with TeacherId: {model.TeacherId}.");
+          }
 
+          await _teacherRepo.AddTeacherAsync(model);
+
+          if(await _teacherRepo.SaveAllAsync()){
+            return StatusCode(201);
+          };
+
+          return StatusCode(500, "Email already in use.");
+      }
       [HttpPut("{id}")]
-      public ActionResult UpdateTeacher()
+      public async Task<ActionResult> UpdateTeacher(int id, PostTeacherViewModel model)
       {
-          return NoContent();
-      }
+          try
+          {
+            await _teacherRepo.UpdateTeacherAsync(id, model);
 
-      [HttpDelete("{id}")]
-      public ActionResult DeleteTeacher(int id)
+            if(await _teacherRepo.SaveAllAsync())
+            {
+              return NoContent();
+            }
+
+            return StatusCode(500, "An error occured when trying to update the Teacher.");
+          }
+          catch (Exception ex)
+          {
+            return StatusCode(500, ex.Message);
+          }
+      }
+      [HttpPatch("{id}")]
+      public async Task<ActionResult> UpdateTeacher(int id, PatchTeacherViewModel model)
       {
-          return NoContent();
+        try
+        {
+          await _teacherRepo.UpdateTeacherAsync(id, model);
+
+          if(await _teacherRepo.SaveAllAsync())
+          {
+            return NoContent();
+          }
+
+          return StatusCode(500, "An error occured when trying to update the Teacher.");
+        }
+        catch (Exception ex)
+        {
+          return StatusCode(500, ex.Message);
+        }
+      }
+      [HttpDelete("{id}")]
+      public async Task<ActionResult> DeleteTeacher(int id)
+      {
+          await _teacherRepo.DeleteTeacherAsync(id);
+
+          if(await _teacherRepo.SaveAllAsync())
+          {
+            return NoContent();
+          };
+
+          return StatusCode(500, "An error occured");
       }
     }
 }
