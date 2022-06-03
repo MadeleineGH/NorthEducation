@@ -12,7 +12,10 @@ namespace Education_API.Helpers
         CreateMap<PostCourseViewModel, Course>();
         CreateMap<Course, CourseViewModel>()
         .ForMember(dest => dest.CourseId, options => options.
-        MapFrom(src => src.Id));
+        MapFrom(src => src.Id))
+        .ForMember(dest => dest.Category, options => options
+        .MapFrom(src => src.Category!.Title));
+
 
         CreateMap<PostCompetenceViewModel, Competence>();
         CreateMap<Competence, CompetenceViewModel>()

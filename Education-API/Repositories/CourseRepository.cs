@@ -53,7 +53,7 @@ namespace Education_API.Repositories
     }
     public async Task<List<CourseViewModel>> ListAllCoursesAsync()
     {
-        return await _context.Course.ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider).ToListAsync();
+        return await _context.Course.Include(c => c.Category).ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider).ToListAsync();
     }
     public async Task<bool> SaveAllAsync()
     {
