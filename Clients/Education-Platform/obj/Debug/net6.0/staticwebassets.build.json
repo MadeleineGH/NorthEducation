@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1I2Lep4RdJBz90NfmRuxOl6IWr5Hn2RQW1G6Jjg/kkw=",
+  "Hash": "gAXP5jUV7N2Zbsdpb24cBPJIgOf+TelcvWNvtxBD78U=",
   "Source": "Education-Platform",
   "BasePath": "_content/Education-Platform",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Education-Platform.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\css\\styles.css",
+      "SourceId": "Education-Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\",
+      "BasePath": "_content/Education-Platform",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
       "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\favicon.ico",
