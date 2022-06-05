@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Education_API.Data.Migrations
 {
     [DbContext(typeof(EducationContext))]
-    [Migration("20220603120534_Init")]
+    [Migration("20220605102028_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,7 +39,7 @@ namespace Education_API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Address");
+                    b.ToTable("Addresses");
 
                     b.HasData(
                         new
@@ -103,7 +103,7 @@ namespace Education_API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -159,7 +159,7 @@ namespace Education_API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Competence");
+                    b.ToTable("Competences");
 
                     b.HasData(
                         new
@@ -207,7 +207,7 @@ namespace Education_API.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Course");
+                    b.ToTable("Courses");
 
                     b.HasData(
                         new
@@ -287,7 +287,7 @@ namespace Education_API.Data.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Student");
+                    b.ToTable("Students");
 
                     b.HasData(
                         new
@@ -331,7 +331,7 @@ namespace Education_API.Data.Migrations
 
                     b.HasIndex("CourseId");
 
-                    b.ToTable("StudentCourse");
+                    b.ToTable("StudentCourses");
                 });
 
             modelBuilder.Entity("Education_API.Models.Teacher", b =>
@@ -359,7 +359,7 @@ namespace Education_API.Data.Migrations
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Teacher");
+                    b.ToTable("Teachers");
 
                     b.HasData(
                         new
@@ -403,7 +403,7 @@ namespace Education_API.Data.Migrations
 
                     b.HasIndex("CompetenceId");
 
-                    b.ToTable("TeacherCompetence");
+                    b.ToTable("TeacherCompetences");
                 });
 
             modelBuilder.Entity("Education_API.Models.Course", b =>

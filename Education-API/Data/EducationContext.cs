@@ -5,14 +5,14 @@ namespace Education_API.Data
 {
   public class EducationContext : DbContext // Steg 1. ärv från EntityFrameworkCore
   {
-    public DbSet<Teacher> Teacher => Set<Teacher>(); // Steg 2. Mappa minnesrepresentationen av läraren till databas.
-    public DbSet<Student> Student => Set<Student>();
-    public DbSet<Category> Category => Set<Category>();
-    public DbSet<Address> Address => Set<Address>();
-    public DbSet<Course> Course => Set<Course>();
-    public DbSet<Competence> Competence => Set<Competence>();
-    public DbSet<StudentCourse> StudentCourse => Set<StudentCourse>();
-    public DbSet<TeacherCompetence> TeacherCompetence => Set<TeacherCompetence>();
+    public DbSet<Teacher> Teachers => Set<Teacher>(); // Steg 2. Mappa minnesrepresentationen av läraren till databas.
+    public DbSet<Student> Students => Set<Student>();
+    public DbSet<Category> Categories => Set<Category>();
+    public DbSet<Address> Addresses => Set<Address>();
+    public DbSet<Course> Courses => Set<Course>();
+    public DbSet<Competence> Competences => Set<Competence>();
+    public DbSet<StudentCourse> StudentCourses => Set<StudentCourse>();
+    public DbSet<TeacherCompetence> TeacherCompetences => Set<TeacherCompetence>();
 
     public EducationContext(DbContextOptions options) : base(options) // Steg 3. Skapa konstruktor för att ta hand om anslutningskonfigurationen
     { 

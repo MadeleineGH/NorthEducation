@@ -22,32 +22,32 @@ namespace Education_API.Repositories
     public async Task AddCompetenceAsync(PostCompetenceViewModel model)
     {
       var competenceToAdd = _mapper.Map<Competence>(model);
-      await _context.Competence.AddAsync(competenceToAdd);
+      await _context.Competences.AddAsync(competenceToAdd);
     }
     public async Task DeleteCompetenceAsync(int id)
     {
-      var response = await _context.Competence.FindAsync(id);
+      var response = await _context.Competences.FindAsync(id);
 
       if(response is not null)
       {
-        _context.Competence.Remove(response);
+        _context.Competences.Remove(response);
       }
     }
     public async Task<List<CompetenceViewModel>> GetCompetenceByTitleAsync(string title)
     {
-      return await _context.Competence
+      return await _context.Competences
         .Where(c => c.Title!.ToLower() == title.ToLower())
         .ProjectTo<CompetenceViewModel>(_mapper.ConfigurationProvider)
         .ToListAsync();
     }
     public async Task<List<CompetenceViewModel>> ListAllCompetencesAsync()
     {
-      return await _context.Competence.ProjectTo<CompetenceViewModel>
+      return await _context.Competences.ProjectTo<CompetenceViewModel>
       (_mapper.ConfigurationProvider).ToListAsync();
     }
     public async Task<CompetenceViewModel?> GetCompetenceAsync(int id)
     {
-      return await _context.Competence.Where(c => c.Id == id)
+      return await _context.Competences.Where(c => c.Id == id)
           .ProjectTo<CompetenceViewModel>(_mapper.ConfigurationProvider)
           .SingleOrDefaultAsync();
     }
@@ -57,7 +57,7 @@ namespace Education_API.Repositories
     }
     public async Task UpdateCompetenceAsync(int id, PutCompetenceViewModel model)
     {
-      var competence = await _context.Competence.FindAsync(id);
+      var competence = await _context.Competences.FindAsync(id);
 
       if(competence is null)
       {
@@ -66,11 +66,11 @@ namespace Education_API.Repositories
   
         competence.Title = model.Title;
 
-        _context.Competence.Update(competence);
+        _context.Competences.Update(competence);
     }
     public async Task<CompetenceViewModel?> GetCompetenceAsync(string title)
     {
-      return await _context.Competence.Where(c => c.Title!.ToLower() == title.ToLower())
+      return await _context.Competences.Where(c => c.Title!.ToLower() == title.ToLower())
         .ProjectTo<CompetenceViewModel>(_mapper.ConfigurationProvider)
           .SingleOrDefaultAsync();
     }

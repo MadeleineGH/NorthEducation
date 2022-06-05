@@ -20,37 +20,37 @@ namespace Education_API.Repositories
 
     public async Task AddStudentAsync(PostStudentViewModel model)
     {
-        if(!_context.Student.Any(s => s.Email == model.Email))
+        if(!_context.Students.Any(s => s.Email == model.Email))
           {
             var studentToAdd = _mapper.Map<Student>(model);
-            await _context.Student.AddAsync(studentToAdd);
+            await _context.Students.AddAsync(studentToAdd);
           }
     }
     public async Task DeleteStudentAsync(int id)
     {
-      var response = await _context.Student.FindAsync(id);
+      var response = await _context.Students.FindAsync(id);
 
       if(response is not null)
       {
-        _context.Student.Remove(response);
+        _context.Students.Remove(response);
       }
     }
     public async Task<StudentViewModel?> GetStudentAsync(int id)
     {
-      return await _context.Student.Where(c => c.Id == id)
+      return await _context.Students.Where(c => c.Id == id)
       .ProjectTo<StudentViewModel>(_mapper.ConfigurationProvider)
       .SingleOrDefaultAsync();
     }
     public async Task<List<StudentViewModel>> GetStudentByEmailAsync(string email)
     {
-      return await _context.Student
+      return await _context.Students
         .Where(s => s.Email!.ToLower() == email.ToLower())
         .ProjectTo<StudentViewModel>(_mapper.ConfigurationProvider)
         .ToListAsync();
     }
     public async Task<List<StudentViewModel>> ListAllStudentsAsync()
     {
-      return await _context.Student.ProjectTo<StudentViewModel>(_mapper.ConfigurationProvider).ToListAsync();
+      return await _context.Students.ProjectTo<StudentViewModel>(_mapper.ConfigurationProvider).ToListAsync();
     }
     public async Task<bool> SaveAllAsync()
     {
@@ -58,7 +58,7 @@ namespace Education_API.Repositories
     }
     public async Task UpdateStudentAsync(int id, PostStudentViewModel model)
     {
-      var student = await _context.Student.FindAsync(id);
+      var student = await _context.Students.FindAsync(id);
 
       if(student is null)
       {
@@ -70,11 +70,11 @@ namespace Education_API.Repositories
         student.Email = model.Email;
         student.PhoneNumber = model.PhoneNumber;
 
-        _context.Student.Update(student);
+        _context.Students.Update(student);
     }
     public async Task UpdateStudentAsync(int id, PatchStudentViewModel model)
     {
-      var student = await _context.Student.FindAsync(id);
+      var student = await _context.Students.FindAsync(id);
 
       if(student is null)
       {
@@ -84,7 +84,7 @@ namespace Education_API.Repositories
         student.Email = model.Email;
         student.PhoneNumber = model.PhoneNumber;
 
-        _context.Student.Update(student);
+        _context.Students.Update(student);
     }
   }
 } 

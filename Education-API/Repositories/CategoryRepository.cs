@@ -22,32 +22,32 @@ namespace Education_API.Repositories
     public async Task AddCategoryAsync(PostCategoryViewModel model)
     {
       var categoryToAdd = _mapper.Map<Category>(model);
-      await _context.Category.AddAsync(categoryToAdd);
+      await _context.Categories.AddAsync(categoryToAdd);
     }
     public async Task DeleteCategoryAsync(int id)
     {
-      var response = await _context.Category.FindAsync(id);
+      var response = await _context.Categories.FindAsync(id);
 
       if(response is not null)
       {
-        _context.Category.Remove(response);
+        _context.Categories.Remove(response);
       }
     }
     public async Task<List<CategoryViewModel>> GetCategoryByTitleAsync(string title)
     {
-      return await _context.Category
+      return await _context.Categories
         .Where(c => c.Title!.ToLower() == title.ToLower())
         .ProjectTo<CategoryViewModel>(_mapper.ConfigurationProvider)
         .ToListAsync();
     }
     public async Task<List<CategoryViewModel>> ListAllCategoriesAsync()
     {
-      return await _context.Category.ProjectTo<CategoryViewModel>
+      return await _context.Categories.ProjectTo<CategoryViewModel>
       (_mapper.ConfigurationProvider).ToListAsync();
     }
     public async Task<CategoryViewModel?> GetCategoryAsync(int id)
     {
-      return await _context.Category.Where(c => c.Id == id)
+      return await _context.Categories.Where(c => c.Id == id)
           .ProjectTo<CategoryViewModel>(_mapper.ConfigurationProvider)
           .SingleOrDefaultAsync();
     }
@@ -57,20 +57,20 @@ namespace Education_API.Repositories
     }
     public async Task UpdateCategoryAsync(int id, PutCategoryViewModel model)
     {
-      var Category = await _context.Category.FindAsync(id);
+      var category = await _context.Categories.FindAsync(id);
 
-      if(Category is null)
+      if(category is null)
       {
         throw new Exception($"Couldn't find any Category with id {id}.");
       }
   
-        Category.Title = model.Title;
+        category.Title = model.Title;
 
-        _context.Category.Update(Category);
+        _context.Categories.Update(category);
     }
     public async Task<CategoryViewModel?> GetCategoryAsync(string title)
     {
-      return await _context.Category.Where(c => c.Title!.ToLower() == title.ToLower())
+      return await _context.Categories.Where(c => c.Title!.ToLower() == title.ToLower())
         .ProjectTo<CategoryViewModel>(_mapper.ConfigurationProvider)
           .SingleOrDefaultAsync();
     }

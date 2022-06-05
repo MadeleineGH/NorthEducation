@@ -20,37 +20,37 @@ namespace Education_API.Repositories
 
     public async Task AddTeacherAsync(PostTeacherViewModel model)
     {
-        if(!_context.Teacher.Any(s => s.Email == model.Email))
+        if(!_context.Teachers.Any(s => s.Email == model.Email))
           {
             var TeacherToAdd = _mapper.Map<Teacher>(model);
-            await _context.Teacher.AddAsync(TeacherToAdd);
+            await _context.Teachers.AddAsync(TeacherToAdd);
           }
     }
     public async Task DeleteTeacherAsync(int id)
     {
-      var response = await _context.Teacher.FindAsync(id);
+      var response = await _context.Teachers.FindAsync(id);
 
       if(response is not null)
       {
-        _context.Teacher.Remove(response);
+        _context.Teachers.Remove(response);
       }
     }
     public async Task<TeacherViewModel?> GetTeacherAsync(int id)
     {
-      return await _context.Teacher.Where(c => c.Id == id)
+      return await _context.Teachers.Where(c => c.Id == id)
       .ProjectTo<TeacherViewModel>(_mapper.ConfigurationProvider)
       .SingleOrDefaultAsync();
     }
     public async Task<List<TeacherViewModel>> GetTeacherByEmailAsync(string email)
     {
-      return await _context.Teacher
+      return await _context.Teachers
         .Where(s => s.Email!.ToLower() == email.ToLower())
         .ProjectTo<TeacherViewModel>(_mapper.ConfigurationProvider)
         .ToListAsync();
     }
     public async Task<List<TeacherViewModel>> ListAllTeachersAsync()
     {
-      return await _context.Teacher.ProjectTo<TeacherViewModel>(_mapper.ConfigurationProvider).ToListAsync();
+      return await _context.Teachers.ProjectTo<TeacherViewModel>(_mapper.ConfigurationProvider).ToListAsync();
     }
     public async Task<bool> SaveAllAsync()
     {
@@ -58,7 +58,7 @@ namespace Education_API.Repositories
     }
     public async Task UpdateTeacherAsync(int id, PostTeacherViewModel model)
     {
-      var teacher = await _context.Teacher.FindAsync(id);
+      var teacher = await _context.Teachers.FindAsync(id);
 
       if(teacher is null)
       {
@@ -70,11 +70,11 @@ namespace Education_API.Repositories
         teacher.Email = model.Email;
         teacher.PhoneNumber = model.PhoneNumber;
 
-        _context.Teacher.Update(teacher);
+        _context.Teachers.Update(teacher);
     }
     public async Task UpdateTeacherAsync(int id, PatchTeacherViewModel model)
     {
-      var teacher = await _context.Teacher.FindAsync(id);
+      var teacher = await _context.Teachers.FindAsync(id);
 
       if(teacher is null)
       {
@@ -84,7 +84,7 @@ namespace Education_API.Repositories
         teacher.Email = model.Email;
         teacher.PhoneNumber = model.PhoneNumber;
 
-        _context.Teacher.Update(teacher);
+        _context.Teachers.Update(teacher);
     }
   }
 } 

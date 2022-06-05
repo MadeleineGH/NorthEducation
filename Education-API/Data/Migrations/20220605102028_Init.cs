@@ -9,7 +9,7 @@ namespace Education_API.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Address",
+                name: "Addresses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -21,11 +21,11 @@ namespace Education_API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Address", x => x.Id);
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -34,11 +34,11 @@ namespace Education_API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Competence",
+                name: "Competences",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -47,11 +47,11 @@ namespace Education_API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Competence", x => x.Id);
+                    table.PrimaryKey("PK_Competences", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Student",
+                name: "Students",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -64,16 +64,16 @@ namespace Education_API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Student", x => x.Id);
+                    table.PrimaryKey("PK_Students", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Student_Address_AddressId",
+                        name: "FK_Students_Addresses_AddressId",
                         column: x => x.AddressId,
-                        principalTable: "Address",
+                        principalTable: "Addresses",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Teacher",
+                name: "Teachers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -86,16 +86,16 @@ namespace Education_API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Teacher", x => x.Id);
+                    table.PrimaryKey("PK_Teachers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Teacher_Address_AddressId",
+                        name: "FK_Teachers_Addresses_AddressId",
                         column: x => x.AddressId,
-                        principalTable: "Address",
+                        principalTable: "Addresses",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Course",
+                name: "Courses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -109,17 +109,17 @@ namespace Education_API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Course", x => x.Id);
+                    table.PrimaryKey("PK_Courses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Course_Category_CategoryId",
+                        name: "FK_Courses_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Category",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TeacherCompetence",
+                name: "TeacherCompetences",
                 columns: table => new
                 {
                     TeacherId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -127,23 +127,23 @@ namespace Education_API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TeacherCompetence", x => new { x.TeacherId, x.CompetenceId });
+                    table.PrimaryKey("PK_TeacherCompetences", x => new { x.TeacherId, x.CompetenceId });
                     table.ForeignKey(
-                        name: "FK_TeacherCompetence_Competence_CompetenceId",
+                        name: "FK_TeacherCompetences_Competences_CompetenceId",
                         column: x => x.CompetenceId,
-                        principalTable: "Competence",
+                        principalTable: "Competences",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
-                        name: "FK_TeacherCompetence_Teacher_TeacherId",
+                        name: "FK_TeacherCompetences_Teachers_TeacherId",
                         column: x => x.TeacherId,
-                        principalTable: "Teacher",
+                        principalTable: "Teachers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
-                name: "StudentCourse",
+                name: "StudentCourses",
                 columns: table => new
                 {
                     StudentId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -151,212 +151,212 @@ namespace Education_API.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StudentCourse", x => new { x.StudentId, x.CourseId });
+                    table.PrimaryKey("PK_StudentCourses", x => new { x.StudentId, x.CourseId });
                     table.ForeignKey(
-                        name: "FK_StudentCourse_Course_CourseId",
+                        name: "FK_StudentCourses_Courses_CourseId",
                         column: x => x.CourseId,
-                        principalTable: "Course",
+                        principalTable: "Courses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
-                        name: "FK_StudentCourse_Student_StudentId",
+                        name: "FK_StudentCourses_Students_StudentId",
                         column: x => x.StudentId,
-                        principalTable: "Student",
+                        principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.InsertData(
-                table: "Address",
+                table: "Addresses",
                 columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
                 values: new object[] { 1, "Farsta", "Sweden", "12349", "Havsörnsgränd 3" });
 
             migrationBuilder.InsertData(
-                table: "Address",
+                table: "Addresses",
                 columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
                 values: new object[] { 2, "Nacka", "Sweden", "13148", "Diligensvägen 46" });
 
             migrationBuilder.InsertData(
-                table: "Address",
+                table: "Addresses",
                 columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
                 values: new object[] { 3, "Nacka", "Sweden", "13243", "Kölnavägen 5" });
 
             migrationBuilder.InsertData(
-                table: "Address",
+                table: "Addresses",
                 columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
                 values: new object[] { 4, "Stockholm", "Sweden", "12325", "Storgatan 5" });
 
             migrationBuilder.InsertData(
-                table: "Address",
+                table: "Addresses",
                 columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
                 values: new object[] { 5, "Enköping", "Sweden", "15247", "Långvägen 12" });
 
             migrationBuilder.InsertData(
-                table: "Address",
+                table: "Addresses",
                 columns: new[] { "Id", "City", "Country", "PostalCode", "StreetAddress" },
                 values: new object[] { 6, "Norrköping", "Sweden", "24856", "Västra allén 48" });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categories",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 1, ".NET" });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categories",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 2, "JavaScript" });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categories",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 3, "Python" });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categories",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 4, "Java" });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categories",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 5, "HTML" });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categories",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 6, "CSS" });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categories",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 7, "TypeScript" });
 
             migrationBuilder.InsertData(
-                table: "Category",
+                table: "Categories",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 8, "React" });
 
             migrationBuilder.InsertData(
-                table: "Competence",
+                table: "Competences",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 1, "ASP.NET Core" });
 
             migrationBuilder.InsertData(
-                table: "Competence",
+                table: "Competences",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 2, "REST APIs" });
 
             migrationBuilder.InsertData(
-                table: "Competence",
+                table: "Competences",
                 columns: new[] { "Id", "Title" },
                 values: new object[] { 3, "SQL" });
 
             migrationBuilder.InsertData(
-                table: "Course",
+                table: "Courses",
                 columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
                 values: new object[] { 1, 1, 1179, "Learn C# for total beginners", "Syntax, Variables, Arrays, Lists", 410, "C# For Beginners" });
 
             migrationBuilder.InsertData(
-                table: "Course",
+                table: "Courses",
                 columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
                 values: new object[] { 2, 2, 1180, "Become a skilled JavaScript programmer", "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns", 320, "JavaScript Programming" });
 
             migrationBuilder.InsertData(
-                table: "Course",
+                table: "Courses",
                 columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
                 values: new object[] { 3, 3, 1181, "Basics of Python", "Data Types, Dictionaries, Functions", 180, "Learn Python" });
 
             migrationBuilder.InsertData(
-                table: "Course",
+                table: "Courses",
                 columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
                 values: new object[] { 4, 1, 1180, "Learn how to code with C#", "OOP, Database, REST Api", 270, "Programming with C# 2" });
 
             migrationBuilder.InsertData(
-                table: "Course",
+                table: "Courses",
                 columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
                 values: new object[] { 5, 2, 1180, "Learn more about JavaScript", "Hybrid Application Development", 410, "JavaScript Programming 2" });
 
             migrationBuilder.InsertData(
-                table: "Student",
+                table: "Students",
                 columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[] { 1, 1, "connyforsling@gmail.com", "Conny", "Forsling", "0735123583" });
 
             migrationBuilder.InsertData(
-                table: "Student",
+                table: "Students",
                 columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[] { 2, 2, "deseregh@gmail.com", "Deseré", "Gullberg Husberg", "0704004951" });
 
             migrationBuilder.InsertData(
-                table: "Student",
+                table: "Students",
                 columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[] { 3, 3, "rolfhusberg@gmail.com", "Rolf", "Husberg", "0709119459" });
 
             migrationBuilder.InsertData(
-                table: "Teacher",
+                table: "Teachers",
                 columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[] { 1, 4, "annapettersson@gmail.com", "Anna", "Pettersson", "0705123583" });
 
             migrationBuilder.InsertData(
-                table: "Teacher",
+                table: "Teachers",
                 columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[] { 2, 5, "lisakarlsson@gmail.com", "Lisa", "Karlsson", "0734054951" });
 
             migrationBuilder.InsertData(
-                table: "Teacher",
+                table: "Teachers",
                 columns: new[] { "Id", "AddressId", "Email", "FirstName", "LastName", "PhoneNumber" },
                 values: new object[] { 3, 6, "ollesvensson@gmail.com", "Olle", "Svensson", "0737119458" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Course_CategoryId",
-                table: "Course",
+                name: "IX_Courses_CategoryId",
+                table: "Courses",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Student_AddressId",
-                table: "Student",
-                column: "AddressId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_StudentCourse_CourseId",
-                table: "StudentCourse",
+                name: "IX_StudentCourses_CourseId",
+                table: "StudentCourses",
                 column: "CourseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Teacher_AddressId",
-                table: "Teacher",
+                name: "IX_Students_AddressId",
+                table: "Students",
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TeacherCompetence_CompetenceId",
-                table: "TeacherCompetence",
+                name: "IX_TeacherCompetences_CompetenceId",
+                table: "TeacherCompetences",
                 column: "CompetenceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Teachers_AddressId",
+                table: "Teachers",
+                column: "AddressId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "StudentCourse");
+                name: "StudentCourses");
 
             migrationBuilder.DropTable(
-                name: "TeacherCompetence");
+                name: "TeacherCompetences");
 
             migrationBuilder.DropTable(
-                name: "Course");
+                name: "Courses");
 
             migrationBuilder.DropTable(
-                name: "Student");
+                name: "Students");
 
             migrationBuilder.DropTable(
-                name: "Competence");
+                name: "Competences");
 
             migrationBuilder.DropTable(
-                name: "Teacher");
+                name: "Teachers");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Address");
+                name: "Addresses");
         }
     }
 }
