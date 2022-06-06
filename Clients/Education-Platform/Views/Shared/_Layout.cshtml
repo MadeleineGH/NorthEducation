@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/cbd941066d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="~/css/styles.css">
-    <title>North Education</title>
+    <link rel="stylesheet" href="~/css/utilities.css">
+    @RenderSection("styles", false)
+    <title>North Education - @ViewBag.PageTitle</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a asp-controller="Course" asp-action="Index">Courses</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav id="navbar">
+        <h1 class="logo"><span class="text-primary"><i class="fa-solid fa-building-columns"></i>North </span>Education</h1>
+        <ul>
+            <li><a asp-controller="Home" asp-action="Index">Start</a></li>
+            <li><a asp-controller="Vehicles" asp-action="Index">Courses</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">About us</a></li>
+        </ul>        
+    </nav>
     <main>
         @RenderBody()
     </main>
+
+    <script src="~/js/app.js"></script>
+    @RenderSection("scripts", false)
 </body>
 </html>

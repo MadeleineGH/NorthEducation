@@ -33,8 +33,6 @@ namespace Education_Platform.Models
         }
 
         var courses = await response.Content.ReadFromJsonAsync<List<CourseViewModel>>(); 
-        // var result = await response.Content.ReadAsStringAsync();
-        // var courses = JsonSerializer.Deserialize<List<CourseViewModel>>(result, _options);
 
         return courses ?? new List<CourseViewModel>();
     }

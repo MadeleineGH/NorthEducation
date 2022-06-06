@@ -7,9 +7,11 @@ namespace Education_Platform.Controllers
     public class CourseController : Controller
     {
         private readonly IConfiguration _config;
+        private readonly CourseServiceModel _courseService;
         public CourseController(IConfiguration config)
         {
             _config = config;
+            _courseService = new CourseServiceModel(_config);
         }
 
         [HttpGet()]
@@ -17,13 +19,14 @@ namespace Education_Platform.Controllers
         {
             try
             {
-                var courseService = new CourseServiceModel(_config); 
+                // var vehicleService = new VehicleServiceModel(_config);
 
-                var courses = await courseService.ListAllCourses();
+                var courses = await _courseService.ListAllCourses();
                 return View("Index", courses);
             }
             catch (System.Exception)
             {
+
                 throw;
             }
         }
