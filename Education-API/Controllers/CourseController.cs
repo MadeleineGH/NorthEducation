@@ -18,7 +18,7 @@ namespace Education_API.Controllers
         _courseRepo = courseRepo;
       }
 
-      [HttpGet()]
+      [HttpGet("list")]
       public async Task<ActionResult<List<CourseViewModel>>> ListCourses()
       {
         var courseList = await _courseRepo.ListAllCoursesAsync();
