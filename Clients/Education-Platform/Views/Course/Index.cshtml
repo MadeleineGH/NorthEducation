@@ -10,8 +10,10 @@
     @foreach (var course in Model!)
     {
         <div>
-            <a asp-controller="Course" asp-action="Details">@course.Title</a>
-                <p>@course.CourseNumber</p>
+            <h4>@course.Title</h4>
+            @* <a asp-controller="Course" asp-action="Details">@course.Title</a> *@
+            <img src="@course.ImageUrl" alt="@course.Title">
+            <p>@course.CourseNumber</p>
         </div>
     }
 </section>

@@ -9,5 +9,6 @@ namespace Education_Platform.ViewModels
         public string? Description { get; set; }
         public string? Details { get; set; }
         public string? Category { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

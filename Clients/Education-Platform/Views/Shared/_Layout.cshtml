@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/cbd941066d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/css/styles.css">
     <link rel="stylesheet" href="~/css/utilities.css">
     @RenderSection("styles", false)
     <title>North Education - @ViewBag.PageTitle</title>
-</head>
+</head> 
 <body>
     <nav id="navbar">
-        <h1 class="logo"><span class="text-primary"><i class="fa-solid fa-building-columns"></i>North </span>Education</h1>
+        <h1 class="logo"><span class="text-primary"><i class="fa-solid fa-building-columns"></i> North </span>Education</h1>
         <ul>
             <li><a asp-controller="Home" asp-action="Index">Start</a></li>
-            <li><a asp-controller="Vehicles" asp-action="Index">Courses</a></li>
+            <li><a asp-controller="Course" asp-action="Index">Courses</a></li>
             <li><a href="#">Service</a></li>
             <li><a href="#">About us</a></li>
         </ul>        

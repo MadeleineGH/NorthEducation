@@ -24,7 +24,7 @@ namespace Education_Platform.Controllers
                 var courses = await _courseService.ListAllCourses();
                 return View("Index", courses);
             }
-            catch (System.Exception)
+            catch (System.Exception) 
             {
 
                 throw;
