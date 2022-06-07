@@ -105,6 +105,7 @@ namespace Education_API.Data.Migrations
                     Duration = table.Column<int>(type: "INTEGER", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     Details = table.Column<string>(type: "TEXT", nullable: true),
+                    ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
@@ -253,28 +254,28 @@ namespace Education_API.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Courses",
-                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
-                values: new object[] { 1, 1, 1179, "Learn C# for total beginners", "Syntax, Variables, Arrays, Lists", 410, "C# For Beginners" });
+                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "ImageUrl", "Title" },
+                values: new object[] { 1, 1, 1179, "Learn C# for total beginners", "Syntax, Variables, Arrays, Lists", 410, "https://unsplash.com/photos/hSODeSbvzE0", "C# For Beginners" });
 
             migrationBuilder.InsertData(
                 table: "Courses",
-                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
-                values: new object[] { 2, 2, 1180, "Become a skilled JavaScript programmer", "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns", 320, "JavaScript Programming" });
+                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "ImageUrl", "Title" },
+                values: new object[] { 2, 2, 1180, "Become a skilled JavaScript programmer", "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns", 320, "https://unsplash.com/photos/hSODeSbvzE0", "JavaScript Programming" });
 
             migrationBuilder.InsertData(
                 table: "Courses",
-                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
-                values: new object[] { 3, 3, 1181, "Basics of Python", "Data Types, Dictionaries, Functions", 180, "Learn Python" });
+                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "ImageUrl", "Title" },
+                values: new object[] { 3, 3, 1181, "Basics of Python", "Data Types, Dictionaries, Functions", 180, "https://unsplash.com/photos/hSODeSbvzE0", "Learn Python" });
 
             migrationBuilder.InsertData(
                 table: "Courses",
-                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
-                values: new object[] { 4, 1, 1180, "Learn how to code with C#", "OOP, Database, REST Api", 270, "Programming with C# 2" });
+                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "ImageUrl", "Title" },
+                values: new object[] { 4, 1, 1180, "Learn how to code with C#", "OOP, Database, REST Api", 270, "https://unsplash.com/photos/hSODeSbvzE0", "Programming with C# 2" });
 
             migrationBuilder.InsertData(
                 table: "Courses",
-                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "Title" },
-                values: new object[] { 5, 2, 1180, "Learn more about JavaScript", "Hybrid Application Development", 410, "JavaScript Programming 2" });
+                columns: new[] { "Id", "CategoryId", "CourseNumber", "Description", "Details", "Duration", "ImageUrl", "Title" },
+                values: new object[] { 5, 2, 1180, "Learn more about JavaScript", "Hybrid Application Development", 410, "https://unsplash.com/photos/hSODeSbvzE0", "JavaScript Programming 2" });
 
             migrationBuilder.InsertData(
                 table: "Students",

@@ -81,7 +81,8 @@ namespace Education_API.Data
                     Duration = 410,
                     Description = "Learn C# for total beginners",
                     Details = "Syntax, Variables, Arrays, Lists",
-                    CategoryId = 1
+                    CategoryId = 1,
+                    ImageUrl = "https://unsplash.com/photos/hSODeSbvzE0"
                 },
             new Course
                 {
@@ -91,7 +92,8 @@ namespace Education_API.Data
                     Duration = 320,
                     Description = "Become a skilled JavaScript programmer",
                     Details = "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns",
-                    CategoryId = 2
+                    CategoryId = 2,
+                    ImageUrl = "https://unsplash.com/photos/hSODeSbvzE0"
                 },
             new Course
                 {
@@ -101,7 +103,8 @@ namespace Education_API.Data
                     Duration = 180,
                     Description = "Basics of Python",
                     Details = "Data Types, Dictionaries, Functions",
-                    CategoryId = 3
+                    CategoryId = 3,
+                    ImageUrl = "https://unsplash.com/photos/hSODeSbvzE0"
                 }, 
             new Course
                 {
@@ -111,7 +114,8 @@ namespace Education_API.Data
                     Duration = 270,
                     Description = "Learn how to code with C#",
                     Details = "OOP, Database, REST Api",
-                    CategoryId = 1
+                    CategoryId = 1,
+                    ImageUrl = "https://unsplash.com/photos/hSODeSbvzE0"
                 }, 
             new Course
                 {
@@ -121,7 +125,8 @@ namespace Education_API.Data
                     Duration = 410,
                     Description = "Learn more about JavaScript",
                     Details = "Hybrid Application Development",
-                    CategoryId = 2
+                    CategoryId = 2,
+                    ImageUrl = "https://unsplash.com/photos/hSODeSbvzE0"
                 }
             );
             _modelBuilder.Entity<Competence>().HasData(

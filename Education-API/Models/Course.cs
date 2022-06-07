@@ -12,6 +12,7 @@ namespace Education_API.Models
       public int Duration { get; set; }
       public string? Description { get; set; }
       public string? Details { get; set; }
+      public string? ImageUrl { get; set; }
       public int? CategoryId { get; set; }
       [ForeignKey("CategoryId")]
       public Category? Category { get; set; }

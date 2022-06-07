@@ -198,6 +198,9 @@ namespace Education_API.Data.Migrations
                     b.Property<int>("Duration")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
@@ -216,6 +219,7 @@ namespace Education_API.Data.Migrations
                             Description = "Learn C# for total beginners",
                             Details = "Syntax, Variables, Arrays, Lists",
                             Duration = 410,
+                            ImageUrl = "https://unsplash.com/photos/hSODeSbvzE0",
                             Title = "C# For Beginners"
                         },
                         new
@@ -226,6 +230,7 @@ namespace Education_API.Data.Migrations
                             Description = "Become a skilled JavaScript programmer",
                             Details = "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns",
                             Duration = 320,
+                            ImageUrl = "https://unsplash.com/photos/hSODeSbvzE0",
                             Title = "JavaScript Programming"
                         },
                         new
@@ -236,6 +241,7 @@ namespace Education_API.Data.Migrations
                             Description = "Basics of Python",
                             Details = "Data Types, Dictionaries, Functions",
                             Duration = 180,
+                            ImageUrl = "https://unsplash.com/photos/hSODeSbvzE0",
                             Title = "Learn Python"
                         },
                         new
@@ -246,6 +252,7 @@ namespace Education_API.Data.Migrations
                             Description = "Learn how to code with C#",
                             Details = "OOP, Database, REST Api",
                             Duration = 270,
+                            ImageUrl = "https://unsplash.com/photos/hSODeSbvzE0",
                             Title = "Programming with C# 2"
                         },
                         new
@@ -256,6 +263,7 @@ namespace Education_API.Data.Migrations
                             Description = "Learn more about JavaScript",
                             Details = "Hybrid Application Development",
                             Duration = 410,
+                            ImageUrl = "https://unsplash.com/photos/hSODeSbvzE0",
                             Title = "JavaScript Programming 2"
                         });
                 });
