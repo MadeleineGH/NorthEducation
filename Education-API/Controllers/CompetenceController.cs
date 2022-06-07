@@ -1,3 +1,4 @@
+using AutoMapper;
 using Education_API.Interfaces;
 using Education_API.ViewModels;
 using Education_API.ViewModels.Competence;
@@ -10,8 +11,10 @@ namespace Education_API.Controllers
   public class CompetenceController : ControllerBase
   {
     private readonly ICompetenceRepository _competenceRepo;
-    public CompetenceController(ICompetenceRepository competenceRepo)
+    private readonly IMapper _mapper;
+    public CompetenceController(ICompetenceRepository competenceRepo, IMapper mapper)
     {
+        _mapper = mapper;
         _competenceRepo = competenceRepo;
     }
     

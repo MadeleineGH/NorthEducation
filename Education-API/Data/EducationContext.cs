@@ -8,7 +8,6 @@ namespace Education_API.Data
     public DbSet<Teacher> Teachers => Set<Teacher>(); // Steg 2. Mappa minnesrepresentationen av läraren till databas.
     public DbSet<Student> Students => Set<Student>();
     public DbSet<Category> Categories => Set<Category>();
-    public DbSet<Address> Addresses => Set<Address>();
     public DbSet<Course> Courses => Set<Course>();
     public DbSet<Competence> Competences => Set<Competence>();
     public DbSet<StudentCourse> StudentCourses => Set<StudentCourse>();

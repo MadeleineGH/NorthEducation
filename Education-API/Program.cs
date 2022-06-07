@@ -22,8 +22,7 @@ builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<ICompetenceRepository, CompetenceRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-//builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
-//builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
@@ -59,7 +58,6 @@ try
   await LoadData.LoadCourses(context);
   await LoadData.LoadStudents(context);
   await LoadData.LoadTeachers(context);
-  await LoadData.LoadAddresses(context);
 }
 catch (Exception ex)
 {

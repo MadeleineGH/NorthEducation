@@ -11,9 +11,10 @@ namespace Education_API.Models
         public string? LastName { get; set; }
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
-         public int? AddressId { get; set; }
-        [ForeignKey("AddressId")]
-        public Address? Address { get; set; }
+        public string? StreetAddress { get; set; }
+        public string? PostalCode { get; set; }
+        public string? City { get; set; }
+        public string? Country { get; set; }
         public ICollection<TeacherCompetence>? TeacherCompetences { get; set; }
     }
 }

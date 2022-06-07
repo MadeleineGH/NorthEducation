@@ -5,7 +5,7 @@
     "Duration": 410,
     "Description": "Learn C# for total beginners",
     "Details": "Syntax, Variables, Arrays, Lists",
-    "CategoryId": 1,
+    "Category": ".NET",
     "ImageUrl": "https://unsplash.com/photos/hSODeSbvzE0"
   },
   {
@@ -14,7 +14,7 @@
     "Duration": 320,
     "Description": "Become a skilled JavaScript programmer",
     "Details": "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns",
-    "CategoryId": 2,
+    "Category": "JavaScript",
     "ImageUrl": "https://unsplash.com/photos/hSODeSbvzE0"
   },
   {
@@ -23,7 +23,7 @@
     "Duration": 180,
     "Description": "Basics of Python",
     "Details": "Data Types, Dictionaries, Functions",
-    "CategoryId": 3,
+    "Category": "Python",
     "ImageUrl": "https://unsplash.com/photos/hSODeSbvzE0"
   },
   {
@@ -32,7 +32,7 @@
     "Duration": 270,
     "Description": "Learn how to code with C#",
     "Details": "OOP, Database, REST Api",
-    "CategoryId": 1,
+    "Category": ".NET",
     "ImageUrl": "https://unsplash.com/photos/hSODeSbvzE0"
   },
   {
@@ -41,7 +41,7 @@
     "Duration": 410,
     "Description": "Learn more about JavaScript",
     "Details": "Hybrid Application Development",
-    "CategoryId": 2,
+    "Category": "JavaScript",
     "ImageUrl": "https://unsplash.com/photos/hSODeSbvzE0"
   }
 ]

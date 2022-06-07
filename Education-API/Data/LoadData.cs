@@ -22,7 +22,7 @@ namespace Education_API.Data
     {
       if (await context.Competences.AnyAsync()) return;
 
-      var competencesData = await File.ReadAllTextAsync("Data/make.json");
+      var competencesData = await File.ReadAllTextAsync("Data/competences.json");
       var competences = JsonSerializer.Deserialize<List<Competence>>(competencesData);
 
       await context.AddRangeAsync(competences!);
@@ -40,7 +40,7 @@ namespace Education_API.Data
 
       foreach (var course in courses)
       {
-        //var category = await context.Categories.SingleOrDefaultAsync(c => c.Title.ToLower() == course.category!.ToLower());
+        var category = await context.Categories.SingleOrDefaultAsync(c => c.Title.ToLower() == course.Category!.ToLower());
         if (course is not null)
         {
           var newCourse = new Course
@@ -62,14 +62,13 @@ namespace Education_API.Data
     {
       if (await context.Students.AnyAsync()) return;
 
-      var studentData = await File.ReadAllTextAsync("Data/courses.json");
+      var studentData = await File.ReadAllTextAsync("Data/students.json");
       var students = JsonSerializer.Deserialize<List<PostStudentViewModel>>(studentData);
 
       if (students is null) return;
 
       foreach (var student in students)
       {
-        //var category = await context.Categories.SingleOrDefaultAsync(c => c.Title.ToLower() == course.category!.ToLower());
         if (student is not null)
         {
           var newStudent = new Student
@@ -78,6 +77,10 @@ namespace Education_API.Data
             LastName = student.LastName,
             Email = student.Email,
             PhoneNumber = student.PhoneNumber,
+            StreetAddress = student.StreetAddress,
+            PostalCode = student.PostalCode,
+            City = student.City,
+            Country = student.Country
           };
 
           context.Students.Add(newStudent);
@@ -104,37 +107,14 @@ namespace Education_API.Data
             FirstName = teacher.FirstName,
             LastName = teacher.LastName,
             Email = teacher.Email,
-            PhoneNumber = teacher.PhoneNumber
+            PhoneNumber = teacher.PhoneNumber,
+            StreetAddress = teacher.StreetAddress,
+            PostalCode = teacher.PostalCode,
+            City = teacher.City,
+            Country = teacher.Country
           };
 
           context.Teachers.Add(newTeacher);
-        }
-      }
-      await context.SaveChangesAsync();
-    }
-    public static async Task LoadAddresses(EducationContext context)
-    {
-      if (await context.Addresses.AnyAsync()) return;
-
-      var addressData = await File.ReadAllTextAsync("Data/addresses.json");
-      var addresses = JsonSerializer.Deserialize<List<PostAddressViewModel>>(addressData);
-
-      if (addresses is null) return;
-
-      foreach (var address in addresses)
-      {
-        //var category = await context.Categories.SingleOrDefaultAsync(c => c.Title.ToLower() == course.category!.ToLower());
-        if (address is not null)
-        {
-          var newAddress = new Address
-          {
-            StreetAddress = address.StreetAddress,
-            PostalCode = address.PostalCode,
-            City = address.City,
-            Country = address.Country
-          };
-
-          context.Addresses.Add(newAddress);
         }
       }
       await context.SaveChangesAsync();

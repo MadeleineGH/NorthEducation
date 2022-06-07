@@ -10,22 +10,22 @@ namespace Education_API.Controllers
   [Route("api/v1/courses")]
     public class CourseController : ControllerBase
     {
-      private readonly ICourseRepository _courseRepo;
-      private readonly IMapper _mapper;
-      public CourseController(ICourseRepository courseRepo, IMapper mapper)
-      {
-        _mapper = mapper;
-        _courseRepo = courseRepo;
-      }
+    private readonly ICourseRepository _courseRepo;
+    private readonly IMapper _mapper;
+    public CourseController(ICourseRepository courseRepo, IMapper mapper)
+    {
+      _mapper = mapper;
+      _courseRepo = courseRepo;
+    }
 
-      [HttpGet("list")]
-      public async Task<ActionResult<List<CourseViewModel>>> ListCourses()
-      {
-        var courseList = await _courseRepo.ListAllCoursesAsync();
-        return Ok(courseList);
-      }  
-      [HttpGet("{id}")]
-      public async Task<ActionResult<CourseViewModel>> GetCourseById(int id)
+    [HttpGet()]
+    public async Task<ActionResult<List<CourseViewModel>>> ListCourses()
+    {
+      var courseList = await _courseRepo.ListAllCoursesAsync();
+      return Ok(courseList);
+    }  
+    [HttpGet("{id}")]
+    public async Task<ActionResult<CourseViewModel>> GetCourseById(int id)
       {
         try
         {
@@ -41,8 +41,8 @@ namespace Education_API.Controllers
           return StatusCode(500, ex.Message);
         }
       }
-      [HttpGet("bycoursenumber/{courseNumber}")]
-      public async Task<ActionResult<Course>> GetCourseByCourseNumber(int courseNumber)
+    [HttpGet("bycoursenumber/{courseNumber}")]
+    public async Task<ActionResult<Course>> GetCourseByCourseNumber(int courseNumber)
       {
         var response = await _courseRepo.GetCourseByCourseNumberAsync(courseNumber);
 
@@ -51,13 +51,13 @@ namespace Education_API.Controllers
 
             return Ok(response);
       }
-      [HttpGet("bytitle/{title}")]
-      public async Task<ActionResult<List<CourseViewModel>>> GetCourseByTitle(string title)
+    [HttpGet("bytitle/{title}")]
+    public async Task<ActionResult<List<CourseViewModel>>> GetCourseByTitle(string title)
       {
         return Ok(await _courseRepo.GetCourseByTitleAsync(title));
       } 
-      [HttpPost()]
-      public async Task<ActionResult> AddCourse(PostCourseViewModel model)
+    [HttpPost()]
+    public async Task<ActionResult> AddCourse(PostCourseViewModel model)
       {
           if(await _courseRepo.GetCourseAsync(model.CourseNumber!)is not null){
             return BadRequest($"There is already a course with course number: {model.CourseNumber}.");
@@ -71,8 +71,8 @@ namespace Education_API.Controllers
 
           return StatusCode(500, "Error occured when trying to save the course.");
       }
-      [HttpPut("{id}")]
-      public async Task<ActionResult> UpdateCourse(int id, PostCourseViewModel model)
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateCourse(int id, PostCourseViewModel model)
       {
           try
           {
@@ -90,8 +90,8 @@ namespace Education_API.Controllers
             return StatusCode(500, ex.Message);
           }
       }
-      [HttpPatch("{id}")]
-      public async Task<ActionResult> UpdateCourse(int id, PatchCourseViewModel model)
+    [HttpPatch("{id}")]
+    public async Task<ActionResult> UpdateCourse(int id, PatchCourseViewModel model)
       {
         try
         {
@@ -109,8 +109,8 @@ namespace Education_API.Controllers
           return StatusCode(500, ex.Message);
         }
       }
-      [HttpDelete("{id}")]
-      public async Task<ActionResult> DeleteCourse(int id)
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteCourse(int id)
       {
           await _courseRepo.DeleteCourseAsync(id);
 

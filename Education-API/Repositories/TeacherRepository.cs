@@ -50,7 +50,8 @@ namespace Education_API.Repositories
     }
     public async Task<List<TeacherViewModel>> ListAllTeachersAsync()
     {
-      return await _context.Teachers.ProjectTo<TeacherViewModel>(_mapper.ConfigurationProvider).ToListAsync();
+      return await _context.Teachers.ProjectTo<TeacherViewModel>
+      (_mapper.ConfigurationProvider).ToListAsync();
     }
     public async Task<bool> SaveAllAsync()
     {

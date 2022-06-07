@@ -13,9 +13,14 @@ namespace Education_API.Helpers
         CreateMap<Course, CourseViewModel>()
         .ForMember(dest => dest.CourseId, options => options.
         MapFrom(src => src.Id))
-        .ForMember(dest => dest.Category, options => options
-        .MapFrom(src => src.Category!.Title));
+        .ForMember(dest => dest.Category, options => options.
+        MapFrom(src => string.Concat(src.Category!.Title, " ", src.Title)));
 
+        CreateMap<PostCategoryViewModel, Category>();
+        CreateMap<PutCategoryViewModel, Category>();
+        CreateMap<Category, CategoryViewModel>()
+        .ForMember(dest => dest.CategoryId, options => options.
+        MapFrom(src => src.Id));
 
         CreateMap<PostCompetenceViewModel, Competence>();
         CreateMap<Competence, CompetenceViewModel>()
@@ -27,11 +32,12 @@ namespace Education_API.Helpers
         .ForMember(dest => dest.StudentId, options => options.
         MapFrom(src => src.Id));
 
-        CreateMap<PostCategoryViewModel, Category>();
-        CreateMap<PutCategoryViewModel, Category>();
-        CreateMap<Category, CategoryViewModel>()
-        .ForMember(dest => dest.CategoryId, options => options.
+        CreateMap<PostTeacherViewModel, Teacher>();
+        CreateMap<Teacher, TeacherViewModel>()
+        .ForMember(dest => dest.TeacherId, options => options.
         MapFrom(src => src.Id));
+
+   
     }
   }
 }

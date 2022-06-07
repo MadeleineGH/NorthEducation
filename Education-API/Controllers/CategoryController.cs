@@ -1,3 +1,4 @@
+using AutoMapper;
 using Education_API.Interfaces;
 using Education_API.ViewModels;
 using Education_API.ViewModels.Category;
@@ -10,8 +11,10 @@ namespace Education_API.Controllers
     public class CategoryController : ControllerBase
     {
     private readonly ICategoryRepository _categoryRepo;
-    public CategoryController(ICategoryRepository categoryRepo)
+    private readonly IMapper _mapper;
+    public CategoryController(ICategoryRepository categoryRepo, IMapper mapper)
     {
+      _mapper = mapper;
       _categoryRepo = categoryRepo;
     }
 
@@ -21,7 +24,7 @@ namespace Education_API.Controllers
       var categoryList = await _categoryRepo.ListAllCategoriesAsync();
       return Ok(categoryList);
     }
-    [HttpGet("{id}")]
+    [HttpGet("bytitle/{title}")]
     public async Task<ActionResult<List<CategoryViewModel>>> GetCategoryByTitle(string title)
     {
       return Ok(await _categoryRepo.GetCategoryAsync(title));

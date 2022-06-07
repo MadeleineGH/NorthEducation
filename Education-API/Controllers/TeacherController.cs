@@ -20,8 +20,8 @@ namespace Education_API.Controllers
       [HttpGet()]
       public async Task<ActionResult<List<TeacherViewModel>>> ListTeachers()
       {
-        var TeacherList = await _teacherRepo.ListAllTeachersAsync();
-        return Ok(TeacherList);
+        var teacherList = await _teacherRepo.ListAllTeachersAsync();
+        return Ok(teacherList);
       }  
       [HttpGet("{id}")]
       public async Task<ActionResult<TeacherViewModel>> GetTeacherById(int id)

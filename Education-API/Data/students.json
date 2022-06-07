@@ -4,20 +4,30 @@
     "LastName": "Forsling",
     "Email": "connyforsling@gmail.com",
     "PhoneNumber": "0735823573",
-    "AddressId": 1
+    "StreetAddress": "Havsörnsgränd 3",
+    "PostalCode": "12349",
+    "City": "Farsta",
+    "Country": "Sweden"
+
   },
   {
     "FirstName": "Deseré",
     "LastName": "Gullberg Husberg",
     "Email": "deseregh@gmail.com",
     "PhoneNumber": "0704024851",
-    "AddressId": 2
+    "StreetAddress": "Diligensvägen 46",
+    "PostalCode": "13148",
+    "City": "Nacka",
+    "Country": "Sweden"
   },
   {
     "FirstName": "Rolf",
     "LastName": "Husberg",
     "Email": "rolfhusberg@gmail.com",
     "PhoneNumber": "0709117429",
-    "AddressId": 3
+    "StreetAddress": "Kölnavägen 5",
+    "PostalCode": "13243",
+    "City": "Nacka",
+    "Country": "Sweden"
   }
 ]

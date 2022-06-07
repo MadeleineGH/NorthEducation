@@ -20,8 +20,22 @@ namespace Education_API.Repositories
 
     public async Task AddCourseAsync(PostCourseViewModel model)
     {
+      var category = await _context.Categories
+      .Include(c => c.Courses).Where(c => c.Title!.ToLower() == model.Category!.ToLower()).SingleOrDefaultAsync();
+
+      if (category is null)
+      {
+        // Jag kastar ett fel uppåt i stacken(till min VehicleController metod AddVehicle)
+        // Mottagarens ansvar att hantera detta. "Unhandled Exception"...
+        throw new Exception($"Tyvärr vi har inte tillverkaren {model.Category} i systemet.");
+      }
+
       var courseToAdd = _mapper.Map<Course>(model);
+      courseToAdd.Category = category;
+
       await _context.Courses.AddAsync(courseToAdd);
+      // var courseToAdd = _mapper.Map<Course>(model);
+      // await _context.Courses.AddAsync(courseToAdd);
     }
     public async Task DeleteCourseAsync(int id)
     {
@@ -53,7 +67,8 @@ namespace Education_API.Repositories
     }
     public async Task<List<CourseViewModel>> ListAllCoursesAsync()
     {
-        return await _context.Courses.Include(c => c.Category).ProjectTo<CourseViewModel>(_mapper.ConfigurationProvider).ToListAsync();
+      return await _context.Courses.Include(c => c.Category).ProjectTo<CourseViewModel>
+      (_mapper.ConfigurationProvider).ToListAsync();
     }
     public async Task<bool> SaveAllAsync()
     {
