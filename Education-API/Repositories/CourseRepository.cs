@@ -21,13 +21,11 @@ namespace Education_API.Repositories
     public async Task AddCourseAsync(PostCourseViewModel model)
     {
       var category = await _context.Categories
-      .Include(c => c.Courses).Where(c => c.Title!.ToLower() == model.Category!.ToLower()).SingleOrDefaultAsync();
+      .Include(c => c.Id).Where(c => c.Title!.ToLower() == model.Category!.ToLower()).SingleOrDefaultAsync();
 
       if (category is null)
       {
-        // Jag kastar ett fel uppåt i stacken(till min VehicleController metod AddVehicle)
-        // Mottagarens ansvar att hantera detta. "Unhandled Exception"...
-        throw new Exception($"Tyvärr vi har inte tillverkaren {model.Category} i systemet.");
+        throw new Exception($"Category: {model.Category} doesn't exist.");
       }
 
       var courseToAdd = _mapper.Map<Course>(model);

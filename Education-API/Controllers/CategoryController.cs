@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace Education_API.Controllers
 {
   [ApiController]
-    [Route("api/v1/categories")]
-    public class CategoryController : ControllerBase
-    {
+  [Route("api/v1/categories")]
+  public class CategoryController : ControllerBase
+  {
     private readonly ICategoryRepository _categoryRepo;
     private readonly IMapper _mapper;
     public CategoryController(ICategoryRepository categoryRepo, IMapper mapper)
