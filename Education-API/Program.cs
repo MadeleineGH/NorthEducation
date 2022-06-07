@@ -48,4 +48,23 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+  var context = services.GetRequiredService<EducationContext>();
+  await context.Database.MigrateAsync();
+  await LoadData.LoadCategories(context);
+  await LoadData.LoadCompetences(context);
+  await LoadData.LoadCourses(context);
+  await LoadData.LoadStudents(context);
+  await LoadData.LoadTeachers(context);
+  await LoadData.LoadAddresses(context);
+}
+catch (Exception ex)
+{
+  var logger = services.GetRequiredService<ILogger<Program>>();
+  logger.LogError(ex, "An error occured when the migration executed");
+}
+
 app.Run();

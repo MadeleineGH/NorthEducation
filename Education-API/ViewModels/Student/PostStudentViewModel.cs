@@ -14,6 +14,6 @@ namespace Education_API.ViewModels
         public string? Email { get; set; }
         [Required]
         public string? PhoneNumber { get; set; }
-        public Address? Address { get; set; }
+        public string? Address { get; set; }
     }
 } 

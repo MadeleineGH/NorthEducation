@@ -1,0 +1,23 @@
+[
+  {
+    "FirstName": "Conny",
+    "LastName": "Forsling",
+    "Email": "connyforsling@gmail.com",
+    "PhoneNumber": "0735823573",
+    "AddressId": 1
+  },
+  {
+    "FirstName": "Deseré",
+    "LastName": "Gullberg Husberg",
+    "Email": "deseregh@gmail.com",
+    "PhoneNumber": "0704024851",
+    "AddressId": 2
+  },
+  {
+    "FirstName": "Rolf",
+    "LastName": "Husberg",
+    "Email": "rolfhusberg@gmail.com",
+    "PhoneNumber": "0709117429",
+    "AddressId": 3
+  }
+]

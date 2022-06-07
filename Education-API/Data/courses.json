@@ -1,0 +1,47 @@
+[
+  {
+    "CourseNumber": 1179,
+    "Title": "C# For Beginners",
+    "Duration": 410,
+    "Description": "Learn C# for total beginners",
+    "Details": "Syntax, Variables, Arrays, Lists",
+    "CategoryId": 1,
+    "ImageUrl": "https://unsplash.com/photos/hSODeSbvzE0"
+  },
+  {
+    "CourseNumber": 1180,
+    "Title": "JavaScript Programming",
+    "Duration": 320,
+    "Description": "Become a skilled JavaScript programmer",
+    "Details": "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns",
+    "CategoryId": 2,
+    "ImageUrl": "https://unsplash.com/photos/hSODeSbvzE0"
+  },
+  {
+    "CourseNumber": 1181,
+    "Title": "Learn Python",
+    "Duration": 180,
+    "Description": "Basics of Python",
+    "Details": "Data Types, Dictionaries, Functions",
+    "CategoryId": 3,
+    "ImageUrl": "https://unsplash.com/photos/hSODeSbvzE0"
+  },
+  {
+    "CourseNumber": 1182,
+    "Title": "Programming with C# 2",
+    "Duration": 270,
+    "Description": "Learn how to code with C#",
+    "Details": "OOP, Database, REST Api",
+    "CategoryId": 1,
+    "ImageUrl": "https://unsplash.com/photos/hSODeSbvzE0"
+  },
+  {
+    "CourseNumber": 1183,
+    "Title": "JavaScript Programming 2",
+    "Duration": 410,
+    "Description": "Learn more about JavaScript",
+    "Details": "Hybrid Application Development",
+    "CategoryId": 2,
+    "ImageUrl": "https://unsplash.com/photos/hSODeSbvzE0"
+  }
+]
