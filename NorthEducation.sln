@@ -1,9 +1,12 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Education-API", "Education-API\Education-API.csproj", "{7463242C-4A91-406C-BE2C-9BCC769713F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{790D3263-A98E-4CAC-9834-A3E57DE83779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Education-Platform", "Clients\Education-Platform\Education-Platform.csproj", "{05EB3DF0-CECB-4D70-ADBD-D96D6787FE91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +21,12 @@ Global
 		{7463242C-4A91-406C-BE2C-9BCC769713F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7463242C-4A91-406C-BE2C-9BCC769713F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7463242C-4A91-406C-BE2C-9BCC769713F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05EB3DF0-CECB-4D70-ADBD-D96D6787FE91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05EB3DF0-CECB-4D70-ADBD-D96D6787FE91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05EB3DF0-CECB-4D70-ADBD-D96D6787FE91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05EB3DF0-CECB-4D70-ADBD-D96D6787FE91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{05EB3DF0-CECB-4D70-ADBD-D96D6787FE91} = {790D3263-A98E-4CAC-9834-A3E57DE83779}
 	EndGlobalSection
 EndGlobal
