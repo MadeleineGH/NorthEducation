@@ -16318,6 +16318,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Platform\\Views\\Course\\Confirmation.cshtml",
+      "TargetPath": "Views\\Course\\Confirmation.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Platform\\Views\\Course\\Create.cshtml",
       "TargetPath": "Views\\Course\\Create.cshtml",
       "FileKind": "mvc"

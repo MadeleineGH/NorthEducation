@@ -1,24 +1,38 @@
-@model List<Education_Platform.ViewModels.CourseViewModel>
+@model IEnumerable<Education_Platform.ViewModels.CourseViewModel>
 
-@{
-    ViewData["Title"] = "Our courses";
+@section styles{
+    <link rel="stylesheet" href="~/css/gallery-page.css">
 }
 
-<h1>@ViewData["Title"]</h1>
+@{
+    ViewData["Title"] = "Our Courses";
+}
+
+<h1 class="page-title">@ViewData["Title"]</h1>
 
 <article>
-    <section class="gallery-wrapper">
+    <section class="gallery-wrapper">        
         @foreach (var course in Model!)
         {
-        <div class="gallery-card">
-            <h4>@course.Title</h4>
-            @* <a asp-controller="Course" asp-action="Details">@course.Title</a> *@
-            <a href="#">
-                <img src="@course.ImageUrl" alt="@course.Title" width="400">
-            </a>
-            <p>Course: @course.CourseNumber</p>
-        </div>
+            <div class="gallery-card">
+                <h4>@course.Title</h4>                
+                <a href="#">
+                    <img src="@course.ImageUrl" alt="@course.Title" courseId="@course.CourseId" width="200">
+                </a>
+                <p>@course.Description</p>
+                <p>@course.Duration Hours</p>
+                <p>Course Id: @course.CourseId</p>
+            </div>
         }
     </section>
 </article>
 
+<div class="modal hidden">
+    <button class="close-modal">&times;</button>
+    <div class="modal-container"></div>
+</div>
+<div class="overlay hidden"></div>
+
+@section scripts{
+    <script src="~/js/gallery-page.js"></script>
+}

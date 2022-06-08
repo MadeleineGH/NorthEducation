@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gAXP5jUV7N2Zbsdpb24cBPJIgOf+TelcvWNvtxBD78U=",
+  "Hash": "2XHK5V1mHVy9S0beONw6p1d0dqTunKBgGFrgce0epwA=",
   "Source": "Education-Platform",
   "BasePath": "_content/Education-Platform",
   "Mode": "Default",
@@ -51,6 +51,40 @@
       "OriginalItemSpec": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Education-Platform.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\css\\course-detail-page.css",
+      "SourceId": "Education-Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\",
+      "BasePath": "_content/Education-Platform",
+      "RelativePath": "css/course-detail-page.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\course-detail-page.css"
+    },
+    {
+      "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\css\\gallery-page.css",
+      "SourceId": "Education-Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\",
+      "BasePath": "_content/Education-Platform",
+      "RelativePath": "css/gallery-page.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\gallery-page.css"
+    },
+    {
       "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\css\\styles.css",
       "SourceId": "Education-Platform",
       "SourceType": "Discovered",
@@ -68,6 +102,23 @@
       "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
+      "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\css\\utilities.css",
+      "SourceId": "Education-Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\",
+      "BasePath": "_content/Education-Platform",
+      "RelativePath": "css/utilities.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\utilities.css"
+    },
+    {
       "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\favicon.ico",
       "SourceId": "Education-Platform",
       "SourceType": "Discovered",
@@ -83,6 +134,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\js\\app.js",
+      "SourceId": "Education-Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\",
+      "BasePath": "_content/Education-Platform",
+      "RelativePath": "js/app.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\app.js"
+    },
+    {
+      "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\js\\gallery-page.js",
+      "SourceId": "Education-Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-platform\\wwwroot\\",
+      "BasePath": "_content/Education-Platform",
+      "RelativePath": "js/gallery-page.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\gallery-page.js"
     }
   ]
 }

@@ -27,5 +27,9 @@ namespace Education_Platform.ViewModels
     [Required(ErrorMessage = "Category mandatory")]
     [Display(Name = "Category")]
     public string? Category { get; set; }
+
+    [Required(ErrorMessage = "Image is mandatory")]
+    [Display(Name = "Image")]
+    public string? ImageUrl { get; set; }
   }
 }

@@ -36,5 +36,39 @@ namespace Education_Platform.Models
 
         return courses ?? new List<CourseViewModel>();
     }
+    public async Task<CourseViewModel> FindCourse(int id)
+    {
+      var baseUrl = _config.GetValue<string>("baseUrl");
+      var url = $"{baseUrl}/courses/{id}";
+
+      using var http = new HttpClient();
+      var response = await http.GetAsync(url);
+
+      if (!response.IsSuccessStatusCode)
+      {
+        Console.WriteLine("Couldn't find the course.");
+      }
+
+      var course = await response.Content.ReadFromJsonAsync<CourseViewModel>();
+
+      return course ?? new CourseViewModel();
+    }
+    public async Task<bool> CreateCourse(CreateCourseViewModel course)
+    {
+      using var http = new HttpClient();
+      var baseUrl = _config.GetValue<string>("baseUrl");
+      var url = $"{baseUrl}/courses";
+
+      var response = await http.PostAsJsonAsync(url, course);
+
+      if (!response.IsSuccessStatusCode)
+      {
+        string reason = await response.Content.ReadAsStringAsync();
+        Console.WriteLine(reason);
+        return false;
+      }
+
+      return true;
+    }
   }
 }
