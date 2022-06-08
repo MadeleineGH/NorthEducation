@@ -12,7 +12,7 @@ namespace Education_Platform.Models
     public CourseServiceModel(IConfiguration config)
     {
         _config = config;
-        _baseUrl = $"{_config.GetValue<string>("baseUrl")}/courses";
+        _baseUrl = $"{_config.GetValue<string>("baseUrl")}";
 
         _options = new JsonSerializerOptions
         {
@@ -22,7 +22,7 @@ namespace Education_Platform.Models
 
     public async Task<List<CourseViewModel>> ListAllCourses()
     {
-        var url = $"{_baseUrl}/list";
+        var url = $"{_baseUrl}/courses";
 
         using var http = new HttpClient();
         var response = await http.GetAsync(url);

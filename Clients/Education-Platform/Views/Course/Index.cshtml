@@ -1,4 +1,4 @@
-@model IEnumerable<Education_Platform.ViewModels.CourseViewModel>
+@model List<Education_Platform.ViewModels.CourseViewModel>
 
 @{
     ViewData["Title"] = "Our courses";
@@ -6,14 +6,19 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<section>
-    @foreach (var course in Model!)
-    {
-        <div>
+<article>
+    <section class="gallery-wrapper">
+        @foreach (var course in Model!)
+        {
+        <div class="gallery-card">
             <h4>@course.Title</h4>
             @* <a asp-controller="Course" asp-action="Details">@course.Title</a> *@
-            <img src="@course.ImageUrl" alt="@course.Title">
-            <p>@course.CourseNumber</p>
+            <a href="#">
+                <img src="@course.ImageUrl" alt="@course.Title" width="400">
+            </a>
+            <p>Course: @course.CourseNumber</p>
         </div>
-    }
-</section>
+        }
+    </section>
+</article>
+
