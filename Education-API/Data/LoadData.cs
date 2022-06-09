@@ -40,7 +40,7 @@ namespace Education_API.Data
 
       foreach (var course in courses)
       {
-        var category = await context.Categories.SingleOrDefaultAsync(c => c.Title.ToLower() == course.Category!.ToLower());
+        var category = await context.Categories.SingleOrDefaultAsync(c => c.Title.ToLower() == course.CategoryName!.ToLower());
         if (course is not null)
         {
           var newCourse = new Course

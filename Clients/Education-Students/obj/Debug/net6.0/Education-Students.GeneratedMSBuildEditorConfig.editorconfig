@@ -6,55 +6,55 @@ build_property.ProjectTypeGuids =
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
-build_property.RootNamespace = Education_Admins
-build_property.RootNamespace = Education_Admins
-build_property.ProjectDir = c:\Users\Madeleine\source\repos\NorthEducation\Clients\Education-Admins\
+build_property.RootNamespace = Education_Students
+build_property.RootNamespace = Education_Students
+build_property.ProjectDir = c:\Users\Madeleine\source\repos\NorthEducation\Clients\Education-Students\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\Madeleine\source\repos\NorthEducation\Clients\Education-Admins
+build_property.MSBuildProjectDirectory = c:\Users\Madeleine\source\repos\NorthEducation\Clients\Education-Students
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/Course/Confirmation.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/Course/Confirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/Course/Create.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/Course/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/Course/Details.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/Course/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/Course/Index.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/Course/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/Home/Index.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/Home/Privacy.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/Shared/Error.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/Shared/_ValidationScriptsPartial.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/_ViewImports.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/_ViewStart.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Admins/Views/Shared/_Layout.cshtml]
+[c:/Users/Madeleine/source/repos/NorthEducation/Clients/Education-Students/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-oqza44rtq6
+build_metadata.AdditionalFiles.CssScope = b-86v8prb2lw

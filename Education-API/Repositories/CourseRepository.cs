@@ -21,20 +21,20 @@ namespace Education_API.Repositories
     public async Task AddCourseAsync(PostCourseViewModel model)
     {
       // FÅR INTE IN CATEGORY TITLE
-      var category = await _context.Categories.Where(c => c.Title!.ToLower() == model.Category!.ToLower()).SingleOrDefaultAsync();
-      var categoryTitle = category!.Title;
+      var category = await _context.Categories
+      .Include(c => c.Courses)
+      .Where(c => c.Title!.ToLower() == model.CategoryName!.ToLower())
+      .SingleOrDefaultAsync();
 
-      if (category.Title is null)
+      if (category is null)
       {
-        throw new Exception($"Category: {model.Category} doesn't exist.");
+        throw new Exception($"Category: {model.CategoryName} doesn't exist.");
       }
 
       var courseToAdd = _mapper.Map<Course>(model);
-      courseToAdd.Category!.Title = categoryTitle;
+      courseToAdd.Category = category;
 
       await _context.Courses.AddAsync(courseToAdd);
-      // var courseToAdd = _mapper.Map<Course>(model);
-      // await _context.Courses.AddAsync(courseToAdd);
     }
     public async Task DeleteCourseAsync(int id)
     {

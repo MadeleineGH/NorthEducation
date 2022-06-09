@@ -9,46 +9,33 @@ namespace Education_API.Helpers
   {
     public AutoMapperProfiles()
     {
-        // CreateMap<PostCourseViewModel, Course>()
-        // .ForMember(dest => dest.Category, options => options.
-        // MapFrom(src => src.Category));
-        // CreateMap<Course, CourseViewModel>()
-        // .ForMember(dest => dest.CourseId, options => options.
-        // MapFrom(src => src.Id));
-
-        // CreateMap<PostCategoryViewModel, Category>();
-        // CreateMap<PutCategoryViewModel, Category>();
-        // CreateMap<Category, CategoryViewModel>()
-        // .ForMember(dest => dest.CategoryId, options => options.
-        // MapFrom(src => src.Id));
-
         CreateMap<PostCourseViewModel, Course>();
         CreateMap<Course, CourseViewModel>()
-        .ForMember(dest => dest.CourseId, options => options
-        .MapFrom(src => src.Id))
-        .ForMember(dest => dest.Category, options => options
-        .MapFrom(src => src.Category.Title));
+          .ForMember(dest => dest.CourseId, options => options
+          .MapFrom(src => src.Id))
+          .ForMember(dest => dest.CategoryName, options => options
+          .MapFrom(src => src.Category.Title));
 
         CreateMap<PostCategoryViewModel, Category>();
         CreateMap<PutCategoryViewModel, Category>();
         CreateMap<Category, CategoryViewModel>()
-        .ForMember(dest => dest.CategoryId, options => options
-        .MapFrom(src => src.Id));
+          .ForMember(dest => dest.CategoryId, options => options
+          .MapFrom(src => src.Id));
 
         CreateMap<PostCompetenceViewModel, Competence>();
         CreateMap<Competence, CompetenceViewModel>()
-        .ForMember(dest => dest.CompetenceId, options => options.
-        MapFrom(src => src.Id));
+          .ForMember(dest => dest.CompetenceId, options => options.
+          MapFrom(src => src.Id));
 
         CreateMap<PostStudentViewModel, Student>();
         CreateMap<Student, StudentViewModel>()
-        .ForMember(dest => dest.StudentId, options => options.
-        MapFrom(src => src.Id));
+          .ForMember(dest => dest.StudentId, options => options.
+          MapFrom(src => src.Id));
 
         CreateMap<PostTeacherViewModel, Teacher>();
         CreateMap<Teacher, TeacherViewModel>()
-        .ForMember(dest => dest.TeacherId, options => options.
-        MapFrom(src => src.Id));
+          .ForMember(dest => dest.TeacherId, options => options.
+          MapFrom(src => src.Id));
 
    
     }

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Education_API.Data.Migrations
 {
     [DbContext(typeof(EducationContext))]
-    [Migration("20220608081234_Init")]
+    [Migration("20220609090502_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,7 @@ namespace Education_API.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("CategoryId")
+                        .IsRequired()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CourseNumber")
@@ -186,7 +187,8 @@ namespace Education_API.Data.Migrations
                     b.HasOne("Education_API.Models.Category", "Category")
                         .WithMany("Courses")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
 
                     b.Navigation("Category");
                 });
