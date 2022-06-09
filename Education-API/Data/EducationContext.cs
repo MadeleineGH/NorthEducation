@@ -1,9 +1,10 @@
-using Education_API.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Education_API.Models;
 
 namespace Education_API.Data
 {
-  public class EducationContext : DbContext // Steg 1. ärv från EntityFrameworkCore
+  public class EducationContext : IdentityDbContext // Steg 1. ärv från EntityFrameworkCore
   {
     public DbSet<Teacher> Teachers => Set<Teacher>(); // Steg 2. Mappa minnesrepresentationen av läraren till databas.
     public DbSet<Student> Students => Set<Student>();

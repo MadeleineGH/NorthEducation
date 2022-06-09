@@ -1,8 +1,12 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Education_API.Data;
 using Education_API.Helpers;
 using Education_API.Interfaces;
 using Education_API.Repositories;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +16,37 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<EducationContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite"))
 );
+
+// Sätt upp Identity hanteringen.
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(
+  options =>
+    {
+      options.Password.RequireLowercase = true;
+      options.Password.RequireUppercase = true;
+      options.Password.RequiredLength = 6;
+      options.Password.RequireNonAlphanumeric = false;
+      options.User.RequireUniqueEmail = true;
+    }
+).AddEntityFrameworkStores<EducationContext>();
+
+builder.Services.AddAuthentication(options =>
+{
+  options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+  options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+  options.TokenValidationParameters = new TokenValidationParameters
+  {
+    ValidateIssuerSigningKey = true,
+    IssuerSigningKey = new SymmetricSecurityKey(
+          Encoding.ASCII.GetBytes(builder.Configuration.GetValue<string>("apiKey"))
+      ),
+    ValidateLifetime = true,
+    ValidateAudience = false,
+    ValidateIssuer = false,
+    ClockSkew = TimeSpan.Zero
+  };
+});
 
 // builder.Services.AddDbContext<EducationContext>(options =>
 //     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"))
@@ -43,6 +78,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

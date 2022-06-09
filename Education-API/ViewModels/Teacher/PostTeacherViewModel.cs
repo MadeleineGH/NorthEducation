@@ -22,5 +22,6 @@ namespace Education_API.ViewModels
         public string? City { get; set; }
         [Required]
         public string? Country { get; set; }
+        public List<string>? Competences { get; set; }
     }
 }
