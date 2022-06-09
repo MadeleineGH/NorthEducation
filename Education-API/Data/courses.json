@@ -5,7 +5,7 @@
     "Duration": 410,
     "Description": "Learn C# for total beginners",
     "Details": "Syntax, Variables, Arrays, Lists",
-    "Category": ".NET",
+    "CategoryName": ".NET",
     "ImageUrl": "https://img.freepik.com/free-photo/coding-man_1098-18084.jpg?t=st=1654675766~exp=1654676366~hmac=af74649d67d267fcdfb1efb1e32506460b338f11f063a864349b5b13eab721c9&w=1380"
   },
   {
@@ -14,7 +14,7 @@
     "Duration": 320,
     "Description": "Become a skilled JavaScript programmer",
     "Details": "Asynchronous Programming, Writing Cross-Browser Code, JavaScript Instantiation Patterns",
-    "Category": "JavaScript",
+    "CategoryName": "JavaScript",
     "ImageUrl": "https://img.freepik.com/free-photo/working-code_1098-19858.jpg?t=st=1654675766~exp=1654676366~hmac=e6b3365974be311c2135524a784ab72a815fc718f042d4cbbacb0e33bc584438&w=1380"
   },
   {
@@ -23,7 +23,7 @@
     "Duration": 180,
     "Description": "Basics of Python",
     "Details": "Data Types, Dictionaries, Functions",
-    "Category": "Python",
+    "CategoryName": "Python",
     "ImageUrl": "https://img.freepik.com/free-photo/beauty-with-friend-man-woman-communicate-students-study-computer-science_1157-42306.jpg?t=st=1654675766~exp=1654676366~hmac=08414ea4ea4c58cca4612790990af18223d90c88be2e1333095367f88f6750c9&w=1380"
   },
   {
@@ -32,7 +32,7 @@
     "Duration": 270,
     "Description": "Learn how to code with C#",
     "Details": "OOP, Database, REST Api",
-    "Category": ".NET",
+    "CategoryName": ".NET",
     "ImageUrl": "https://img.freepik.com/free-photo/closeup-developer-hands-typing-code-keyboard-while-looking-computer-screens-with-programming-interface-software-programmer-sitting-desk-with-clipboard-writing-algorithm_482257-33551.jpg?t=st=1654675766~exp=1654676366~hmac=6e7c72a8eae5dee133a605ab1929ecec99b3a74a7526d0e65e1fdad35b1d3728&w=1380"
   },
   {
@@ -41,7 +41,7 @@
     "Duration": 410,
     "Description": "Learn more about JavaScript",
     "Details": "Hybrid Application Development",
-    "Category": "JavaScript",
+    "CategoryName": "JavaScript",
     "ImageUrl": "https://img.freepik.com/free-photo/workers-it-company-working-computer_1303-19428.jpg?t=st=1654675766~exp=1654676366~hmac=280720ecc764b6710b86a0e37fdae7e75b29c0304d588e0f7a6f9ca48a748f8f&w=1380"
   }
 ]

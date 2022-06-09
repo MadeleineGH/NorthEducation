@@ -41,13 +41,14 @@ namespace Education_API.Data
       foreach (var course in courses)
       {
         var category = await context.Categories.SingleOrDefaultAsync(c => c.Title.ToLower() == course.CategoryName!.ToLower());
-        if (course is not null)
+        if (category is not null)
         {
           var newCourse = new Course
           {
             CourseNumber = course.CourseNumber,
             Title = course.Title,
             Duration = course.Duration,
+            Category = category,
             Description = course.Description,
             Details = course.Details,
             ImageUrl = course.ImageUrl
@@ -99,7 +100,6 @@ namespace Education_API.Data
 
       foreach (var teacher in teachers)
       {
-        //var category = await context.Categories.SingleOrDefaultAsync(c => c.Title.ToLower() == course.category!.ToLower());
         if (teacher is not null)
         {
           var newTeacher = new Teacher

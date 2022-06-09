@@ -59,7 +59,7 @@ namespace Education_API.Controllers
     [HttpPost()]
     public async Task<ActionResult> AddCourse(PostCourseViewModel model)
       {
-          if(await _courseRepo.GetCourseAsync(model.CourseNumber!)is not null){
+          if(await _courseRepo.GetCourseByCourseNumberAsync(model.CourseNumber!)is not null){
             return BadRequest($"There is already a course with course number: {model.CourseNumber}.");
           }
 

@@ -19,9 +19,9 @@ builder.Services.AddDbContext<EducationContext>(options =>
 
 // Dependency Injection för våra egna Interface och klasser
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICompetenceRepository, CompetenceRepository>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
 
 // Add AutoMapper
