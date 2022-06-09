@@ -20,10 +20,10 @@ namespace Education_API.Controllers
     
     [HttpGet()]
     public async Task<ActionResult<List<CompetenceViewModel>>> ListAllCompetences()
-      {
-        var courseList = await _competenceRepo.ListAllCompetencesAsync();
-        return Ok(courseList);
-      }  
+    {
+      var courseList = await _competenceRepo.ListAllCompetencesAsync();
+      return Ok(courseList);
+    }  
     [HttpGet("bytitle/{title}")]
     public async Task<ActionResult<List<CompetenceViewModel>>> GetCompetenceByTitle(string title)
     {

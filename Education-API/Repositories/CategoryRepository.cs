@@ -74,5 +74,55 @@ namespace Education_API.Repositories
         .ProjectTo<CategoryViewModel>(_mapper.ConfigurationProvider)
           .SingleOrDefaultAsync();
     }
+
+    public async Task<List<CategoryWithCoursesViewModel>> ListCategoriesCourses()
+    {
+        return await _context.Categories.Include(c => c.Courses)
+
+        .Select(c => new CategoryWithCoursesViewModel
+        {
+          CategoryId = c.Id,
+          Title = c.Title,
+          Courses = c.Courses
+
+            .Select(c => new CourseViewModel
+            {
+              CourseId = c.Id,
+              CourseNumber = c.CourseNumber,
+              Title = c.Title,
+              Duration = c.Duration,
+              Description = c.Description,
+              Details = c.Details,
+              Category = c.Category.Title,
+              ImageUrl = c.ImageUrl
+            }).ToList()
+        })
+        .ToListAsync();
+    }
+
+    public async Task<CategoryWithCoursesViewModel?> ListCategoriesCourses(int id)
+    {
+        return await _context.Categories.Where(c => c.Id == id).Include(c => c.Courses)
+
+        .Select(c => new CategoryWithCoursesViewModel
+        {
+          CategoryId = c.Id,
+          Title = c.Title,
+          Courses = c.Courses
+
+            .Select(c => new CourseViewModel
+            {
+              CourseId = c.Id,
+              CourseNumber = c.CourseNumber,
+              Title = c.Title,
+              Duration = c.Duration,
+              Description = c.Description,
+              Details = c.Details,
+              Category = c.Category.Title,
+              ImageUrl = c.ImageUrl
+            }).ToList()
+        })
+        .SingleOrDefaultAsync();
+    }
   }
 }

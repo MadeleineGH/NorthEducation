@@ -20,16 +20,17 @@ namespace Education_API.Repositories
 
     public async Task AddCourseAsync(PostCourseViewModel model)
     {
-      var category = await _context.Categories
-      .Include(c => c.Id).Where(c => c.Title!.ToLower() == model.Category!.ToLower()).SingleOrDefaultAsync();
+      // FÅR INTE IN CATEGORY TITLE
+      var category = await _context.Categories.Where(c => c.Title!.ToLower() == model.Category!.ToLower()).SingleOrDefaultAsync();
+      var categoryTitle = category!.Title;
 
-      if (category is null)
+      if (category.Title is null)
       {
         throw new Exception($"Category: {model.Category} doesn't exist.");
       }
 
       var courseToAdd = _mapper.Map<Course>(model);
-      courseToAdd.Category = category;
+      courseToAdd.Category!.Title = categoryTitle;
 
       await _context.Courses.AddAsync(courseToAdd);
       // var courseToAdd = _mapper.Map<Course>(model);
@@ -65,7 +66,7 @@ namespace Education_API.Repositories
     }
     public async Task<List<CourseViewModel>> ListAllCoursesAsync()
     {
-      return await _context.Courses.Include(c => c.Category).ProjectTo<CourseViewModel>
+      return await _context.Courses.ProjectTo<CourseViewModel>
       (_mapper.ConfigurationProvider).ToListAsync();
     }
     public async Task<bool> SaveAllAsync()
