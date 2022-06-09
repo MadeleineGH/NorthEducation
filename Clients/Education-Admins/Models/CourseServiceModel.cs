@@ -55,6 +55,7 @@ namespace Education_Admins.Models
     }
     public async Task<bool> CreateCourse(CreateCourseViewModel course)
     {
+      // HÄR BLIR DET FALSE NÄR JAG LÄGGER TILL NY KURS
       using var http = new HttpClient();
       var baseUrl = _config.GetValue<string>("baseUrl");
       var url = $"{baseUrl}/courses";

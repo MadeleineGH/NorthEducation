@@ -33,6 +33,7 @@ namespace Education_Admins.Controllers
     [HttpGet("Create")]
     public IActionResult Create()
     {
+      // Skicka in en tom vy till formuläret
       var course = new CreateCourseViewModel();
       return View("Create", course);
     }
@@ -41,7 +42,6 @@ namespace Education_Admins.Controllers
     [HttpPost("Create")]
     public async Task<IActionResult> Create(CreateCourseViewModel course)
     {
-      // Här kommer vi att kontakta vårt API och spara ner bilen i databasen.
       if (!ModelState.IsValid)
       {
         return View("Create", course);
@@ -50,7 +50,7 @@ namespace Education_Admins.Controllers
       if (await _courseService.CreateCourse(course))
       {
         return View("Confirmation");
-      }
+     }
 
       return View("Create", course);
     }
