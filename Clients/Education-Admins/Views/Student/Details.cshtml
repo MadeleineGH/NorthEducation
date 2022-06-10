@@ -1,0 +1,19 @@
+@model Education_Admins.ViewModels.CourseViewModel
+
+@section styles{
+  <link rel="stylesheet" href="~/css/course-detail-page.css">
+}
+
+<article class="course-detail">
+  <h1 class="page-title">@Model!.Title</h1>
+  <img src="@Model.ImageUrl" alt="@Model.Title">
+  <section class="course-description">
+    <div>Course number: @Model.CourseNumber</div>
+    <div>Duration: @Model.Duration</div>
+    <h2>Details: @Model.Details</h2>
+    <hr>
+    <h4>Description</h4>
+    <p>@Model.Description</p>
+    <a class="go-back" asp-action="Index"><i class="fa-solid fa-left-long"></i>Back to students</a>
+  </section>
+</article>

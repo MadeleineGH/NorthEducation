@@ -3,16 +3,16 @@ using Education_Admins.ViewModels;
 
 namespace Education_Admins.Models
 {
-  public class CourseServiceModel
+  public class StudentServiceModel
   {
     private readonly string _baseUrl;
     private readonly JsonSerializerOptions _options;
     private readonly IConfiguration _config;
 
-    public CourseServiceModel(IConfiguration config)
+    public StudentServiceModel(IConfiguration config)
     {
       _config = config;
-      _baseUrl = $"{_config.GetValue<string>("baseUrl")}/course";
+      _baseUrl = $"{_config.GetValue<string>("baseUrl")}/student";
 
       _options = new JsonSerializerOptions
       {
@@ -20,7 +20,7 @@ namespace Education_Admins.Models
       };
     }
 
-    public async Task<List<CourseViewModel>> ListAllCourses()
+    public async Task<List<StudentViewModel>> ListAllStudents()
     {
         var url = $"{_baseUrl}/list";
 
@@ -32,34 +32,34 @@ namespace Education_Admins.Models
             throw new Exception("An error occured with the connection.");
         }
 
-        var courses = await response.Content.ReadFromJsonAsync<List<CourseViewModel>>(); 
+        var students = await response.Content.ReadFromJsonAsync<List<StudentViewModel>>(); 
 
-        return courses ?? new List<CourseViewModel>();
+        return students ?? new List<StudentViewModel>();
     }
-    public async Task<CourseViewModel> FindCourse(int id)
+    public async Task<StudentViewModel> FindStudent(int id)
     {
       var baseUrl = _config.GetValue<string>("baseUrl");
-      var url = $"{baseUrl}/course/{id}";
+      var url = $"{baseUrl}/student/{id}";
 
       using var http = new HttpClient();
       var response = await http.GetAsync(url);
 
       if (!response.IsSuccessStatusCode)
       {
-        Console.WriteLine("Couldn't find the course.");
+        Console.WriteLine("Couldn't find the student.");
       }
 
-      var course = await response.Content.ReadFromJsonAsync<CourseViewModel>();
+      var student = await response.Content.ReadFromJsonAsync<StudentViewModel>();
 
-      return course ?? new CourseViewModel();
+      return student ?? new StudentViewModel();
     }
-    public async Task<bool> CreateCourse(CreateCourseViewModel course)
+    public async Task<bool> CreateStudent(CreateStudentViewModel student)
     {
       using var http = new HttpClient();
       var baseUrl = _config.GetValue<string>("baseUrl");
-      var url = $"{baseUrl}/course";
+      var url = $"{baseUrl}/student";
 
-      var response = await http.PostAsJsonAsync(url, course);
+      var response = await http.PostAsJsonAsync(url, student);
 
       if (!response.IsSuccessStatusCode)
       {

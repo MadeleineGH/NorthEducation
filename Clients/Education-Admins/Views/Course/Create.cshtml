@@ -25,12 +25,17 @@
       <input asp-for="@Model!.Details" />      
     </div>
     <div class="form-control">
-      <label asp-for="@Model!.Category"></label>
-      <input asp-for="@Model!.Category" />      
+      <label asp-for="@Model!.CategoryName"></label>
+      <input asp-for="@Model!.CategoryName" />      
     </div>
        <div class="form-control">
       <label asp-for="@Model!.ImageUrl"></label>
       <input asp-for="@Model!.ImageUrl" />      
+    </div>
+       </div>
+       <div class="form-control">
+      <label asp-for="@Model!.Teacher"></label>
+      <input asp-for="@Model!.Teacher" />      
     </div>
     <button type="submit" class="btn">Save</button>
   </form>

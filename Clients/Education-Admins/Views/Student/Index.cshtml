@@ -1,0 +1,33 @@
+@model IEnumerable<Education_Admins.ViewModels.StudentViewModel>
+
+@section styles{
+    <link rel="stylesheet" href="~/css/gallery-page.css">
+}
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1 class="page-title">@ViewData["Title"]</h1>
+
+<article>
+    <section class="gallery-wrapper">        
+        @foreach (var student in Model!)
+        {
+            <div class="gallery-card">
+                <h4>@student.FirstName</h4>                
+                <p>@student.LastName</p>
+            </div>
+        }
+    </section>
+</article>
+
+<div class="modal hidden">
+    <button class="close-modal">&times;</button>
+    <div class="modal-container"></div>
+</div>
+<div class="overlay hidden"></div>
+
+@section scripts{
+    <script src="~/js/gallery-page.js"></script>
+}

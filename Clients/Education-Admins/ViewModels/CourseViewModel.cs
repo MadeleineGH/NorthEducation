@@ -8,7 +8,8 @@ namespace Education_Admins.ViewModels
         public int Duration { get; set; }
         public string? Description { get; set; }
         public string? Details { get; set; }
-        public string? Category { get; set; }
+        public string? CategoryName { get; set; }
         public string? ImageUrl { get; set; }
+        public string? Teacher { get; set; }
     }
 }

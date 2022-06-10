@@ -1,7 +1,7 @@
 @model IEnumerable<Education_Admins.ViewModels.CourseViewModel>
 
 @section styles{
-<link rel="stylesheet" href="~/css/gallery-page.css">
+    <link rel="stylesheet" href="~/css/gallery-page.css">
 }
 
 @{
@@ -10,20 +10,18 @@
 
 <h1 class="page-title">@ViewData["Title"]</h1>
 
-
 <article>
-    <section class="gallery-wrapper">
-        <button class="addCourseBtn"><a class="courseBtn" asp-controller="Course" asp-action="Create"><h1 class="addCourseLabel">Add new course</h1></a></button>
+    <section class="gallery-wrapper">        
         @foreach (var course in Model!)
         {
             <div class="gallery-card">
-                <h4>@course.Title</h4>
+                <h4>@course.Title</h4>                
                 <a href="#">
                     <img src="@course.ImageUrl" alt="@course.Title" courseId="@course.CourseId" width="200">
                 </a>
-                <p>Description: @course.Description</p>
-                <p>Hours: @course.Duration</p>
-                <p>Category: @course.CategoryName</p>
+                <p>@course.Description</p>
+                <p>@course.Duration Hours</p>
+                <p>Course Id: @course.CourseId</p>
             </div>
         }
     </section>
@@ -36,5 +34,5 @@
 <div class="overlay hidden"></div>
 
 @section scripts{
-<script src="~/js/gallery-page.js"></script>
+    <script src="~/js/gallery-page.js"></script>
 }
