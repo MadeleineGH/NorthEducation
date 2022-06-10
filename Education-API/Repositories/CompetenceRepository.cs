@@ -28,7 +28,7 @@ namespace Education_API.Repositories
     {
       var response = await _context.Competences.FindAsync(id);
 
-      if(response is not null)
+      if (response is not null)
       {
         _context.Competences.Remove(response);
       }
@@ -59,14 +59,14 @@ namespace Education_API.Repositories
     {
       var competence = await _context.Competences.FindAsync(id);
 
-      if(competence is null)
+      if (competence is null)
       {
         throw new Exception($"Couldn't find any competence with id {id}.");
       }
-  
-        competence.Title = model.Title;
 
-        _context.Competences.Update(competence);
+      competence.Title = model.Title;
+
+      _context.Competences.Update(competence);
     }
     public async Task<CompetenceViewModel?> GetCompetenceAsync(string title)
     {

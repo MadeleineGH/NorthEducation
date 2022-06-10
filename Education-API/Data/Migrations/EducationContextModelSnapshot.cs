@@ -70,12 +70,18 @@ namespace Education_API.Data.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("TeacherId")
+                        .IsRequired()
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("Courses");
                 });
@@ -380,7 +386,15 @@ namespace Education_API.Data.Migrations
                         .OnDelete(DeleteBehavior.SetNull)
                         .IsRequired();
 
+                    b.HasOne("Education_API.Models.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
+
+                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("Education_API.Models.StudentCourse", b =>

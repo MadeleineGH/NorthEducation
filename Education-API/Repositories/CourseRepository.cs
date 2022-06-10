@@ -20,7 +20,6 @@ namespace Education_API.Repositories
 
     public async Task AddCourseAsync(PostCourseViewModel model)
     {
-      // FÅR INTE IN CATEGORY TITLE
       var category = await _context.Categories
       .Include(c => c.Courses)
       .Where(c => c.Title!.ToLower() == model.CategoryName!.ToLower())
@@ -40,7 +39,7 @@ namespace Education_API.Repositories
     {
       var response = await _context.Courses.FindAsync(id);
 
-      if(response is not null)
+      if (response is not null)
       {
         _context.Courses.Remove(response);
       }
@@ -77,32 +76,32 @@ namespace Education_API.Repositories
     {
       var course = await _context.Courses.FindAsync(id);
 
-      if(course is null)
+      if (course is null)
       {
         throw new Exception($"Couldn't find any course with id {id}.");
       }
 
-        course.CourseNumber = model.CourseNumber;
-        course.Title = model.Title;
-        course.Duration = model.Duration;
-        course.Description = model.Description;
-        course.Details = model.Details;
+      course.CourseNumber = model.CourseNumber;
+      course.Title = model.Title;
+      course.Duration = model.Duration;
+      course.Description = model.Description;
+      course.Details = model.Details;
 
-        _context.Courses.Update(course);
+      _context.Courses.Update(course);
     }
     public async Task UpdateCourseAsync(int id, PatchCourseViewModel model)
     {
       var course = await _context.Courses.FindAsync(id);
 
-      if(course is null)
+      if (course is null)
       {
         throw new Exception($"Couldn't find any course with id {id}.");
       }
-  
-        course.Description = model.Description;
-        course.Details = model.Details;
 
-        _context.Courses.Update(course);
+      course.Description = model.Description;
+      course.Details = model.Details;
+
+      _context.Courses.Update(course);
     }
   }
-} 
+}

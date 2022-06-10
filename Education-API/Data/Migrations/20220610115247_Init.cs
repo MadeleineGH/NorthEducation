@@ -232,7 +232,8 @@ namespace Education_API.Data.Migrations
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     Details = table.Column<string>(type: "TEXT", nullable: true),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
-                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
+                    CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
+                    TeacherId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -243,6 +244,12 @@ namespace Education_API.Data.Migrations
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_Courses_Teachers_TeacherId",
+                        column: x => x.TeacherId,
+                        principalTable: "Teachers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -336,6 +343,11 @@ namespace Education_API.Data.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Courses_TeacherId",
+                table: "Courses",
+                column: "TeacherId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_StudentCourses_CourseId",
                 table: "StudentCourses",
                 column: "CourseId");
@@ -385,10 +397,10 @@ namespace Education_API.Data.Migrations
                 name: "Competences");
 
             migrationBuilder.DropTable(
-                name: "Teachers");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Teachers");
         }
     }
 }

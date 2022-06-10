@@ -2,12 +2,13 @@ using AutoMapper;
 using Education_API.Interfaces;
 using Education_API.Models;
 using Education_API.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Education_API.Controllers
 {
   [ApiController]
-  [Route("api/v1/courses")]
+  [Route("api/v1/course")]
     public class CourseController : ControllerBase
     {
     private readonly ICourseRepository _courseRepo;
@@ -18,11 +19,11 @@ namespace Education_API.Controllers
       _courseRepo = courseRepo;
     }
 
-    [HttpGet()]
+    [HttpGet("list")]
+    //[Authorize()]
     public async Task<ActionResult<List<CourseViewModel>>> ListCourses()
     {
-      var courseList = await _courseRepo.ListAllCoursesAsync();
-      return Ok(courseList);
+      return Ok(await _courseRepo.ListAllCoursesAsync());
     }  
     [HttpGet("{id}")]
     public async Task<ActionResult<CourseViewModel>> GetCourseById(int id)

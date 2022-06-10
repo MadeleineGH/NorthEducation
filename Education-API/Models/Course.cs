@@ -16,6 +16,9 @@ namespace Education_API.Models
       public int? CategoryId { get; set; }
       [ForeignKey("CategoryId")]
       public Category Category { get; set; } = new Category();
+      public int? TeacherId { get; set; }
+      [ForeignKey("TeacherId")]
+      public Teacher Teacher { get; set; } = new Teacher();
       public ICollection<StudentCourse>? StudentCourses { get; set; }
   }
 }

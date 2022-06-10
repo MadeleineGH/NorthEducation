@@ -8,5 +8,7 @@ namespace Education_API.ViewModels
         public string? Description { get; set; }
         [Required]
         public string? Details { get; set; }
+        [Required]
+        public int? TeacherId { get; set; }
     }
 }

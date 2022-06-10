@@ -18,7 +18,7 @@ namespace Education_API.Repositories
       _mapper = mapper;
       _context = context;
     }
-    
+
     public async Task AddCategoryAsync(PostCategoryViewModel model)
     {
       var categoryToAdd = _mapper.Map<Category>(model);
@@ -28,7 +28,7 @@ namespace Education_API.Repositories
     {
       var response = await _context.Categories.FindAsync(id);
 
-      if(response is not null)
+      if (response is not null)
       {
         _context.Categories.Remove(response);
       }
@@ -59,14 +59,14 @@ namespace Education_API.Repositories
     {
       var category = await _context.Categories.FindAsync(id);
 
-      if(category is null)
+      if (category is null)
       {
         throw new Exception($"Couldn't find any Category with id {id}.");
       }
-  
-        category.Title = model.Title;
 
-        _context.Categories.Update(category);
+      category.Title = model.Title;
+
+      _context.Categories.Update(category);
     }
     public async Task<CategoryViewModel?> GetCategoryAsync(string title)
     {
@@ -77,52 +77,52 @@ namespace Education_API.Repositories
 
     public async Task<List<CategoryWithCoursesViewModel>> ListCategoriesCourses()
     {
-        return await _context.Categories.Include(c => c.Courses)
+      return await _context.Categories.Include(c => c.Courses)
 
-        .Select(c => new CategoryWithCoursesViewModel
-        {
-          CategoryId = c.Id,
-          Title = c.Title,
-          Courses = c.Courses
+      .Select(c => new CategoryWithCoursesViewModel
+      {
+        CategoryId = c.Id,
+        Title = c.Title,
+        Courses = c.Courses
 
-            .Select(c => new CourseViewModel
-            {
-              CourseId = c.Id,
-              CourseNumber = c.CourseNumber,
-              Title = c.Title,
-              Duration = c.Duration,
-              Description = c.Description,
-              Details = c.Details,
-              CategoryName = c.Category.Title,
-              ImageUrl = c.ImageUrl
-            }).ToList()
-        })
-        .ToListAsync();
+          .Select(c => new CourseViewModel
+          {
+            CourseId = c.Id,
+            CourseNumber = c.CourseNumber,
+            Title = c.Title,
+            Duration = c.Duration,
+            Description = c.Description,
+            Details = c.Details,
+            CategoryName = c.Category.Title,
+            ImageUrl = c.ImageUrl
+          }).ToList()
+      })
+      .ToListAsync();
     }
 
     public async Task<CategoryWithCoursesViewModel?> ListCategoriesCourses(int id)
     {
-        return await _context.Categories.Where(c => c.Id == id).Include(c => c.Courses)
+      return await _context.Categories.Where(c => c.Id == id).Include(c => c.Courses)
 
-        .Select(c => new CategoryWithCoursesViewModel
-        {
-          CategoryId = c.Id,
-          Title = c.Title,
-          Courses = c.Courses
+      .Select(c => new CategoryWithCoursesViewModel
+      {
+        CategoryId = c.Id,
+        Title = c.Title,
+        Courses = c.Courses
 
-            .Select(c => new CourseViewModel
-            {
-              CourseId = c.Id,
-              CourseNumber = c.CourseNumber,
-              Title = c.Title,
-              Duration = c.Duration,
-              Description = c.Description,
-              Details = c.Details,
-              CategoryName = c.Category.Title,
-              ImageUrl = c.ImageUrl
-            }).ToList()
-        })
-        .SingleOrDefaultAsync();
+          .Select(c => new CourseViewModel
+          {
+            CourseId = c.Id,
+            CourseNumber = c.CourseNumber,
+            Title = c.Title,
+            Duration = c.Duration,
+            Description = c.Description,
+            Details = c.Details,
+            CategoryName = c.Category.Title,
+            ImageUrl = c.ImageUrl
+          }).ToList()
+      })
+      .SingleOrDefaultAsync();
     }
   }
 }
