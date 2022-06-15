@@ -12,7 +12,7 @@ namespace Education_Admins.Models
     public CourseServiceModel(IConfiguration config)
     {
       _config = config;
-      _baseUrl = $"{_config.GetValue<string>("baseUrl")}/course";
+      _baseUrl = $"{_config.GetValue<string>("baseUrl")}/courses";
 
       _options = new JsonSerializerOptions
       {
@@ -39,7 +39,7 @@ namespace Education_Admins.Models
     public async Task<CourseViewModel> FindCourse(int id)
     {
       var baseUrl = _config.GetValue<string>("baseUrl");
-      var url = $"{baseUrl}/course/{id}";
+      var url = $"{baseUrl}/courses/{id}";
 
       using var http = new HttpClient();
       var response = await http.GetAsync(url);
@@ -57,7 +57,7 @@ namespace Education_Admins.Models
     {
       using var http = new HttpClient();
       var baseUrl = _config.GetValue<string>("baseUrl");
-      var url = $"{baseUrl}/course";
+      var url = $"{baseUrl}/courses";
 
       var response = await http.PostAsJsonAsync(url, course);
 

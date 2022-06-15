@@ -46,11 +46,11 @@ namespace Education_Admins.Controllers
       {
         return View("Create", course);
       }
- 
+
       if (await _courseService.CreateCourse(course))
       {
         return View("Confirmation");
-     }
+      }
 
       return View("Create", course);
     }

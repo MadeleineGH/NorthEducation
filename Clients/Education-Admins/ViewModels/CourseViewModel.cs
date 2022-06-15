@@ -10,6 +10,6 @@ namespace Education_Admins.ViewModels
         public string? Details { get; set; }
         public string? CategoryName { get; set; }
         public string? ImageUrl { get; set; }
-        public string? Teacher { get; set; }
+        public int? TeacherId { get; set; }
     }
 }

@@ -34,6 +34,6 @@ namespace Education_Admins.ViewModels
 
     [Required(ErrorMessage = "Teacher is mandatory")]
     [Display(Name = "Teacher")]
-    public int Teacher { get; set; }
+    public int? TeacherId { get; set; }
   }
 }

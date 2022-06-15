@@ -22,14 +22,16 @@ namespace Education_Admins.Controllers
       try
       {
         var teachers = await _teacherService.ListAllTeachers();
-        return View("Index", teachers);
+        //Lagt till två rader
+        ViewBag.TeacherList = teachers;
+        return View();
+        //return View("Index", teachers);
       }
       catch (System.Exception)
       {
         throw;
       }
     }
-
     [HttpGet("Create")]
     public IActionResult Create()
     {
@@ -37,7 +39,6 @@ namespace Education_Admins.Controllers
       var teacher = new CreateTeacherViewModel();
       return View("Create", teacher);
     }
-
     // Fungera som mottagare av formulärets data
     [HttpPost("Create")]
     public async Task<IActionResult> Create(CreateTeacherViewModel teacher)
@@ -46,15 +47,14 @@ namespace Education_Admins.Controllers
       {
         return View("Create", teacher);
       }
- 
+
       if (await _teacherService.CreateTeacher(teacher))
       {
         return View("Confirmation");
-     }
+      }
 
       return View("Create", teacher);
     }
-
     [HttpGet("Details/{id}")]
     public async Task<IActionResult> Details(int id)
     {
@@ -65,6 +65,21 @@ namespace Education_Admins.Controllers
         return View("Details", teacher);
       }
       catch (Exception ex)
+      {
+        Console.WriteLine(ex.Message);
+        return View("Error");
+      }
+    }
+    [HttpGet("TeacherCompetences")]
+    public async Task<IActionResult> TeacherCompetences(int id)
+    {
+      try
+      {
+        ViewBag.TeacherId = id;
+        var competences = await _teacherService.FindTeacher(id);
+        return View("TeacherCompetences", competences);
+      }
+      catch (System.Exception ex)
       {
         Console.WriteLine(ex.Message);
         return View("Error");
