@@ -25,6 +25,14 @@ namespace Education_API.Repositories
       .Where(c => c.Title!.ToLower() == model.CategoryName!.ToLower())
       .SingleOrDefaultAsync();
 
+      var course = await _context.Courses.Where(c => c.CourseNumber == model.CourseNumber)
+      .SingleOrDefaultAsync();
+
+      // if (course!.CourseNumber == model.CourseNumber)
+      // {
+      //   throw new Exception($"A course with number {model.CourseNumber} has already been added. Enter another course number.");
+      // }
+
       if (category is null)
       {
         throw new Exception($"Category: {model.CategoryName} doesn't exist.");

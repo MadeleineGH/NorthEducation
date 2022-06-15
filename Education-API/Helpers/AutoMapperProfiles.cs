@@ -14,7 +14,7 @@ namespace Education_API.Helpers
           .ForMember(dest => dest.CourseId, options => options
           .MapFrom(src => src.Id))
           .ForMember(dest => dest.CategoryName, options => options
-          .MapFrom(src => src.Category.Title));
+          .MapFrom(src => src.Category!.Title));
 
         CreateMap<PostCategoryViewModel, Category>();
         CreateMap<PutCategoryViewModel, Category>();

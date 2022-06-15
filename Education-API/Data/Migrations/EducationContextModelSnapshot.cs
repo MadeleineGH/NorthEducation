@@ -52,7 +52,6 @@ namespace Education_API.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("CategoryId")
-                        .IsRequired()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CourseNumber")
@@ -71,7 +70,6 @@ namespace Education_API.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("TeacherId")
-                        .IsRequired()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
@@ -383,14 +381,11 @@ namespace Education_API.Data.Migrations
                     b.HasOne("Education_API.Models.Category", "Category")
                         .WithMany("Courses")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("Education_API.Models.Teacher", "Teacher")
                         .WithMany()
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TeacherId");
 
                     b.Navigation("Category");
 

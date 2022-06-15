@@ -41,6 +41,7 @@ namespace Education_API.Data
       foreach (var course in courses)
       {
         var category = await context.Categories.SingleOrDefaultAsync(c => c.Title.ToLower() == course.CategoryName!.ToLower());
+        var teacher = await context.Teachers.SingleOrDefaultAsync(t => t.Id == t.Id);
         if (category is not null)
         {
           var newCourse = new Course
@@ -51,7 +52,8 @@ namespace Education_API.Data
             Category = category,
             Description = course.Description,
             Details = course.Details,
-            ImageUrl = course.ImageUrl
+            ImageUrl = course.ImageUrl,
+            Teacher = teacher
           };
 
           context.Courses.Add(newCourse);

@@ -93,7 +93,7 @@ namespace Education_API.Repositories
             Duration = c.Duration,
             Description = c.Description,
             Details = c.Details,
-            CategoryName = c.Category.Title,
+            CategoryName = c.Category!.Title,
             ImageUrl = c.ImageUrl
           }).ToList()
       })
@@ -118,7 +118,7 @@ namespace Education_API.Repositories
             Duration = c.Duration,
             Description = c.Description,
             Details = c.Details,
-            CategoryName = c.Category.Title,
+            CategoryName = c.Category!.Title,
             ImageUrl = c.ImageUrl
           }).ToList()
       })

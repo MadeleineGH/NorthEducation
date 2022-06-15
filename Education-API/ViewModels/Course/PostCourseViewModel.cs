@@ -12,6 +12,6 @@ namespace Education_API.ViewModels
         public string? Description { get; set; }
         public string? Details { get; set; }
         public string? ImageUrl { get; set; }
-        public int Teacher { get; set; }
+        public int? TeacherId { get; set; }
     }
 }
