@@ -23,7 +23,7 @@ namespace Education_Admins.Controllers
       {
         var teachers = await _teacherService.ListAllTeachers();
         //Lagt till två rader
-        // ViewBag.TeacherList = teachers;
+        ViewData["Teachers"] = teachers;
         // return View();
         return View("Index", teachers);
       }

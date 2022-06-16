@@ -9,11 +9,13 @@ namespace Education_Admins.Controllers
   {
     private readonly IConfiguration _config;
     private readonly CourseServiceModel _courseService;
+    private readonly TeacherServiceModel _teacherService;
 
     public CourseController(IConfiguration config)
     {
       _config = config;
       _courseService = new CourseServiceModel(_config);
+      _teacherService = new TeacherServiceModel(_config);
     }
 
     [HttpGet()]
@@ -56,9 +58,17 @@ namespace Education_Admins.Controllers
     public async Task<IActionResult> Edit(int id)
     {
       var course = await _courseService.FindCourse(id);
+      var teacherList = await _teacherService.ListAllTeachers();
+      List<string> TeacherToAdd = new List<string>();
+
+      foreach(var teacher in teacherList)
+      {
+        TeacherToAdd.Add(teacher.FirstName!);
+      }
+
       EditCourseViewModel courseToEdit = new EditCourseViewModel
       {
-        // Id = course.CourseId,
+        Id = course.CourseId,
         CourseNumber = course.CourseNumber,
         Title = course.Title,
         Duration = course.Duration,
@@ -66,7 +76,7 @@ namespace Education_Admins.Controllers
         Description = course.Description,
         Details = course.Details,
         ImageUrl = course.ImageUrl,
-        TeacherId = course.TeacherId
+        Teacher = TeacherToAdd
       };
       return View("Edit", courseToEdit);
     }
