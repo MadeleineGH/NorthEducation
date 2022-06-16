@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Platform\\Education-Platform.csproj",
-      "projectName": "Education-Platform",
-      "projectPath": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Platform\\Education-Platform.csproj",
+      "projectUniqueName": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Students\\Education-Students.csproj",
+      "projectName": "Education-Students",
+      "projectPath": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Students\\Education-Students.csproj",
       "packagesPath": "C:\\Users\\Madeleine\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Platform\\obj\\",
+      "outputPath": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Students\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

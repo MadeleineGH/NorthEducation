@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Education_Students.Models;
+using Education_Admins.Models;
 
-namespace Education_Students.Controllers;
+namespace Education_Admins.Controllers;
 
 public class HomeController : Controller
 {

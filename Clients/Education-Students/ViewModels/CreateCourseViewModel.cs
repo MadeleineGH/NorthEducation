@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Education_Students.ViewModels
+namespace Education_Admins.ViewModels
 {
   public class CreateCourseViewModel
   {
@@ -16,6 +16,10 @@ namespace Education_Students.ViewModels
     [Display(Name = "Duration")]
     public int Duration { get; set; }
 
+    [Required(ErrorMessage = "Category mandatory")]
+    [Display(Name = "Category")]
+    public string? CategoryName { get; set; }
+
     [Required(ErrorMessage = "Description is mandatory")]
     [Display(Name = "Description")]
     public string? Description { get; set; }
@@ -24,12 +28,12 @@ namespace Education_Students.ViewModels
     [Display(Name = "Details")]
     public string? Details { get; set; }
 
-    [Required(ErrorMessage = "Category mandatory")]
-    [Display(Name = "Category")]
-    public string? Category { get; set; }
-
     [Required(ErrorMessage = "Image is mandatory")]
     [Display(Name = "Image")]
     public string? ImageUrl { get; set; }
+
+    [Required(ErrorMessage = "Teacher is mandatory")]
+    [Display(Name = "Teacher")]
+    public int? TeacherId { get; set; }
   }
 }

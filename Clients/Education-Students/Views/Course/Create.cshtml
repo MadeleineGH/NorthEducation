@@ -1,4 +1,9 @@
-@model Education_Students.ViewModels.CreateCourseViewModel
+@model Education_Admins.ViewModels.CreateCourseViewModel
+
+
+@{
+  ViewData["Title"] = "AddCourse";
+  }
 
 <h1 class="page-title">Add a new course</h1>
 <section class="form-container">
@@ -6,32 +11,38 @@
   <form class="form" asp-action="Create" method="post">
     <div class="form-control">
       <label asp-for="@Model!.CourseNumber"></label>
-      <input asp-for="@Model!.CourseNumber" />      
+      <input asp-for="@Model!.CourseNumber" />
     </div>
     <div class="form-control">
       <label asp-for="@Model!.Title"></label>
-      <input asp-for="@Model!.Title" />      
+      <input asp-for="@Model!.Title" />
     </div>
     <div class="form-control">
       <label asp-for="@Model!.Duration"></label>
-      <input asp-for="@Model!.Duration" />      
+      <input asp-for="@Model!.Duration" />
     </div>
     <div class="form-control">
       <label asp-for="@Model!.Description"></label>
-      <input asp-for="@Model!.Description" />      
+      <input asp-for="@Model!.Description" />
     </div>
     <div class="form-control">
       <label asp-for="@Model!.Details"></label>
-      <input asp-for="@Model!.Details" />      
+      <input asp-for="@Model!.Details" />
     </div>
     <div class="form-control">
-      <label asp-for="@Model!.Category"></label>
-      <input asp-for="@Model!.Category" />      
+      <label asp-for="@Model!.CategoryName"></label>
+      <input asp-for="@Model!.CategoryName" />
     </div>
-       <div class="form-control">
+    <div class="form-control">
       <label asp-for="@Model!.ImageUrl"></label>
-      <input asp-for="@Model!.ImageUrl" />      
+      <input asp-for="@Model!.ImageUrl" />
     </div>
+    </div>
+    <div class="form-control">
+      <label asp-for="@Model!.TeacherId"></label>
+      <input asp-for="@Model!.TeacherId" />
+    </div>
+
     <button type="submit" class="btn">Save</button>
   </form>
 </section>

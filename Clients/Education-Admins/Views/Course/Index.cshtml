@@ -5,25 +5,63 @@
 }
 
 @{
-    ViewData["Title"] = "Our Courses";
+    ViewBag.Title = "Course List";
 }
 
 <h1 class="page-title">@ViewData["Title"]</h1>
 
+<div id="myBtnContainer">
+
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <button class="btn" onclick="filterSelection('asp.net core')"> ASP.NET Core</button>
+    <button class="btn" onclick="filterSelection('sql')"> SQL</button>
+    <button class="btn" onclick="filterSelection('.net')"> .NET</button>
+    <button class="btn" onclick="filterSelection('javascript')"> JavaScript</button>
+    <button class="btn" onclick="filterSelection('python')"> Python</button>
+    <button class="btn" onclick="filterSelection('java')"> Java</button>
+    <button class="btn" onclick="filterSelection('html')"> HTML</button>
+    <button class="btn" onclick="filterSelection('css')"> CSS</button>
+    <button class="btn" onclick="filterSelection('typescript')"> TypeScript</button>
+    <button class="btn" onclick="filterSelection('react')"> React</button>
+</div>
+<br>
+@* <div class="container">
+    <div class="filterDiv cars">BMW</div>
+    <div class="filterDiv colors fruits">Orange</div>
+    <div class="filterDiv cars">Volvo</div>
+    <div class="filterDiv colors">Red</div>
+    <div class="filterDiv cars animals">Mustang</div>
+    <div class="filterDiv colors">Blue</div>
+    <div class="filterDiv animals">Cat</div>
+    <div class="filterDiv animals">Dog</div>
+    <div class="filterDiv fruits">Melon</div>
+    <div class="filterDiv fruits animals">Kiwi</div>
+    <div class="filterDiv fruits">Banana</div>
+    <div class="filterDiv fruits">Lemon</div>
+    <div class="filterDiv animals">Cow</div>
+    </div> *@
+
 
 <article>
     <section class="gallery-wrapper">
-        <button class="addCourseBtn"><a class="courseBtn" asp-controller="Course" asp-action="Create"><h1 class="addCourseLabel">Add new course</h1></a></button>
+        <button class="addCourseBtn"><a class="courseBtn" asp-controller="Course" asp-action="Create">
+                <h1 class="addCourseLabel">Add new course</h1>
+            </a></button>
         @foreach (var course in Model!)
         {
-            <div class="gallery-card">
+            <div class="gallery-card container">
                 <h4>@course.Title</h4>
                 <a href="#">
-                    <img src="@course.ImageUrl" alt="@course.Title" courseId="@course.CourseId" width="200">
+                    <img src="@course.ImageUrl" alt="@course.Title" courseId="@course.CourseId" width="200" height="250">
                 </a>
-                <p>Description: @course.Description</p>
-                <p>Hours: @course.Duration</p>
-                <p>Category: @course.CategoryName</p>
+
+                <div class="card-footer text-center">
+                    <a asp-controller="Course" asp-action="details" asp-route-id="@course.CourseId"
+                    class="btn btn-primary m-1">View</a>
+                    <a asp-action="edit" asp-controller="Course" asp-route-id="@course.CourseId"
+                    class="btn btn-primary m-1">Edit</a>
+                    <a href="#" class="btn btn-danger m-1">Delete</a>
+                </div>
             </div>
         }
     </section>

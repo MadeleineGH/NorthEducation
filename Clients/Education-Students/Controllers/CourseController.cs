@@ -1,8 +1,8 @@
-using Education_Students.Models;
-using Education_Students.ViewModels;
+using Education_Admins.Models;
+using Education_Admins.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Education_Students.Controllers
+namespace Education_Admins.Controllers
 {
   [Route("[controller]")]
   public class CourseController : Controller
@@ -33,6 +33,7 @@ namespace Education_Students.Controllers
     [HttpGet("Create")]
     public IActionResult Create()
     {
+      // Skicka in en tom vy till formuläret
       var course = new CreateCourseViewModel();
       return View("Create", course);
     }
@@ -41,12 +42,11 @@ namespace Education_Students.Controllers
     [HttpPost("Create")]
     public async Task<IActionResult> Create(CreateCourseViewModel course)
     {
-      // Här kommer vi att kontakta vårt API och spara ner bilen i databasen.
       if (!ModelState.IsValid)
       {
         return View("Create", course);
       }
- 
+
       if (await _courseService.CreateCourse(course))
       {
         return View("Confirmation");

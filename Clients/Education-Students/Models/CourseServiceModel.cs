@@ -1,7 +1,7 @@
 using System.Text.Json;
-using Education_Students.ViewModels;
+using Education_Admins.ViewModels;
 
-namespace Education_Students.Models
+namespace Education_Admins.Models
 {
   public class CourseServiceModel
   {
@@ -11,18 +11,18 @@ namespace Education_Students.Models
 
     public CourseServiceModel(IConfiguration config)
     {
-        _config = config;
-        _baseUrl = $"{_config.GetValue<string>("baseUrl")}";
+      _config = config;
+      _baseUrl = $"{_config.GetValue<string>("baseUrl")}/courses";
 
-        _options = new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        };
+      _options = new JsonSerializerOptions
+      {
+        PropertyNameCaseInsensitive = true
+      };
     }
 
     public async Task<List<CourseViewModel>> ListAllCourses()
     {
-        var url = $"{_baseUrl}/courses";
+        var url = $"{_baseUrl}/list";
 
         using var http = new HttpClient();
         var response = await http.GetAsync(url);

@@ -29,7 +29,6 @@ namespace Education_Admins.Controllers
         throw;
       }
     }
-
     [HttpGet("Create")]
     public IActionResult Create()
     {
@@ -37,7 +36,6 @@ namespace Education_Admins.Controllers
       var course = new CreateCourseViewModel();
       return View("Create", course);
     }
-
     // Fungera som mottagare av formulärets data
     [HttpPost("Create")]
     public async Task<IActionResult> Create(CreateCourseViewModel course)
@@ -54,7 +52,24 @@ namespace Education_Admins.Controllers
 
       return View("Create", course);
     }
-
+    [HttpGet("Edit")]
+    public async Task<IActionResult> Edit(int id)
+    {
+      var course = await _courseService.FindCourse(id);
+      EditCourseViewModel courseToEdit = new EditCourseViewModel
+      {
+        // Id = course.CourseId,
+        CourseNumber = course.CourseNumber,
+        Title = course.Title,
+        Duration = course.Duration,
+        CategoryName = course.CategoryName,
+        Description = course.Description,
+        Details = course.Details,
+        ImageUrl = course.ImageUrl,
+        TeacherId = course.TeacherId
+      };
+      return View("Edit", courseToEdit);
+    }
     [HttpGet("Details/{id}")]
     public async Task<IActionResult> Details(int id)
     {

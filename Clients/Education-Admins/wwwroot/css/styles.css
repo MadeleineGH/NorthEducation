@@ -70,12 +70,12 @@ textarea {
 
 .page-title {
   text-align: center;
-  color: #5f9ea0;
+  color: var(--primary-text-color);
   padding: 2rem 0 3rem 0;
 }
 
 .text-primary {
-  color: cadetblue;
+  color: rgb(135, 133, 133);
 }
 
 .btn{
@@ -113,7 +113,7 @@ textarea {
 }
 
 .form-container h4 {
-  background: cadetblue;
+  background: rgb(137, 137, 137);
   color: #f4f4f4;
   padding: 0.5rem;
   text-align: center;
@@ -181,7 +181,7 @@ textarea {
 
 /* When the checkbox is checked, add a blue background */
 .teacher-container input:checked ~ .checkmark {
-  background-color: #5f9ea0;
+  background-color: var(--primary-text-color);
 }
 
 .checkmark{
