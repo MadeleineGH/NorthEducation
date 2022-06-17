@@ -41,13 +41,13 @@
     </div>
     </div>
     <div class="form-control">
-        <label for="teachers">Teacher</label>
-        <select id="teachers" name="teachers">
-          @* @foreach (var item in (IEnumerable<Teacher>!)ViewData["teachersViewData"])
-          {
-            <option value="@item.FirstName"></option>
-          } *@
-        </select>
+      <label asp-for="@Model!.Teacher"></label>
+      <select name="chooseTeacher" select id="selectTeacherFromList">
+        @foreach (var item in Model.Teacher!)
+        {
+          <option value="teacher">@item</option>
+        }
+      </select>
     </div>
 
     <button type="submit" class="btn btn-primary">Update</button>
@@ -62,5 +62,14 @@
       $(this).next('.custom-file-label').html(fileName);
     });
   })
+</script>
+
+<script type="text/javascript">
+
+  function getOption() {
+    selectElement = document.querySelector('#selectTeacherFromList');
+    output = selectElement.options[selectElement.selectedIndex].value;
+    document.querySelector('.output').textContent = output;
+  }
 </script>
 }

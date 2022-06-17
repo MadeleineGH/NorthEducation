@@ -63,7 +63,7 @@ namespace Education_Admins.Controllers
 
       foreach(var teacher in teacherList)
       {
-        TeacherToAdd.Add(teacher.FirstName!);
+        TeacherToAdd.Add(teacher.FirstName! + " " + teacher.LastName);
       }
 
       EditCourseViewModel courseToEdit = new EditCourseViewModel
