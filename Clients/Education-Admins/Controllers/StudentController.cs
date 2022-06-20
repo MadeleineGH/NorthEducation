@@ -37,7 +37,6 @@ namespace Education_Admins.Controllers
       var student = new CreateStudentViewModel();
       return View("Create", student);
     }
-
     // Fungera som mottagare av formulärets data
     [HttpPost("Create")]
     public async Task<IActionResult> Create(CreateStudentViewModel student)

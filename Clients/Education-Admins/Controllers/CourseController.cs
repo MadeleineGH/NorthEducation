@@ -11,11 +11,11 @@ namespace Education_Admins.Controllers
     private readonly CourseServiceModel _courseService;
     private readonly TeacherServiceModel _teacherService;
 
-    public CourseController(IConfiguration config)
+    public CourseController(IConfiguration config, CourseServiceModel courseService, TeacherServiceModel teacherService)
     {
+      _teacherService = teacherService;
+      _courseService = courseService;
       _config = config;
-      _courseService = new CourseServiceModel(_config);
-      _teacherService = new TeacherServiceModel(_config);
     }
 
     [HttpGet()]
@@ -57,28 +57,24 @@ namespace Education_Admins.Controllers
     [HttpGet("Edit")]
     public async Task<IActionResult> Edit(int id)
     {
-      var course = await _courseService.FindCourse(id);
-      var teacherList = await _teacherService.ListAllTeachers();
-      List<string> TeacherToAdd = new List<string>();
-
-      foreach(var teacher in teacherList)
+      // Skicka in en tom vy till formuläret
+      var course = await _courseService.FindCourseToEdit(id);
+      return View("Edit", course);
+    }
+    [HttpPost("Edit")]
+    public async Task<IActionResult> Edit(EditCourseViewModel courseViewModel)
+    {
+      if (!ModelState.IsValid)
       {
-        TeacherToAdd.Add(teacher.FirstName! + " " + teacher.LastName);
+        return View("Edit", courseViewModel);
       }
 
-      EditCourseViewModel courseToEdit = new EditCourseViewModel
+      if (await _courseService.EditCourse(courseViewModel.CourseNumber, courseViewModel))
       {
-        Id = course.CourseId,
-        CourseNumber = course.CourseNumber,
-        Title = course.Title,
-        Duration = course.Duration,
-        CategoryName = course.CategoryName,
-        Description = course.Description,
-        Details = course.Details,
-        ImageUrl = course.ImageUrl,
-        Teacher = TeacherToAdd
-      };
-      return View("Edit", courseToEdit);
+        return View("Confirmation");
+      }
+
+      return View("Edit", courseViewModel);
     }
     [HttpGet("Details/{id}")]
     public async Task<IActionResult> Details(int id)

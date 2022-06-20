@@ -1,7 +1,12 @@
+using Education_Admins.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<CourseServiceModel>();
+builder.Services.AddScoped<TeacherServiceModel>();
+builder.Services.AddScoped<StudentServiceModel>();
 
 var app = builder.Build();
 

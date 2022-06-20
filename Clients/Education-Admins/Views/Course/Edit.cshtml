@@ -1,12 +1,11 @@
-@using Education_Admins.Models
 @model Education_Admins.ViewModels.EditCourseViewModel
 
 @{
-  ViewBag.Title = "Edit Course";
+  ViewBag.Title = "Edit";
 }
-@{
+@* @{
   var teachersViewData = ViewData["Teachers"];
-}
+  } *@
 <h1 class="page-title">Update Course</h1>
 <section class="form-container">
   <h4>Course information</h4>
@@ -41,28 +40,28 @@
     </div>
     </div>
     <div class="form-control">
-      <label asp-for="@Model!.Teacher"></label>
-      <select name="chooseTeacher" select id="selectTeacherFromList">
-        @foreach (var item in Model.Teacher!)
+      <label asp-for="@Model!.Teachers"></label>
+      <select asp-for="@Model!.TeacherId" type="text">
+        @foreach (var item in Model.Teachers!)
         {
-          <option value="teacher">@item</option>
+          <option value="@item.TeacherId">@item.FirstName @item.LastName</option>
         }
       </select>
     </div>
-
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary btn-update">Update</button>
+    <a asp-controller="course" asp-action="index" class="btn btn-primary btn-cancel">Cancel</a>
   </form>
 </section>
 
 @section Scripts {
-<script>
+@* <script>
   $(document).ready(funciton() {
-    $('.custom-file.input').on("change", function () {
-      var fileName = $(this).val().split("\\").pop();
-      $(this).next('.custom-file-label').html(fileName);
-    });
+  $('.custom-file.input').on("change", function () {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).next('.custom-file-label').html(fileName);
+  });
   })
-</script>
+  </script> *@
 
 <script type="text/javascript">
 

@@ -89,6 +89,20 @@ textarea {
   margin-top: 0.3rem;
   border: none;
   outline: none !important;
+  border-radius: 10px;
+}
+
+.btn-update {
+  background-color: rgb(90, 153, 104);
+}
+  
+.btn-cancel {
+  background-color: rgb(168, 89, 89);
+  text-align: center;
+}
+
+.btn-danger {
+  border-radius: 10px;
 }
 
 .btn:hover {
@@ -137,6 +151,14 @@ textarea {
 .form-control input,
 textarea {
   width: 250px;
+}
+
+select{
+  width: 250px !important;
+  border: var(--border-color) solid 1px;
+  padding: 0.3rem 0.4rem;
+  border-radius: 5px;
+  outline: none !important;
 }
 
 /* _________________________________________________________________________________ */
