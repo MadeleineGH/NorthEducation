@@ -45,12 +45,11 @@ namespace Education_API.Repositories
     }
     public async Task DeleteCourseAsync(int id)
     {
-      var response = await _context.Courses.FindAsync(id);
+      var result = await _context.Courses.FindAsync(id);
 
-      if (response is not null)
-      {
-        _context.Courses.Remove(response);
-      }
+      if (result is null) throw new Exception($"Couldn't find any course with id {id}.");
+
+      _context.Courses.Remove(result);
     }
     public async Task<CourseViewModel?> GetCourseAsync(int id)
     {

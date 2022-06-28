@@ -113,14 +113,29 @@ namespace Education_API.Controllers
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteCourse(int id)
       {
-          await _courseRepo.DeleteCourseAsync(id);
+      // Kapsla hela anropet i ett try...catch block
+      // Anledningen är att metoden i vårt repository kastar ett exception om vi inte kan hitta tillverkaren
+      // som skall tas bort...
+      try
+      {
+        await _courseRepo.DeleteCourseAsync(id);
 
-          if(await _courseRepo.SaveAllAsync())
-          {
-            return NoContent();
-          };
+        // Glöm inte att anropa SaveAllAsync för att spara ner ändringarna till databasen.
+        if (await _courseRepo.SaveAllAsync())
+        {
+          // Om allt gick bra returnera status kod 204(NoContent), vi har inget att rapportera
+          return NoContent();
+        }
 
-          return StatusCode(500, "An error occured");
+        // Annars returnera status kod 500 (Internal Server Error)
+        return StatusCode(500, $"An error occured when trying to delete course with id: {id}");
+      }
+      catch (Exception ex)
+      {
+        // Om vi hamnar här så har ett exception kastats ifrån metoden i vårt repository
+        // och vi returnerar ett Internal Server Error meddelande.
+        return StatusCode(500, ex.Message);
+      }
       }
     }
 }
