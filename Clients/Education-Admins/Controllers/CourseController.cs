@@ -8,14 +8,14 @@ namespace Education_Admins.Controllers
   public class CourseController : Controller
   {
     private readonly IConfiguration _config;
-    private readonly CourseServiceModel _courseService;
-    private readonly TeacherServiceModel _teacherService;
+    private readonly CourseServices _courseService;
+    private readonly TeacherServices _teacherService;
 
-    public CourseController(IConfiguration config, CourseServiceModel courseService, TeacherServiceModel teacherService)
+    public CourseController(IConfiguration config, CourseServices courseService)
     {
-      _teacherService = teacherService;
       _courseService = courseService;
       _config = config;
+      _teacherService = new TeacherServices(_config);
     }
 
     [HttpGet()]
@@ -34,11 +34,9 @@ namespace Education_Admins.Controllers
     [HttpGet("Create")]
     public IActionResult Create()
     {
-      // Skicka in en tom vy till formuläret
       var course = new CreateCourseViewModel();
       return View("Create", course);
     }
-    // Fungera som mottagare av formulärets data
     [HttpPost("Create")]
     public async Task<IActionResult> Create(CreateCourseViewModel course)
     {
@@ -55,26 +53,26 @@ namespace Education_Admins.Controllers
       return View("Create", course);
     }
     [HttpGet("Edit")]
-    public async Task<IActionResult> Edit(int id)
+    public IActionResult Edit(int id)
     {
       // Skicka in en tom vy till formuläret
-      var course = await _courseService.FindCourseToEdit(id);
+      var course = _courseService.FindCourseToEdit(id);
       return View("Edit", course);
     }
     [HttpPost("Edit")]
-    public async Task<IActionResult> Edit(EditCourseViewModel courseViewModel)
+    public async Task<IActionResult> Edit(EditCourseViewModel course)
     {
       if (!ModelState.IsValid)
       {
-        return View("Edit", courseViewModel);
+        return View("Edit", course);
       }
 
-      if (await _courseService.EditCourse(courseViewModel.CourseNumber, courseViewModel))
+      if (await _courseService.EditCourse(course))
       {
         return View("Confirmation");
       }
 
-      return View("Edit", courseViewModel);
+      return View("Edit", course);
     }
     [HttpGet("Details/{id}")]
     public async Task<IActionResult> Details(int id)
@@ -90,6 +88,27 @@ namespace Education_Admins.Controllers
         Console.WriteLine(ex.Message);
         return View("Error");
       }
+    }
+    public async Task<IActionResult> Delete(int id)
+    {
+      // Skicka in en tom vy till formuläret
+      var course = await _courseService.FindCourse(id);
+      if (course == null)
+      {
+        return NotFound();
+      }
+      return View("Index", course);
+    }
+    [HttpPost, ActionName("Delete")]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+      var courseToDelete = await _courseService.FindCourse(id);
+      if (courseToDelete == null)
+      {
+        return NotFound();
+      }
+      await _courseService.DeleteCourse(id);
+      return RedirectToAction("Index");
     }
   }
 }

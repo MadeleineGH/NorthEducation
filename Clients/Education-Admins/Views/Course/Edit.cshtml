@@ -1,11 +1,10 @@
 @model Education_Admins.ViewModels.EditCourseViewModel
+@* @inject Education_Admins.ViewModels.CreateCourseViewModel createCourseViewModel *@
 
 @{
-  ViewBag.Title = "Edit";
+  ViewBag.Title = "Edit Course";
 }
-@* @{
-  var teachersViewData = ViewData["Teachers"];
-  } *@
+
 <h1 class="page-title">Update Course</h1>
 <section class="form-container">
   <h4>Course information</h4>
@@ -40,9 +39,9 @@
     </div>
     </div>
     <div class="form-control">
-      <label asp-for="@Model!.Teachers"></label>
+      <label asp-for="@Model!.TeacherId"></label>
       <select asp-for="@Model!.TeacherId" type="text">
-        @foreach (var item in Model.Teachers!)
+        @foreach (var item in Model.TeacherList!)
         {
           <option value="@item.TeacherId">@item.FirstName @item.LastName</option>
         }
@@ -53,16 +52,7 @@
   </form>
 </section>
 
-@section Scripts {
-@* <script>
-  $(document).ready(funciton() {
-  $('.custom-file.input').on("change", function () {
-  var fileName = $(this).val().split("\\").pop();
-  $(this).next('.custom-file-label').html(fileName);
-  });
-  })
-  </script> *@
-
+@* @section Scripts {
 <script type="text/javascript">
 
   function getOption() {
@@ -71,4 +61,4 @@
     document.querySelector('.output').textContent = output;
   }
 </script>
-}
+} *@

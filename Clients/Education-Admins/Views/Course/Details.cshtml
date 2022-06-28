@@ -8,13 +8,13 @@
   <h1 class="page-title">@Model!.Title</h1>
   <img src="@Model.ImageUrl" alt="@Model.Title">
   <section class="course-description">
-    <div>Course number: @Model.CourseNumber</div>
-    <div>Duration: @Model.Duration hours</div>
     <h2>@Model.Description</h2>
     <p>@Model.Details</p>
     <hr>
+    <p>Course number: @Model.CourseNumber</p>
+    <p>Duration: @Model.Duration hours</p>
     <p>Category: @Model.CategoryName</p>
-    <p>Teacher: </p>
+    <p>Teacher: @Model.TeacherId </p>
     <div class="card-footer text-center">
       <a asp-action="edit" asp-controller="Course" asp-route-id="@Model.CourseId" class="btn btn-primary">Edit</a>
       <a asp-action="delete" asp-controller="Course" class="btn btn-danger">Delete</a>

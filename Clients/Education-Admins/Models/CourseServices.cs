@@ -3,14 +3,14 @@ using Education_Admins.ViewModels;
 
 namespace Education_Admins.Models
 {
-  public class CourseServiceModel
+  public class CourseServices
   {
     private readonly string _baseUrl;
     private readonly JsonSerializerOptions _options;
     private readonly IConfiguration _config;
-    private readonly TeacherServiceModel _teacherService;
+    private readonly TeacherServices _teacherService;
 
-    public CourseServiceModel(IConfiguration config, TeacherServiceModel teacherService)
+    public CourseServices(IConfiguration config, TeacherServices teacherService)
     {
       _teacherService = teacherService;
       _config = config;
@@ -58,16 +58,20 @@ namespace Education_Admins.Models
     public async Task<EditCourseViewModel> FindCourseToEdit(int id)
     {
       var course = await FindCourse(id);
+      var teachers = await _teacherService.ListAllTeachers();
 
-      var courseToEdit = new EditCourseViewModel{
+      var courseToEdit = new EditCourseViewModel
+      {
+        Id = id,
         CourseNumber = course.CourseNumber,
-        Title  = course.Title,
+        Title = course.Title,
         CategoryName = course.CategoryName,
         Description = course.Description,
         Details = course.Details,
         Duration = course.Duration,
         ImageUrl = course.ImageUrl,
-        Teachers = await _teacherService.ListAllTeachers()
+        TeacherId = course.TeacherId,
+        TeacherList = teachers
       };
       return courseToEdit;
     }
@@ -88,15 +92,30 @@ namespace Education_Admins.Models
 
       return true;
     }
-      // Ändra till CreateCourse
-    public async Task<bool> EditCourse(int id, EditCourseViewModel course)
+    public async Task<bool> EditCourse(EditCourseViewModel course)
     {
       using var http = new HttpClient();
       var baseUrl = _config.GetValue<string>("baseUrl");
-      var url = $"{baseUrl}/courses/{id}";
+      var url = $"{baseUrl}/courses";
 
-      // Ändra till CreateCourse
-      var response = await http.PutAsJsonAsync(url, (course as EditCourseViewModel));
+      var response = await http.PostAsJsonAsync(url, course);
+
+      if (!response.IsSuccessStatusCode)
+      {
+        string reason = await response.Content.ReadAsStringAsync();
+        Console.WriteLine(reason);
+        return false;
+      }
+
+      return true;
+    }
+    public async Task<bool> DeleteCourse(int id)
+    {
+      using var http = new HttpClient();
+      var baseUrl = _config.GetValue<string>("baseUrl");
+      var url = $"{baseUrl}/courses{id}";
+
+      var response = await http.DeleteAsync(url);
 
       if (!response.IsSuccessStatusCode)
       {

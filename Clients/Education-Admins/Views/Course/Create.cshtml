@@ -38,11 +38,12 @@
       <input asp-for="@Model!.ImageUrl" />
     </div>
     </div>
-    @* <div class="form-control">
+    <div class="form-control">
       <label asp-for="@Model!.TeacherId"></label>
       <input asp-for="@Model!.TeacherId" />
-    </div> *@
+    </div>
 
-    <button type="submit" class="btn">Save</button>
+    <button type="submit" class="btn btn-save">Save</button>
+    <a asp-controller="course" asp-action="index" class="btn btn-primary btn-cancel">Cancel</a>
   </form>
 </section>

@@ -8,12 +8,12 @@ namespace Education_Admins.Controllers
   public class TeacherController : Controller
   {
     private readonly IConfiguration _config;
-    private readonly TeacherServiceModel _teacherService;
+    private readonly TeacherServices _teacherService;
 
     public TeacherController(IConfiguration config)
     {
       _config = config;
-      _teacherService = new TeacherServiceModel(_config);
+      _teacherService = new TeacherServices(_config);
     }
 
     [HttpGet()]

@@ -3,13 +3,13 @@ using Education_Admins.ViewModels;
 
 namespace Education_Admins.Models
 {
-  public class StudentServiceModel
+  public class StudentServices
   {
     private readonly string _baseUrl;
     private readonly JsonSerializerOptions _options;
     private readonly IConfiguration _config;
 
-    public StudentServiceModel(IConfiguration config)
+    public StudentServices(IConfiguration config)
     {
       _config = config;
       _baseUrl = $"{_config.GetValue<string>("baseUrl")}/student";

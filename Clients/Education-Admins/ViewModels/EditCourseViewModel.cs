@@ -8,6 +8,6 @@ namespace Education_Admins.ViewModels
   public class EditCourseViewModel : CreateCourseViewModel
   {
     public int Id { get; set; }
-    public List<TeacherViewModel>? Teachers { get; set; }
+    public List<TeacherViewModel>? TeacherList { get; set; }
   }
 }
