@@ -9,9 +9,8 @@
 <section class="form-container">
   <h4>Course information</h4>
   <form class="form" asp-action="Edit" method="post">
-    <div class="form-control">
-      <label asp-for="@Model!.CourseNumber"></label>
-      <input asp-for="@Model!.CourseNumber" />
+     <div class=" form-control">
+      <input asp-for="@Model!.Id" input type="hidden" />
     </div>
     <div class=" form-control">
       <label asp-for="@Model!.Title"></label>
@@ -40,10 +39,10 @@
     </div>
     <div class="form-control">
       <label asp-for="@Model!.TeacherId"></label>
-      <select asp-for="@Model!.TeacherId" type="text">
+      <select asp-for="@Model!.TeacherId">
         @foreach (var item in Model.TeacherList!)
         {
-          <option value="@item.TeacherId">@item.FirstName @item.LastName</option>
+          <option value="@item.TeacherId">Id: @item.TeacherId @item.FirstName @item.LastName</option>
         }
       </select>
     </div>
@@ -52,7 +51,7 @@
   </form>
 </section>
 
-@* @section Scripts {
+@section Scripts {
 <script type="text/javascript">
 
   function getOption() {
@@ -61,4 +60,4 @@
     document.querySelector('.output').textContent = output;
   }
 </script>
-} *@
+}

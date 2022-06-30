@@ -63,7 +63,6 @@ namespace Education_Admins.Models
       var courseToEdit = new EditCourseViewModel
       {
         Id = id,
-        CourseNumber = course.CourseNumber,
         Title = course.Title,
         CategoryName = course.CategoryName,
         Description = course.Description,
@@ -92,11 +91,11 @@ namespace Education_Admins.Models
 
       return true;
     }
-    public async Task<bool> EditCourse(EditCourseViewModel course)
+    public async Task<bool> EditCourse(int id, EditCourseViewModel course)
     {
       using var http = new HttpClient();
       var baseUrl = _config.GetValue<string>("baseUrl");
-      var url = $"{baseUrl}/courses";
+      var url = $"{baseUrl}/courses/{id}";
 
       var response = await http.PostAsJsonAsync(url, course);
 

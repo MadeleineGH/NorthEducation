@@ -30,6 +30,8 @@ namespace Education_Admins.Controllers
       {
         throw;
       }
+      ViewBag.Teachers = _teacherService.ListAllTeachers();
+      return View();
     }
     [HttpGet("Create")]
     public IActionResult Create()
@@ -53,10 +55,10 @@ namespace Education_Admins.Controllers
       return View("Create", course);
     }
     [HttpGet("Edit")]
-    public IActionResult Edit(int id)
+    public async Task<IActionResult> Edit(int id)
     {
       // Skicka in en tom vy till formuläret
-      var course = _courseService.FindCourseToEdit(id);
+      var course = await _courseService.FindCourseToEdit(id);
       return View("Edit", course);
     }
     [HttpPost("Edit")]
@@ -67,7 +69,7 @@ namespace Education_Admins.Controllers
         return View("Edit", course);
       }
 
-      if (await _courseService.EditCourse(course))
+      if (await _courseService.EditCourse(course.Id, course))
       {
         return View("Confirmation");
       }
@@ -93,11 +95,12 @@ namespace Education_Admins.Controllers
     {
       // Skicka in en tom vy till formuläret
       var course = await _courseService.FindCourse(id);
+      
       if (course == null)
       {
         return NotFound();
       }
-      return View("Index", course);
+      return View("Delete", course);
     }
     [HttpPost, ActionName("Delete")]
     public async Task<IActionResult> DeleteConfirmed(int id)
