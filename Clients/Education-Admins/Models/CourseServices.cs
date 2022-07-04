@@ -91,7 +91,7 @@ namespace Education_Admins.Models
 
       return true;
     }
-    public async Task<bool> EditCourse(int id, EditCourseViewModel course)
+    public async Task<bool> EditCourse(EditCourseViewModel course, int id)
     {
       using var http = new HttpClient();
       var baseUrl = _config.GetValue<string>("baseUrl");

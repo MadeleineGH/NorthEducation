@@ -1,30 +1,25 @@
 @model Education_Admins.ViewModels.CourseViewModel
 
 @{
-ViewBag.Title = "Delete";
+  ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+@section styles{
+<link rel="stylesheet" href="~/css/delete-course-page.css">
+}
 
-<h3>Are you sure you want to delete this course?</h3>
-<div>
+<h1 class="page-title">Are you sure you want to delete this course?</h1>
+
+<article class="delete-course">
   <h4>Course</h4>
-  <hr>
   <dl class="dl-horizontal">
-    <dt>
-      @Html.DisplayNameFor(model => model.Title)
-    </dt>
     <dd>
       @Html.DisplayFor(model => model.Title)
     </dd>
+    <dd>
+      @Html.DisplayFor(model => model.CourseNumber)
+    </dd>
   </dl>
 
-  @using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-
-    <div class="form-actions no-color">
-      <input type="submit" value="Delete" class="btn btn-default">
-      @Html.ActionLink("Back to List", "Index")
-    </div>
-  }
-</div>
+  <a class="go-back" asp-controller="course" asp-action="delete"><i class="fa-solid"></i>Yes</a>
+  <a class="go-back" asp-action="Index"><i class="fa-solid"></i>No</a>

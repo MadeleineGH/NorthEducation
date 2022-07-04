@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jyTlwHgGVwD6chi3WnsZCS5LB+hnFmck1wQuA4Ql3Ak=",
+  "Hash": "T/+h8T0ngDJ4RM58MyB5Gu0BejGSHBCAr/fo59LF0tU=",
   "Source": "Education-Admins",
   "BasePath": "_content/Education-Admins",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\course-photo"
+    },
+    {
+      "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\css\\delete-course-page.css",
+      "SourceId": "Education-Admins",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "BasePath": "_content/Education-Admins",
+      "RelativePath": "css/delete-course-page.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\delete-course-page.css"
     },
     {
       "Identity": "C:\\Users\\Madeleine\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\css\\gallery-page.css",

@@ -57,19 +57,19 @@ namespace Education_Admins.Controllers
     [HttpGet("Edit")]
     public async Task<IActionResult> Edit(int id)
     {
-      // Skicka in en tom vy till formuläret
+      // Skicka in en kursvy till formuläret
       var course = await _courseService.FindCourseToEdit(id);
       return View("Edit", course);
     }
     [HttpPost("Edit")]
-    public async Task<IActionResult> Edit(EditCourseViewModel course)
+    public async Task<IActionResult> Edit(EditCourseViewModel course, int id)
     {
       if (!ModelState.IsValid)
       {
         return View("Edit", course);
       }
 
-      if (await _courseService.EditCourse(course.Id, course))
+      if (await _courseService.EditCourse(course, id))
       {
         return View("Confirmation");
       }
@@ -91,6 +91,7 @@ namespace Education_Admins.Controllers
         return View("Error");
       }
     }
+    [HttpGet("Delete")]
     public async Task<IActionResult> Delete(int id)
     {
       // Skicka in en tom vy till formuläret
