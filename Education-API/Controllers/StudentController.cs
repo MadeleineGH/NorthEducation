@@ -17,7 +17,7 @@ namespace Education_API.Controllers
         _studentRepo = studentRepo;
       }
 
-      [HttpGet()]
+      [HttpGet("list")]
       public async Task<ActionResult<List<StudentViewModel>>> ListStudents()
       {
         var studentList = await _studentRepo.ListAllStudentsAsync();
