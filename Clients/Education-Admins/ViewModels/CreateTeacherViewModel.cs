@@ -36,8 +36,8 @@ namespace Education_Admins.ViewModels
     [Display(Name = "Country")]
     public string? Country { get; set; }
 
-    [Required(ErrorMessage = "Competences is mandatory")]
-    [Display(Name = "Competences")]
-    public List<string>? Competences { get; set; }
+    // [Required(ErrorMessage = "Competences is mandatory")]
+    // [Display(Name = "Competences")]
+    // public List<string>? Competences { get; set; }
   }
 }

@@ -1,13 +1,13 @@
 @model Education_Admins.ViewModels.CourseViewModel
 
 @section styles{
-<link rel="stylesheet" href="~/css/course-detail-page.css">
+<link rel="stylesheet" href="~/css/object-detail-page.css">
 }
 
-<article class="course-detail">
+<article class="detail">
   <h1 class="page-title">@Model!.Title</h1>
   <img src="@Model.ImageUrl" alt="@Model.Title">
-  <section class="course-description">
+  <section class="description">
     <h2>@Model.Description</h2>
     <p>@Model.Details</p>
     <hr>

@@ -5,7 +5,7 @@
 }
 
 @{
-    ViewBag.Title = "Course List";
+    ViewBag.Title = "Courses";
 }
 
 <h1 class="page-title">@ViewData["Title"]</h1>
@@ -41,8 +41,8 @@
 
 <article>
     <section class="gallery-wrapper">
-        <button class="addCourseBtn"><a class="courseBtn" asp-controller="Course" asp-action="Create">
-                <h1 class="addCourseLabel">Add new course</h1>
+        <button class="addBtn"><a class="objectBtn" asp-controller="Course" asp-action="Create">
+                <h1 class="addLabel">Add new course</h1>
             </a></button>
         @foreach (var course in Model!)
         {

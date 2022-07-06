@@ -1,14 +1,17 @@
-@model Education_Admins.ViewModels.CreateTeacherViewModel
+@model Education_Admins.ViewModels.EditStudentViewModel
 
 @{
-  ViewBag.Title = "Add Teacher";
+  ViewBag.Title = "Edit Student";
 }
 
-<h1 class="page-title">Add a new teacher</h1>
+<h1 class="page-title">Update Student</h1>
 <section class="form-container">
-  <h4>Teacher information</h4>
-  <form class="form" asp-action="Create" method="post">
-    <div class="form-control">
+  <h4>Student information</h4>
+  <form class="form" asp-action="Edit" method="post">
+     <div class=" form-control">
+      <input asp-for="@Model!.Id" input type="hidden" />
+    </div>
+    <div class=" form-control">
       <label asp-for="@Model!.FirstName"></label>
       <input asp-for="@Model!.FirstName" />
     </div>
@@ -31,17 +34,17 @@
     <div class="form-control">
       <label asp-for="@Model!.PostalCode"></label>
       <input asp-for="@Model!.PostalCode" />
-    </div>
+    </div> 
     <div class="form-control">
       <label asp-for="@Model!.City"></label>
       <input asp-for="@Model!.City" />
-    </div>
-    </div>
+    </div> 
     <div class="form-control">
       <label asp-for="@Model!.Country"></label>
       <input asp-for="@Model!.Country" />
     </div>
-    <button type="submit" class="btn btn-save">Save</button>
-    <a asp-controller="teacher" asp-action="index" class="btn btn-primary btn-cancel">Cancel</a>
+    </div>
+    <button type="submit" class="btn btn-primary btn-update">Update</button>
+    <a asp-controller="course" asp-action="index" class="btn btn-primary btn-cancel">Cancel</a>
   </form>
 </section>

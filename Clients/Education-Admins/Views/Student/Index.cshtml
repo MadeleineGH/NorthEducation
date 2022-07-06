@@ -11,12 +11,26 @@
 <h1 class="page-title">@ViewData["Title"]</h1>
 
 <article>
-    <section class="gallery-wrapper">        
+    <section class="gallery-wrapper">
+        <button class="addBtn"><a class="objectBtn" asp-controller="Student" asp-action="Create">
+                <h1 class="addLabel">Add new student</h1>
+            </a></button>
         @foreach (var student in Model!)
         {
-            <div class="gallery-card">
-                <h4>@student.FirstName</h4>                
-                <p>@student.LastName</p>
+            <div class="gallery-card container">
+                <h4>@student.FirstName @student.LastName</h4>
+                <a href="#">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="@student.FirstName" studentId="@student.StudentId" width="200">
+                </a>
+
+                <div class="card-footer text-center">
+                    <a asp-controller="Student" asp-action="Details" asp-route-id="@student.StudentId"
+                    class="btn btn-primary m-1">View</a>
+                    <a asp-controller="Student" asp-action="Edit" asp-route-id="@student.StudentId"
+                    class="btn btn-primary m-1">Edit</a>
+                    <a asp-controller="Student" asp-action="Delete" asp-route-id="@student.StudentId"
+                    class="btn btn-danger m-1">Delete</a>
+                </div>
             </div>
         }
     </section>
@@ -29,5 +43,5 @@
 <div class="overlay hidden"></div>
 
 @section scripts{
-    <script src="~/js/gallery-page.js"></script>
+    <script src="~/js/student-page.js"></script>
 }

@@ -35,11 +35,9 @@ namespace Education_Admins.Controllers
     [HttpGet("Create")]
     public IActionResult Create()
     {
-      // Skicka in en tom vy till formuläret
       var teacher = new CreateTeacherViewModel();
       return View("Create", teacher);
     }
-    // Fungera som mottagare av formulärets data
     [HttpPost("Create")]
     public async Task<IActionResult> Create(CreateTeacherViewModel teacher)
     {
@@ -54,6 +52,28 @@ namespace Education_Admins.Controllers
       }
 
       return View("Create", teacher);
+    }
+    [HttpGet("Edit")]
+    public async Task<IActionResult> Edit(int id)
+    {
+      // Skicka in en kursvy till formuläret
+      var teacher = await _teacherService.FindTeacherToEdit(id);
+      return View("Edit", teacher);
+    }
+    [HttpPost("Edit")]
+    public async Task<IActionResult> Edit(EditTeacherViewModel teacher, int id)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View("Edit", teacher);
+      }
+
+      if (await _teacherService.EditTeacher(teacher, id))
+      {
+        return View("Confirmation");
+      }
+
+      return View("Edit", teacher);
     }
     [HttpGet("Details/{id}")]
     public async Task<IActionResult> Details(int id)

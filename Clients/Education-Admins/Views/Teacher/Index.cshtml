@@ -5,21 +5,49 @@
 }
 
 @{
-    ViewData["Title"] = "Our Teachers";
+    ViewData["Title"] = "Teachers";
 }
 
 <h1 class="page-title">@ViewData["Title"]</h1>
 
+@* <article>
+    <section class="gallery-wrapper">
+    @foreach (var teacher in Model!)
+    {
+    <div class="gallery-card">
+    <a href="#">
+    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+    title="teacher-profile-avatar" width="200">
+    </a>
+    <h4>@teacher.FirstName @teacher.LastName</h4>
+    <p>@teacher.Competences</p>
+    </div>
+    }
+    </section>
+    </article> *@
+
 <article>
     <section class="gallery-wrapper">
+        <button class="addBtn"><a class="objectBtn" asp-controller="Teacher" asp-action="Create">
+                <h1 class="addLabel">Add new teacher</h1>
+            </a></button>
         @foreach (var teacher in Model!)
         {
-            <div class="gallery-card">
-                <a href="#">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" title="teacher-profile-avatar" width="200">
-                </a>
+            <div class="gallery-card container">
                 <h4>@teacher.FirstName @teacher.LastName</h4>
-                <p>@teacher.Competences</p>
+                <a href="#">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="@teacher.FirstName" teacherId="@teacher.TeacherId" width="200">
+
+                </a>
+
+                <div class="card-footer text-center">
+                    <a asp-controller="Teacher" asp-action="Details" asp-route-id="@teacher.TeacherId"
+                    class="btn btn-primary m-1">View</a>
+                    <a asp-controller="Teacher" asp-action="Edit" asp-route-id="@teacher.TeacherId"
+                    class="btn btn-primary m-1">Edit</a>
+                    <a asp-controller="Teacher" asp-action="Delete" asp-route-id="@teacher.TeacherId"
+                    class="btn btn-danger m-1">Delete</a>
+                </div>
             </div>
         }
     </section>
@@ -32,5 +60,5 @@
 <div class="overlay hidden"></div>
 
 @section scripts{
-<script src="~/js/gallery-page.js"></script>
+<script src="~/js/teacher-page.js"></script>
 }

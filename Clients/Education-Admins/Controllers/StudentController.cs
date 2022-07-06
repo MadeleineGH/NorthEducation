@@ -28,6 +28,8 @@ namespace Education_Admins.Controllers
       {
         throw;
       }
+      ViewBag.Students = _studentService.ListAllStudents();
+      return View();
     }
 
     [HttpGet("Create")]
@@ -45,11 +47,11 @@ namespace Education_Admins.Controllers
       {
         return View("Create", student);
       }
- 
+
       if (await _studentService.CreateStudent(student))
       {
         return View("Confirmation");
-     }
+      }
 
       return View("Create", student);
     }
