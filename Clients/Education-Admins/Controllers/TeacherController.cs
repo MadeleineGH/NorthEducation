@@ -56,7 +56,7 @@ namespace Education_Admins.Controllers
     [HttpGet("Edit")]
     public async Task<IActionResult> Edit(int id)
     {
-      // Skicka in en kursvy till formuläret
+      // Skicka in en lärarvy till formuläret
       var teacher = await _teacherService.FindTeacherToEdit(id);
       return View("Edit", teacher);
     }

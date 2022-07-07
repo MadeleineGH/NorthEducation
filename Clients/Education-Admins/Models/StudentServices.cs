@@ -105,5 +105,22 @@ namespace Education_Admins.Models
 
       return true;
     }
+    public async Task<bool> DeleteStudent(int id)
+    {
+      using var http = new HttpClient();
+      var baseUrl = _config.GetValue<string>("baseUrl");
+      var url = $"{baseUrl}/students{id}";
+
+      var response = await http.DeleteAsync(url);
+
+      if (!response.IsSuccessStatusCode)
+      {
+        string reason = await response.Content.ReadAsStringAsync();
+        Console.WriteLine(reason);
+        return false;
+      }
+
+      return true;
+    }
   }
 }

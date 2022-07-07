@@ -55,7 +55,28 @@ namespace Education_Admins.Controllers
 
       return View("Create", student);
     }
+    [HttpGet("Edit")]
+    public async Task<IActionResult> Edit(int id)
+    {
+      // Skicka in en studentvy till formuläret
+      var student = await _studentService.FindStudentToEdit(id);
+      return View("Edit", student);
+    }
+    [HttpPost("Edit")]
+    public async Task<IActionResult> Edit(EditStudentViewModel student, int id)
+    {
+      if (!ModelState.IsValid)
+      {
+        return View("Edit", student);
+      }
 
+      if (await _studentService.EditStudent(student, id))
+      {
+        return View("Confirmation");
+      }
+
+      return View("Edit", student);
+    }
     [HttpGet("Details/{id}")]
     public async Task<IActionResult> Details(int id)
     {
@@ -70,6 +91,29 @@ namespace Education_Admins.Controllers
         Console.WriteLine(ex.Message);
         return View("Error");
       }
+    }
+    [HttpGet("Delete")]
+    public async Task<IActionResult> Delete(int id)
+    {
+      // Skicka in en tom vy till formuläret
+      var student = await _studentService.FindStudent(id);
+
+      if (student == null)
+      {
+        return NotFound();
+      }
+      return View("Delete", student);
+    }
+    [HttpPost, ActionName("Delete")]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+      var courseToDelete = await _studentService.FindStudent(id);
+      if (courseToDelete == null)
+      {
+        return NotFound();
+      }
+      await _studentService.DeleteStudent(id);
+      return RedirectToAction("Index");
     }
   }
 }
