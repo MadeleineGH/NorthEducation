@@ -105,5 +105,22 @@ namespace Education_Admins.Controllers
         return View("Error");
       }
     }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetTeacherToDelete(int id)
+    {
+      var course = await _teacherService.FindTeacher(id);
+
+      if (course == null)
+      {
+        return NotFound();
+      }
+      return View("Delete", course);
+    }
+    [HttpPost("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+      await _teacherService.DeleteTeacher(id);
+      return RedirectToAction("Index");
+    }
   }
 }

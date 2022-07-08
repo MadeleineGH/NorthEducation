@@ -1,0 +1,16 @@
+.delete-course {
+  text-align: center;
+}
+
+.delete-teacher {
+  text-align: center;
+}
+
+.btn-delete {
+  align-items: center;
+  width: 10%;
+}
+
+.btn-back {
+  width: 10%;
+}

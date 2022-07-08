@@ -105,11 +105,6 @@ namespace Education_Admins.Controllers
     [HttpPost("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-      // var courseToDelete = await _courseService.FindCourse(id);
-      // if (courseToDelete == null)
-      // {
-      //   return NotFound();
-      // }
       await _courseService.DeleteCourse(id);
       return RedirectToAction("Index");
     }

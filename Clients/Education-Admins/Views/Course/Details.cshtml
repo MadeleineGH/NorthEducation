@@ -2,6 +2,7 @@
 
 @section styles{
 <link rel="stylesheet" href="~/css/object-detail-page.css">
+<link rel="stylesheet" href="~/css/delete-object-page.css">
 }
 
 <article class="detail">
@@ -16,8 +17,12 @@
     <p>Category: @Model.CategoryName</p>
     <p>Teacher: @Model.TeacherId </p>
     <div class="card-footer text-center">
-      <a asp-action="edit" asp-controller="Course" asp-route-id="@Model.CourseId" class="btn btn-primary">Edit</a>
-      <a asp-action="GetCourseToDelete" asp-controller="Course" class="btn btn-danger">Delete</a>
+      <a asp-action="edit" asp-controller="Course" asp-route-id="@Model.CourseId" class="btn btn-primary btn-update">Edit</a>
+
+      <form class="delete-form" asp-action="Delete" asp-route-id="@Model!.CourseId" method="post">
+        <button type="submit" class="btn btn-primary btn-delete">Delete</button>
+      </form>
+      
     </div>
     <a class="go-back" asp-action="Index"><i class="fa-solid fa-left-long"></i>Back to courses</a>
   </section>
