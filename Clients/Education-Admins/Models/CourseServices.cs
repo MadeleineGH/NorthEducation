@@ -112,7 +112,7 @@ namespace Education_Admins.Models
     {
       using var http = new HttpClient();
       var baseUrl = _config.GetValue<string>("baseUrl");
-      var url = $"{baseUrl}/courses{id}";
+      var url = $"{baseUrl}/courses/{id}";
 
       var response = await http.DeleteAsync(url);
 

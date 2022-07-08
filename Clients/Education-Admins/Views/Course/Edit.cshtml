@@ -9,7 +9,7 @@
 <section class="form-container">
   <h4>Course information</h4>
   <form class="form" asp-action="Edit" method="post">
-     <div class=" form-control">
+    <div class=" form-control">
       <input asp-for="@Model!.Id" input type="hidden" />
     </div>
     <div class=" form-control">
@@ -39,17 +39,27 @@
     </div>
     <div class="form-control">
       <label asp-for="@Model!.TeacherId"></label>
-      <select asp-for="@Model!.TeacherId">
-        @for(int i = 0; i < Model!.TeacherList!.Count; i++)
-        {
-          @* if (Model.TeacherList[i].FirstName == Model.TeacherList) *@
+      @* <select asp-for="@Model!.TeacherId"> *@
+
+        @* <select asp-for="TeacherId" asp-items="@(new SelectList(Model.TeacherList, "TeacherId", "FirstName"))>
+          <option value="">Select teacher</option>
+        </select> *@
+
+        <select asp-for="TeacherId" asp-items="@(new SelectList(Model.TeacherList, "TeacherId", "FirstName"))" class="add-job custom-select">
+                <option value="">Tilføj jobfunktion</option>
+            </select>
+
+
+        @* @for(int i = 0; i < Model!.TeacherList!.Count; i++)
+          {
+          if (Model.TeacherList[i].FirstName == Model.TeacherList)
           <option value="@Model.TeacherList[i]" selected>@Model.TeacherList</option>
-        }
+          } *@
         @* @foreach (var item in Model.TeacherList!)
-        {
+          {
           <option value="@item.TeacherId">Id: @item.TeacherId @item.FirstName @item.LastName</option>
-        } *@
-      </select>
+          } *@
+      @* </select> *@
     </div>
     <button type="submit" class="btn btn-primary btn-update">Update</button>
     <a asp-controller="course" asp-action="index" class="btn btn-primary btn-cancel">Cancel</a>

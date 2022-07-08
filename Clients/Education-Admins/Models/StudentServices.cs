@@ -91,10 +91,10 @@ namespace Education_Admins.Models
     public async Task<bool> EditStudent(EditStudentViewModel student, int id)
     {
       using var http = new HttpClient();
-      var baseUrl = _config.GetValue<string>("baseUrl");
-      var url = $"{baseUrl}/students/{id}";
+      // var baseUrl = _config.GetValue<string>("baseUrl");
+      var url = $"{_baseUrl}/edit/{id}";
 
-      var response = await http.PostAsJsonAsync(url, student);
+      var response = await http.PutAsJsonAsync(url, student);
 
       if (!response.IsSuccessStatusCode)
       {
@@ -109,7 +109,7 @@ namespace Education_Admins.Models
     {
       using var http = new HttpClient();
       var baseUrl = _config.GetValue<string>("baseUrl");
-      var url = $"{baseUrl}/students{id}";
+      var url = $"{baseUrl}/students/{id}";
 
       var response = await http.DeleteAsync(url);
 

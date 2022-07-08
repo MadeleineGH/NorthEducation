@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ofg3yHaxP7bcYG5kKLnh09Q9wfgGOYBIVnDZUnt/dVY=",
+  "Hash": "54XNkBd71JuJjFTKB8ZZpjeYh2rnRqGF++3JS581/Rw=",
   "Source": "Education-Admins",
   "BasePath": "_content/Education-Admins",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Education-Admins\\wwwroot",
       "Source": "Education-Admins",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Education-Admins.styles.css",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Education-Admins.styles.css",
       "SourceId": "Education-Admins",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "Education-Admins.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Education-Admins.styles.css"
+      "OriginalItemSpec": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Education-Admins.styles.css"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Education-Admins.bundle.scp.css",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Education-Admins.bundle.scp.css",
       "SourceId": "Education-Admins",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "Education-Admins.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Education-Admins.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Education-Admins.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\css\\course-photo",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\css\\course-photo",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "css/course-photo",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\course-photo"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\css\\delete-course-page.css",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\css\\delete-course-page.css",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "css/delete-course-page.css",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\delete-course-page.css"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\css\\gallery-page.css",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\css\\gallery-page.css",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "css/gallery-page.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\gallery-page.css"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\css\\object-detail-page.css",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\css\\object-detail-page.css",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "css/object-detail-page.css",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\object-detail-page.css"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\css\\styles.css",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\css\\styles.css",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "css/styles.css",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\css\\utilities.css",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\css\\utilities.css",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "css/utilities.css",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\utilities.css"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\favicon.ico",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\images\\noimage.jpg",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\images\\noimage.jpg",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "images/noimage.jpg",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\images\\noimage.jpg"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\js\\app.js",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\js\\app.js",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "js/app.js",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\js\\app.js"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\js\\gallery-page.js",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\js\\gallery-page.js",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "js/gallery-page.js",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\js\\gallery-page.js"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\js\\student-page.js",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\js\\student-page.js",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "js/student-page.js",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\js\\student-page.js"
     },
     {
-      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\js\\teacher-page.js",
+      "Identity": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\js\\teacher-page.js",
       "SourceId": "Education-Admins",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\wwwroot\\",
       "BasePath": "_content/Education-Admins",
       "RelativePath": "js/teacher-page.js",
       "AssetKind": "All",
