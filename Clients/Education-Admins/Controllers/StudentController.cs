@@ -92,10 +92,9 @@ namespace Education_Admins.Controllers
         return View("Error");
       }
     }
-    [HttpGet("Delete")]
-    public async Task<IActionResult> Delete(int id)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetStudentToDelete(int id)
     {
-      // Skicka in en tom vy till formuläret
       var student = await _studentService.FindStudent(id);
 
       if (student == null)
@@ -104,14 +103,9 @@ namespace Education_Admins.Controllers
       }
       return View("Delete", student);
     }
-    [HttpPost, ActionName("Delete")]
-    public async Task<IActionResult> DeleteConfirmed(int id)
+    [HttpPost("{id}")]
+    public async Task<IActionResult> Delete(int id)
     {
-      var courseToDelete = await _studentService.FindStudent(id);
-      if (courseToDelete == null)
-      {
-        return NotFound();
-      }
       await _studentService.DeleteStudent(id);
       return RedirectToAction("Index");
     }

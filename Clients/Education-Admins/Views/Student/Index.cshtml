@@ -1,7 +1,7 @@
 @model IEnumerable<Education_Admins.ViewModels.StudentViewModel>
 
 @section styles{
-    <link rel="stylesheet" href="~/css/gallery-page.css">
+<link rel="stylesheet" href="~/css/gallery-page.css">
 }
 
 @{
@@ -20,7 +20,8 @@
             <div class="gallery-card container">
                 <h4>@student.FirstName @student.LastName</h4>
                 <a href="#">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="@student.FirstName" studentId="@student.StudentId" width="200">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    alt="@student.FirstName" studentId="@student.StudentId" width="200">
                 </a>
 
                 <div class="card-footer text-center">
@@ -43,5 +44,5 @@
 <div class="overlay hidden"></div>
 
 @section scripts{
-    <script src="~/js/student-page.js"></script>
+<script src="~/js/student-page.js"></script>
 }

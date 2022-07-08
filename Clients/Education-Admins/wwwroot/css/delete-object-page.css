@@ -6,6 +6,10 @@
   text-align: center;
 }
 
+.delete-student {
+  text-align: center;
+}
+
 .btn-delete {
   align-items: center;
   width: 10%;

@@ -108,13 +108,13 @@ namespace Education_Admins.Controllers
     [HttpGet("{id}")]
     public async Task<IActionResult> GetTeacherToDelete(int id)
     {
-      var course = await _teacherService.FindTeacher(id);
+      var teacher = await _teacherService.FindTeacher(id);
 
-      if (course == null)
+      if (teacher == null)
       {
         return NotFound();
       }
-      return View("Delete", course);
+      return View("Delete", teacher);
     }
     [HttpPost("{id}")]
     public async Task<IActionResult> Delete(int id)

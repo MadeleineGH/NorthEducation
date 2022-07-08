@@ -10,22 +10,6 @@
 
 <h1 class="page-title">@ViewData["Title"]</h1>
 
-@* <article>
-    <section class="gallery-wrapper">
-    @foreach (var teacher in Model!)
-    {
-    <div class="gallery-card">
-    <a href="#">
-    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-    title="teacher-profile-avatar" width="200">
-    </a>
-    <h4>@teacher.FirstName @teacher.LastName</h4>
-    <p>@teacher.Competences</p>
-    </div>
-    }
-    </section>
-    </article> *@
-
 <article>
     <section class="gallery-wrapper">
         <button class="addBtn"><a class="objectBtn" asp-controller="Teacher" asp-action="Create">
@@ -36,7 +20,8 @@
             <div class="gallery-card container">
                 <h4>@teacher.FirstName @teacher.LastName</h4>
                 <a href="#">
-                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="@teacher.FirstName" teacherId="@teacher.TeacherId" width="200">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    alt="@teacher.FirstName" teacherId="@teacher.TeacherId" width="200">
 
                 </a>
 
