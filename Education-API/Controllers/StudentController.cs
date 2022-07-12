@@ -74,7 +74,7 @@ namespace Education_API.Controllers
 
       return StatusCode(500, "Email already in use.");
     }
-    [HttpPost("edit/{id}")]
+    [HttpPut("{id}")]
     public async Task<ActionResult> UpdateStudent(int id, PostStudentViewModel model)
     {
       try
@@ -112,7 +112,7 @@ namespace Education_API.Controllers
         return StatusCode(500, ex.Message);
       }
     }
-    [HttpDelete("students/{id}")]
+    [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteStudent(int id)
     {
       await _studentRepo.DeleteStudentAsync(id);

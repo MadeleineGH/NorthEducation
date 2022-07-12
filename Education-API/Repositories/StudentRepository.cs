@@ -65,11 +65,15 @@ namespace Education_API.Repositories
       {
         throw new Exception($"Couldn't find any student with id {id}.");
       }
-
+        student.Id = id;
         student.FirstName = model.FirstName;
         student.LastName = model.LastName;
         student.Email = model.Email;
         student.PhoneNumber = model.PhoneNumber;
+        student.StreetAddress = model.StreetAddress;
+        student.PostalCode = model.PostalCode;
+        student.City = model.City;
+        student.Country = model.Country;
 
         _context.Students.Update(student);
     }

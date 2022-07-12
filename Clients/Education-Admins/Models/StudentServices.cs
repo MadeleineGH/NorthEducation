@@ -91,8 +91,8 @@ namespace Education_Admins.Models
     public async Task<bool> EditStudent(EditStudentViewModel student, int id)
     {
       using var http = new HttpClient();
-      // var baseUrl = _config.GetValue<string>("baseUrl");
-      var url = $"{_baseUrl}/edit/{id}";
+      var baseUrl = _config.GetValue<string>("baseUrl");
+      var url = $"{baseUrl}/students/{id}";
 
       var response = await http.PutAsJsonAsync(url, student);
 

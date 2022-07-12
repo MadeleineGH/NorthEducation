@@ -1,7 +1,7 @@
 @model Education_Admins.ViewModels.StudentViewModel
 
 @section styles{
-  <link rel="stylesheet" href="~/css/object-detail-page.css">
+<link rel="stylesheet" href="~/css/object-detail-page.css">
 }
 
 <article class="detail">
@@ -15,6 +15,15 @@
     <h4>Contact</h4>
     <p>@Model.Email</p>
     <p>@Model.PhoneNumber</p>
+    <div class="card-footer text-center">
+      <a asp-action="Edit" asp-controller="Student" asp-route-id="@Model.StudentId"
+        class="btn btn-primary btn-update">Edit</a>
+
+      @*Lägg till att Delete confirmation visas *@
+      <form class="delete-form" asp-action="Delete" asp-route-id="@Model!.StudentId" method="post">
+        <button type="submit" class="btn btn-primary btn-detail-delete">Delete</button>
+      </form>
+    </div>
     <a class="go-back" asp-action="Index"><i class="fa-solid fa-left-long"></i>Back to students</a>
   </section>
 </article>

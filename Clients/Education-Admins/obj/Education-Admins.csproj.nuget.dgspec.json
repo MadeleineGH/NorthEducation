@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\Education-Admins.csproj": {}
+    "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\Education-Admins.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\Education-Admins.csproj": {
+    "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\Education-Admins.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\Education-Admins.csproj",
+        "projectUniqueName": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\Education-Admins.csproj",
         "projectName": "Education-Admins",
-        "projectPath": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\Education-Admins.csproj",
+        "projectPath": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\Education-Admins.csproj",
         "packagesPath": "C:\\Users\\Madel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\obj\\",
+        "outputPath": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Madel\\AppData\\Roaming\\NuGet\\NuGet.Config",
