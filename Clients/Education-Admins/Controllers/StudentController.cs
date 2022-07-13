@@ -72,7 +72,7 @@ namespace Education_Admins.Controllers
 
       if (await _studentService.EditStudent(student, id))
       {
-        return View("Confirmation");
+        return View("ConfirmationUpdate");
       }
 
       return View("Edit", student);

@@ -8,19 +8,24 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Madel\\.nuget\\packages\\": {}
+    "C:\\Users\\Madeleine\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\Education-Admins.csproj",
+      "projectUniqueName": "c:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\Education-Admins.csproj",
       "projectName": "Education-Admins",
-      "projectPath": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\Education-Admins.csproj",
-      "packagesPath": "C:\\Users\\Madel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Madel\\source\\repos\\NorthEducation\\clients\\education-admins\\obj\\",
+      "projectPath": "c:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\Education-Admins.csproj",
+      "packagesPath": "C:\\Users\\Madeleine\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Madeleine\\source\\repos\\NorthEducation\\Clients\\Education-Admins\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Madel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Madeleine\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
